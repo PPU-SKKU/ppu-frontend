@@ -1,0 +1,13 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/NotoSerifDisplay-ExtraLight.ttf",
+      "sha1": "81f0dda7c471831f2e27236f2659a300fb9cf0f5"
+    },
+    {
+      "path": "src/assets/fonts/Pretendard-ExtraLight.otf",
+      "sha1": "4cc979a7edca4de7b9c392529493cdd0409d9dd1"
+    }
+  ]
+}
