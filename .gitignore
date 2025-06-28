@@ -2,6 +2,15 @@
 #
 .DS_Store
 
+# iOS
+ios/Pods/
+ios/build/
+ios/DerivedData/
+ios/*.xcworkspace
+ios/Podfile.lock
+ios/.xcode.env.local
+ios/.xcode.env
+
 # Xcode
 #
 build/
