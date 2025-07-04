@@ -60,6 +60,8 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
       - run: npm ci
       - uses: maxim-lobanov/setup-cocoapods@v1
+        with:
+          version: '1.16.2'
       - name: Install Pods
         run: cd ios && pod install
       - name: Build iOS Debug
@@ -68,6 +70,7 @@ jobs:
   discord-notify:
     runs-on: ubuntu-latest
     needs: [lint-and-prettier, android-build, ios-build]
+    if: always()
     steps:
       - name: Discord Notification
         env:
