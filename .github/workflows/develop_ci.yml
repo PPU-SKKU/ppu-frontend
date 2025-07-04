@@ -1,6 +1,8 @@
 name: CI for develop PR
 
 on:
+  push:
+    branches: [develop]
   pull_request:
     branches: [develop]
 
@@ -79,12 +81,12 @@ jobs:
       - name: Install Pods
         run: cd ios && pod install
       - name: Build iOS Debug
-        run: cd ios && xcodebuild -workspace ppu_frontend.xcworkspace -scheme ppu_frontend -configuration Debug -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 14,OS=latest'
+        run: cd ios && xcodebuild -workspace ppu_frontend.xcworkspace -scheme ppu_frontend -configuration Debug -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 14,OS=latest' CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
 
   discord-notify:
     runs-on: ubuntu-latest
     needs: [lint-and-prettier, android-build, ios-build]
-    if: always()
+    if: github.event_name == 'pull_request'
     steps:
       - name: Discord Notification
         env:
