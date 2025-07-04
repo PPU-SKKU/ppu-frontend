@@ -1,0 +1,79 @@
+name: CI for develop PR
+
+on:
+  pull_request:
+    branches: [develop]
+
+jobs:
+  lint-and-prettier:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Cache npm
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+      - run: npm ci
+      - name: Run ESLint
+        run: npx eslint . --ext .js,.jsx,.ts,.tsx
+      - name: Run Prettier
+        run: npx prettier --check .
+
+  android-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Cache npm
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+      - run: npm ci
+      - name: Install JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - name: Install Android SDK
+        uses: android-actions/setup-android@v2
+      - name: Build Android Debug
+        run: cd android && ./gradlew assembleDebug
+
+  ios-build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Cache npm
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+      - run: npm ci
+      - uses: maxim-lobanov/setup-cocoapods@v1
+      - name: Install Pods
+        run: cd ios && pod install
+      - name: Build iOS Debug
+        run: cd ios && xcodebuild -workspace ppu_frontend.xcworkspace -scheme ppu_frontend -configuration Debug -sdk iphonesimulator
+
+  discord-notify:
+    runs-on: ubuntu-latest
+    needs: [lint-and-prettier, android-build, ios-build]
+    steps:
+      - name: Discord Notification
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        run: |
+          curl -H "Content-Type: application/json" \
+            -X POST \
+            -d '{"content": "📢 새로운 PR이 열렸어요!"}' \
+            $DISCORD_WEBHOOK
