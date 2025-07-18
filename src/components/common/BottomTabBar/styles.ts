@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
   tab: {
     flex: 1,
     flexDirection: 'column',
-    gap: 4,
+    gap: 8,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -34,7 +34,10 @@ const styles = StyleSheet.create({
   },
   label: {
     color: '#6B7280',
-    fontSize: 14,
+    fontSize: 12,
+  },
+  activeLabel: {
+    color: '#34618E',
   },
 });
 

@@ -1,8 +1,9 @@
 import React from 'react';
 import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
 import type { BottomTabBarProps } from '@react-navigation/bottom-tabs';
+import FeatherIcon from 'react-native-vector-icons/Feather';
+import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome6';
 import styles from './styles';
-//import FeatherIcon from 'react-native-vector-icons/Feather';
 
 const BottomTabBar: React.FC<BottomTabBarProps> = ({ state, navigation }) => {
   return (
@@ -13,8 +14,14 @@ const BottomTabBar: React.FC<BottomTabBarProps> = ({ state, navigation }) => {
         onPress={() => navigation.navigate('HOME')}
         accessibilityRole="button"
       >
-        <Text style={styles.icon}>🗄️</Text>
-        <Text style={styles.label}>홈</Text>
+        <FeatherIcon
+          name="home"
+          size={20}
+          color={state.index === 0 ? '#34618E' : '#A3A9B6'}
+        />
+        <Text style={[styles.label, state.index === 0 && styles.activeLabel]}>
+          홈
+        </Text>
       </TouchableOpacity>
 
       {/* 오뿌 탭 */}
@@ -23,8 +30,14 @@ const BottomTabBar: React.FC<BottomTabBarProps> = ({ state, navigation }) => {
         onPress={() => navigation.navigate('OPPU')}
         accessibilityRole="button"
       >
-        <Text style={styles.icon}>🗄️</Text>
-        <Text style={styles.label}>오뿌</Text>
+        <FontAwesomeIcon
+          name="spray-can-sparkles"
+          size={20}
+          color={state.index === 1 ? '#34618E' : '#A3A9B6'}
+        />
+        <Text style={[styles.label, state.index === 1 && styles.activeLabel]}>
+          오뿌
+        </Text>
       </TouchableOpacity>
 
       {/* Add 탭 */}
@@ -35,7 +48,7 @@ const BottomTabBar: React.FC<BottomTabBarProps> = ({ state, navigation }) => {
         activeOpacity={0.8}
       >
         <View style={styles.addCircle}>
-          <Text style={styles.addText}>＋</Text>
+          <FeatherIcon name="plus" size={32} color="#fff" />
         </View>
       </TouchableOpacity>
 
@@ -45,8 +58,14 @@ const BottomTabBar: React.FC<BottomTabBarProps> = ({ state, navigation }) => {
         onPress={() => navigation.navigate('ARCHIVE')}
         accessibilityRole="button"
       >
-        <Text style={styles.icon}>🗄️</Text>
-        <Text style={styles.label}>시향</Text>
+        <FeatherIcon
+          name="archive"
+          size={20}
+          color={state.index === 3 ? '#34618E' : '#A3A9B6'}
+        />
+        <Text style={[styles.label, state.index === 3 && styles.activeLabel]}>
+          시향
+        </Text>
       </TouchableOpacity>
 
       {/* 마이 탭 */}
@@ -55,8 +74,14 @@ const BottomTabBar: React.FC<BottomTabBarProps> = ({ state, navigation }) => {
         onPress={() => navigation.navigate('MY')}
         accessibilityRole="button"
       >
-        <Text style={styles.icon}>🗄️</Text>
-        <Text style={styles.label}>마이</Text>
+        <FeatherIcon
+          name="user"
+          size={20}
+          color={state.index === 4 ? '#34618E' : '#A3A9B6'}
+        />
+        <Text style={[styles.label, state.index === 4 && styles.activeLabel]}>
+          마이
+        </Text>
       </TouchableOpacity>
     </View>
   );
