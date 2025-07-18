@@ -3,6 +3,7 @@ import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
 import type { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome6';
+import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import styles from './styles';
 
 const BottomTabBar: React.FC<BottomTabBarProps> = ({ state, navigation }) => {
@@ -58,8 +59,8 @@ const BottomTabBar: React.FC<BottomTabBarProps> = ({ state, navigation }) => {
         onPress={() => navigation.navigate('ARCHIVE')}
         accessibilityRole="button"
       >
-        <FeatherIcon
-          name="archive"
+        <MaterialCommunityIcon
+          name="test-tube"
           size={20}
           color={state.index === 3 ? '#34618E' : '#A3A9B6'}
         />
