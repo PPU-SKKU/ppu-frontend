@@ -4,7 +4,7 @@ import styles from './styles';
 
 const ArchiveScreen: React.FC = () => (
   <View style={styles.container}>
-    <Text style={styles.title}>시향 화면</Text>
+    <Text>시향 화면</Text>
   </View>
 );
 
