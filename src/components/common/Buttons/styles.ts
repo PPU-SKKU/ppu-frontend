@@ -31,6 +31,9 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '400',
   },
+  disabled: {
+    opacity: 0.5,
+  },
   modal: {
     backgroundColor: '#fff',
     borderWidth: 1,

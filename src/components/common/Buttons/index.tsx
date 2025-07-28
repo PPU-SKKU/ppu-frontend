@@ -12,6 +12,7 @@ interface GeneralButtonProps {
   children?: React.ReactNode;
   onPress?: () => void;
   style?: ViewStyle;
+  disabled?: boolean;
 }
 
 const GeneralButton: React.FC<GeneralButtonProps> = ({
@@ -22,6 +23,7 @@ const GeneralButton: React.FC<GeneralButtonProps> = ({
   children,
   onPress,
   style,
+  disabled = false,
 }) => {
   // size에 따라 텍스트 스타일 결정
   const textSizeStyle =
@@ -33,9 +35,16 @@ const GeneralButton: React.FC<GeneralButtonProps> = ({
 
   return (
     <TouchableOpacity
-      style={[styles.base, styles[size], { backgroundColor }, style]}
-      onPress={onPress}
+      style={[
+        styles.base,
+        styles[size],
+        { backgroundColor: backgroundColor },
+        style,
+        disabled && styles.disabled,
+      ]}
+      onPress={onPress} // 추가적인 스타일이 필요하다면
       activeOpacity={0.8}
+      disabled={disabled}
     >
       {label ? (
         <Text style={[textSizeStyle, { color: textColor }]}>{label}</Text>
