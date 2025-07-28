@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   base: {
-    borderRadius: 8,
+    borderRadius: 100,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -33,15 +33,6 @@ const styles = StyleSheet.create({
   },
   disabled: {
     opacity: 0.5,
-  },
-  modal: {
-    backgroundColor: '#fff',
-    borderWidth: 1,
-    borderColor: '#34618E',
-  },
-  modalText: {
-    color: '#34618E',
-    fontWeight: 'bold',
   },
   submit: {
     width: '100%',
