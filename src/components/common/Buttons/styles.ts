@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   submit: {
-    backgroundColor: '#34618E',
+    width: '100%',
   },
 });
 

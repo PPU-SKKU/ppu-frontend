@@ -4,7 +4,7 @@ import styles from './styles';
 
 type ButtonSize = 'large' | 'medium' | 'small';
 
-interface GeneralButtonProps {
+interface ButtonProps {
   size?: ButtonSize;
   backgroundColor?: string;
   textColor?: string;
@@ -13,9 +13,10 @@ interface GeneralButtonProps {
   onPress?: () => void;
   style?: ViewStyle;
   disabled?: boolean;
+  submit?: boolean;
 }
 
-const GeneralButton: React.FC<GeneralButtonProps> = ({
+const Button: React.FC<ButtonProps> = ({
   size = 'medium',
   backgroundColor = '#34618E',
   textColor = '#fff',
@@ -24,6 +25,7 @@ const GeneralButton: React.FC<GeneralButtonProps> = ({
   onPress,
   style,
   disabled = false,
+  submit = false,
 }) => {
   // size에 따라 텍스트 스타일 결정
   const textSizeStyle =
@@ -41,6 +43,7 @@ const GeneralButton: React.FC<GeneralButtonProps> = ({
         { backgroundColor: backgroundColor },
         style,
         disabled && styles.disabled,
+        submit && styles.submit,
       ]}
       onPress={onPress} // 추가적인 스타일이 필요하다면
       activeOpacity={0.8}
@@ -55,4 +58,4 @@ const GeneralButton: React.FC<GeneralButtonProps> = ({
   );
 };
 
-export default GeneralButton;
+export default Button;
