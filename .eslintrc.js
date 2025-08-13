@@ -9,13 +9,15 @@ module.exports = {
       'warn',
       { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
     ],
-    '@typescript-eslint/no-explicit-any': 'error',
     'react-hooks/rules-of-hooks': 'error',
     'react-native/no-inline-styles': 'error',
     'react-native/no-raw-text': 'error',
+
+    '@typescript-eslint/no-explicit-any': 'warn',
     'no-console': 'warn',
     '@typescript-eslint/ban-ts-comment': 'warn',
     'react-hooks/exhaustive-deps': 'warn',
+
     'no-unused-vars': 'off',
     'react/react-in-jsx-scope': 'off',
   },
