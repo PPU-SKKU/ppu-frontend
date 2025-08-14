@@ -86,6 +86,7 @@ jobs:
           echo "=== End runtimes ==="
 
       - name: Build iOS Debug
+        shell: bash
         run: |
           # 설치된 첫 번째 iOS 시뮬레이터 런타임 가져오기
           IOS_RUNTIME=$(xcrun simctl list runtimes | grep -i "iOS" | grep -v "unavailable" | head -n 1 | awk '{print $2}' | tr -d '()')
