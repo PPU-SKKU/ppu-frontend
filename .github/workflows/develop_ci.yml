@@ -81,11 +81,10 @@ jobs:
       - name: Detect available iOS simulator
         id: detect-sim
         run: |
-          LATEST_OS=$(xcrun simctl list runtimes | grep "iOS" | grep -v unavailable | awk '{print $2}' | sort -V | tail -n 1)
-          DEVICE=$(xcrun simctl list devices available | grep "iPhone 15" | grep "$LATEST_OS" | head -n 1 | awk -F '(' '{print $1}' | sed 's/^[ \t]*//;s/[ \t]*$//')
-          echo "OS_VERSION=$LATEST_OS" >> $GITHUB_ENV
-          echo "DEVICE_NAME=$DEVICE" >> $GITHUB_ENV
-          echo "Using device: $DEVICE on iOS $LATEST_OS"
+          # 사용 가능한 디바이스+OS 중 첫 번째를 선택
+          DEST=$(xcrun simctl list devices available | grep "iPhone" | grep "iOS" | head -n 1 | awk -F '[()]' '{print "platform=iOS Simulator,name="$2",OS="$4}')
+          echo "DEST=$DEST"
+          echo "DEST=$DEST" >> $GITHUB_ENV
 
       - name: Build iOS Debug
         run: |
@@ -94,7 +93,7 @@ jobs:
             -scheme ppu_frontend \
             -configuration Debug \
             -sdk iphonesimulator \
-            -destination "platform=iOS Simulator,name=${{ env.DEVICE_NAME }},OS=${{ env.OS_VERSION }}" \
+            -destination "${{ env.DEST }}" \
             CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
 
   discord-notify:
