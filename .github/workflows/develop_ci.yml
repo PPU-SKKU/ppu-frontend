@@ -88,15 +88,29 @@ jobs:
           SDK=$(xcrun simctl list runtimes | grep "iOS" | grep -v "unavailable" | awk '{print $2}' | sort -V | tail -n 1)
           echo "Using latest available SDK: $SDK"
 
+          # 디버깅: SDK와 매칭되는 디바이스들 확인
+          echo "=== Devices matching SDK $SDK ==="
+          xcrun simctl list devices available | grep "iPhone" | grep "$SDK" || echo "No devices found for SDK $SDK"
+          echo "=== End matching devices ==="
+
           # 사용 가능한 디바이스 중 첫 번째 iPhone 선택
           DEST=$(xcrun simctl list devices available | grep "iPhone" | grep "$SDK" | head -n 1 | awk -F '[()]' '{gsub(/^ +| +$/,"",$2); gsub(/^ +| +$/,"",$4); print "platform=iOS Simulator,name="$2",OS="$4}')
 
+          echo "Initial DEST result: '$DEST'"
+
           if [ -z "$DEST" ]; then
-            echo "No suitable simulator found, fallback to default iPhone 14 + $SDK"
-            DEST="platform=iOS Simulator,name=iPhone 14,OS=$SDK"
+            echo "No suitable simulator found, trying any iPhone with any iOS version..."
+            # 아무 iPhone이나 찾기 (OS 버전 무관)
+            DEST=$(xcrun simctl list devices available | grep "iPhone" | head -n 1 | awk -F '[()]' '{gsub(/^ +| +$/,"",$2); gsub(/^ +| +$/,"",$4); print "platform=iOS Simulator,name="$2",OS="$4}')
+            echo "Found any iPhone: '$DEST'"
+            
+            if [ -z "$DEST" ]; then
+              echo "Still no device found, fallback to default iPhone 14 + $SDK"
+              DEST="platform=iOS Simulator,name=iPhone 14,OS=$SDK"
+            fi
           fi
 
-          echo "Selected simulator: $DEST"
+          echo "Final selected simulator: $DEST"
           echo "DEST=$DEST" >> $GITHUB_ENV
 
       - name: Build iOS Debug
