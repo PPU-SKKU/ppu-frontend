@@ -85,40 +85,13 @@ jobs:
           xcrun simctl list runtimes | grep -i "iOS"
           echo "=== End runtimes ==="
 
-      - name: Detect available iOS simulator
-        id: detect-sim
-        run: |
-          echo "=== Listing available iOS simulators ==="
-          xcrun simctl list devices available
-
-          # 설치된 최신 시뮬레이터 SDK 가져오기
-          SDK=$(xcrun --sdk iphonesimulator --show-sdk-version)
-          echo "Using latest available SDK: $SDK"
-
-          # 실제 사용 가능한 디바이스 중 첫 번째 선택
-          AVAILABLE_DEVICE=$(xcrun simctl list devices available | grep "iPhone" | grep -v "unavailable" | head -n 1)
-          echo "Available device line: '$AVAILABLE_DEVICE'"
-
-          if [ -n "$AVAILABLE_DEVICE" ]; then
-            # 모든 괄호 제거 후 앞뒤 공백 제거
-            DEVICE_NAME=$(echo "$AVAILABLE_DEVICE" | sed -E 's/^[[:space:]]*//; s/ \([^)]+\)$//')
-            DEST="platform=iOS Simulator,name=$DEVICE_NAME,OS=$SDK"
-            echo "Using device: $DEVICE_NAME with OS: $SDK"
-          else
-            echo "No available devices found, using fallback"
-            DEST="platform=iOS Simulator,name=iPhone 14,OS=$SDK"
-          fi
-
-          echo "Final selected simulator: $DEST"
-          echo "DEST=$DEST" >> $GITHUB_ENV
-
       - name: Build iOS Debug
         run: |
           cd ios && xcodebuild \
             -workspace ppu_frontend.xcworkspace \
             -scheme ppu_frontend \
             -configuration Debug \
-            -sdk iphonesimulator \
+            -sdk iphonesimulator18.4 \
             -destination "platform=iOS Simulator,name=iPhone 16,OS=18.4" \
             CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
 
