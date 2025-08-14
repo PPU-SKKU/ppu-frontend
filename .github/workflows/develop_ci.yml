@@ -81,22 +81,22 @@ jobs:
       - name: Detect available iOS simulator
         id: detect-sim
         run: |
-          # 디버깅을 위한 전체 디바이스 목록 출력
-          echo "=== Available devices ==="
-          xcrun simctl list devices available | grep "iPhone"
-          echo "=== End devices ==="
+          echo "=== Listing available iOS simulators ==="
+          xcrun simctl list devices available
 
-          # 사용 가능한 디바이스+OS 중 첫 번째를 선택
-          DEST=$(xcrun simctl list devices available | grep "iPhone" | grep "iOS" | head -n 1 | awk -F '[()]' '{print "platform=iOS Simulator,name="$2",OS="$4}' | tr -d '\n')
+          # 설치된 iOS SDK 중 가장 최신 버전 확인
+          SDK=$(xcrun simctl list runtimes | grep "iOS" | grep -v "unavailable" | awk '{print $2}' | sort -V | tail -n 1)
+          echo "Using latest available SDK: $SDK"
 
-          # DEST가 비어있는지 확인
+          # 사용 가능한 디바이스 중 첫 번째 iPhone 선택
+          DEST=$(xcrun simctl list devices available | grep "iPhone" | grep "$SDK" | head -n 1 | awk -F '[()]' '{gsub(/^ +| +$/,"",$2); gsub(/^ +| +$/,"",$4); print "platform=iOS Simulator,name="$2",OS="$4}')
+
           if [ -z "$DEST" ]; then
-            echo "ERROR: No iPhone simulator found!"
-            echo "Falling back to hardcoded values..."
-            DEST="platform=iOS Simulator,name=iPhone 15,OS=17.5"
+            echo "No suitable simulator found, fallback to default iPhone 14 + $SDK"
+            DEST="platform=iOS Simulator,name=iPhone 14,OS=$SDK"
           fi
 
-          echo "DEST='$DEST'"
+          echo "Selected simulator: $DEST"
           echo "DEST=$DEST" >> $GITHUB_ENV
 
       - name: Build iOS Debug
