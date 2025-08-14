@@ -78,12 +78,6 @@ jobs:
           version: '1.16.2'
       - name: Install Pods
         run: cd ios && pod install
-      - name: Detect latest available iOS version
-        id: detect-ios
-        run: |
-          LATEST_OS=$(xcrun simctl list runtimes | grep "iOS" | grep -v "unavailable" | awk '{print $2}' | sort -V | tail -n 1)
-          echo "LATEST_OS=$LATEST_OS" >> $GITHUB_ENV
-          echo "Using iOS version: $LATEST_OS"
       - name: Build iOS Debug
         run: |
           cd ios && xcodebuild \
@@ -91,7 +85,7 @@ jobs:
             -scheme ppu_frontend \
             -configuration Debug \
             -sdk iphonesimulator \
-            -destination "platform=iOS Simulator,name=iPhone 14,OS=${{ env.LATEST_OS }}" \
+            -destination "platform=iOS Simulator,name=iPhone 14,OS=17.5" \
             CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
 
   discord-notify:
