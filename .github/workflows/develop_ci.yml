@@ -98,17 +98,24 @@ jobs:
       - name: Build iOS Debug
         shell: bash
         run: |
-          # 설치된 첫 번째 iOS 시뮬레이터 런타임 가져오기
-          IOS_SDK=$(xcodebuild -showsdks | grep -E "Simulator - iOS" | awk '{print $4}')
-          IOS_RUNTIME=$(xcrun simctl list runtimes | grep -i "iOS" | grep -v "unavailable" | head -n 1 | awk '{print $2}' | tr -d '()')
-          echo "Using iOS runtime: $IOS_RUNTIME"
+          echo "=== Available iOS Simulator Devices ==="
+          # 설치된 시뮬레이터 기기 중 사용 가능한 것만 추출
+          DEVICE_INFO=$(xcrun simctl list devices available | grep -i "iPhone" | head -n 1)
+          DEVICE_NAME=$(echo "$DEVICE_INFO" | awk -F '[()]' '{print $2}')
+          echo "Using simulator device: $DEVICE_NAME"
 
+          echo "=== Installed iOS Simulator SDKs ==="
+          # 설치된 iOS 시뮬레이터 SDK 확인
+          SDK_VERSION=$(xcodebuild -showsdks | grep "iOS Simulator" | head -n 1 | awk '{print $NF}' | sed 's/-sdk iphonesimulator//')
+          echo "Using SDK version: $SDK_VERSION"
+
+          # iOS 빌드 실행
           cd ios && xcodebuild \
             -workspace ppu_frontend.xcworkspace \
             -scheme ppu_frontend \
             -configuration Debug \
-            -sdk iphonesimulator \
-            -destination "platform=iOS Simulator,name=iPhone 16,OS=$IOS_SDK" \
+            -sdk iphonesimulator${SDK_VERSION} \
+            -destination "platform=iOS Simulator,name=${DEVICE_NAME},OS=${SDK_VERSION}" \
             CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
 
   discord-notify:
