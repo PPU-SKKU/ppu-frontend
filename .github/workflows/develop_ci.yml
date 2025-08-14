@@ -78,6 +78,13 @@ jobs:
           version: '1.16.2'
       - name: Install Pods
         run: cd ios && pod install
+
+      - name: List available simulator runtimes
+        run: |
+          echo "=== Installed iOS Simulator Runtimes ==="
+          xcrun simctl list runtimes | grep -i "iOS"
+          echo "=== End runtimes ==="
+
       - name: Detect available iOS simulator
         id: detect-sim
         run: |
