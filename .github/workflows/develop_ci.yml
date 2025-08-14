@@ -93,7 +93,8 @@ jobs:
           echo "Available device line: '$AVAILABLE_DEVICE'"
 
           if [ -n "$AVAILABLE_DEVICE" ]; then
-            DEVICE_NAME=$(echo "$AVAILABLE_DEVICE" | sed 's/^[ \t]*//;s/ (.*)$//')
+            # 모든 괄호 제거 후 앞뒤 공백 제거
+            DEVICE_NAME=$(echo "$AVAILABLE_DEVICE" | sed -E 's/^[[:space:]]*//; s/ \([^)]+\)$//')
             DEST="platform=iOS Simulator,name=$DEVICE_NAME,OS=$SDK"
             echo "Using device: $DEVICE_NAME with OS: $SDK"
           else
