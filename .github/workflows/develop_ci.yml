@@ -100,7 +100,7 @@ jobs:
             -scheme ppu_frontend \
             -configuration Debug \
             -sdk iphonesimulator \
-            -destination "platform=iOS Simulator,name=iPhone 16 Pro,OS=$IOS_RUNTIME" \
+            -destination "platform=iOS Simulator,name=iPhone 16,OS=$IOS_RUNTIME" \
             CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
 
   discord-notify:
