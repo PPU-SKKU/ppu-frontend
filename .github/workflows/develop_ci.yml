@@ -82,7 +82,7 @@ jobs:
         id: detect-sim
         run: |
           # 사용 가능한 디바이스+OS 중 첫 번째를 선택
-          DEST=$(xcrun simctl list devices available | grep "iPhone" | grep "iOS" | head -n 1 | awk -F '[()]' '{print "platform=iOS Simulator,name="$2",OS="$4}')
+          DEST=$(xcrun simctl list devices available | grep "iPhone" | grep "iOS" | head -n 1 | awk -F '[()]' '{print "platform=iOS Simulator,name="$2",OS="$4}' | tr -d '\n')
           echo "DEST=$DEST"
           echo "DEST=$DEST" >> $GITHUB_ENV
 
