@@ -93,21 +93,14 @@ jobs:
           xcrun simctl list devices available | grep "iPhone" | grep "$SDK" || echo "No devices found for SDK $SDK"
           echo "=== End matching devices ==="
 
-          # 사용 가능한 디바이스 중 첫 번째 iPhone 선택
-          DEST=$(xcrun simctl list devices available | grep "iPhone" | grep "$SDK" | head -n 1 | awk -F '[()]' '{gsub(/^ +| +$/,"",$2); gsub(/^ +| +$/,"",$4); print "platform=iOS Simulator,name="$2",OS="$4}')
+          # 사용 가능한 디바이스 중 첫 번째 iPhone 선택 (올바른 파싱)
+          DEST=$(xcrun simctl list devices available | grep "iPhone" | head -n 1 | sed 's/^[ \t]*//;s/[ \t]*$//' | sed 's/ (.*)$//' | sed 's/^/platform=iOS Simulator,name=/' | sed "s/$/,OS=$SDK/")
 
           echo "Initial DEST result: '$DEST'"
 
           if [ -z "$DEST" ]; then
-            echo "No suitable simulator found, trying any iPhone with any iOS version..."
-            # 아무 iPhone이나 찾기 (OS 버전 무관)
-            DEST=$(xcrun simctl list devices available | grep "iPhone" | head -n 1 | awk -F '[()]' '{gsub(/^ +| +$/,"",$2); gsub(/^ +| +$/,"",$4); print "platform=iOS Simulator,name="$2",OS="$4}')
-            echo "Found any iPhone: '$DEST'"
-            
-            if [ -z "$DEST" ]; then
-              echo "Still no device found, fallback to default iPhone 14 + $SDK"
-              DEST="platform=iOS Simulator,name=iPhone 14,OS=$SDK"
-            fi
+            echo "No suitable simulator found, fallback to default iPhone 14 + $SDK"
+            DEST="platform=iOS Simulator,name=iPhone 14,OS=$SDK"
           fi
 
           echo "Final selected simulator: $DEST"
