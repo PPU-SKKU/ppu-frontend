@@ -88,10 +88,18 @@ jobs:
           xcrun simctl list runtimes | grep -i "iOS"
           echo "=== End runtimes ==="
 
+      - name: List installed iOS Simulator devices
+        shell: bash
+        run: |
+          echo "=== Installed iOS Simulator Devices ==="
+          xcrun simctl list devices | grep -i "iPhone"
+          echo "=== End devices ==="
+
       - name: Build iOS Debug
         shell: bash
         run: |
           # 설치된 첫 번째 iOS 시뮬레이터 런타임 가져오기
+          IOS_SDK=$(xcodebuild -showsdks | grep -E "Simulator - iOS" | awk '{print $4}')
           IOS_RUNTIME=$(xcrun simctl list runtimes | grep -i "iOS" | grep -v "unavailable" | head -n 1 | awk '{print $2}' | tr -d '()')
           echo "Using iOS runtime: $IOS_RUNTIME"
 
@@ -100,7 +108,7 @@ jobs:
             -scheme ppu_frontend \
             -configuration Debug \
             -sdk iphonesimulator \
-            -destination "platform=iOS Simulator,name=iPhone 16,OS=$IOS_RUNTIME" \
+            -destination "platform=iOS Simulator,name=iPhone 16,OS=$IOS_SDK" \
             CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
 
   discord-notify:
