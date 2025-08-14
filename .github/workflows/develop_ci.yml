@@ -79,6 +79,9 @@ jobs:
       - name: Install Pods
         run: cd ios && pod install
 
+      - name: Show installed SDKs
+        run: xcodebuild -showsdks
+
       - name: List available simulator runtimes
         run: |
           echo "=== Installed iOS Simulator Runtimes ==="
