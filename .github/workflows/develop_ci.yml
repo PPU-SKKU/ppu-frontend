@@ -84,22 +84,20 @@ jobs:
           echo "=== Listing available iOS simulators ==="
           xcrun simctl list devices available
 
-          # 설치된 iOS SDK 중 가장 최신 버전 확인
-          SDK=$(xcrun simctl list runtimes | grep "iOS" | grep -v "unavailable" | awk '{print $2}' | sort -V | tail -n 1)
+          # 설치된 최신 시뮬레이터 SDK 가져오기
+          SDK=$(xcrun --sdk iphonesimulator --show-sdk-version)
           echo "Using latest available SDK: $SDK"
 
-          # 디버깅: SDK와 매칭되는 디바이스들 확인
-          echo "=== Devices matching SDK $SDK ==="
-          xcrun simctl list devices available | grep "iPhone" | grep "$SDK" || echo "No devices found for SDK $SDK"
-          echo "=== End matching devices ==="
+          # 실제 사용 가능한 디바이스 중 첫 번째 선택
+          AVAILABLE_DEVICE=$(xcrun simctl list devices available | grep "iPhone" | grep -v "unavailable" | head -n 1)
+          echo "Available device line: '$AVAILABLE_DEVICE'"
 
-          # 사용 가능한 디바이스 중 첫 번째 iPhone 선택 (올바른 파싱)
-          DEST=$(xcrun simctl list devices available | grep "iPhone" | head -n 1 | sed 's/^[ \t]*//;s/[ \t]*$//' | sed 's/ (.*)$//' | sed 's/^/platform=iOS Simulator,name=/' | sed "s/$/,OS=$SDK/")
-
-          echo "Initial DEST result: '$DEST'"
-
-          if [ -z "$DEST" ]; then
-            echo "No suitable simulator found, fallback to default iPhone 14 + $SDK"
+          if [ -n "$AVAILABLE_DEVICE" ]; then
+            DEVICE_NAME=$(echo "$AVAILABLE_DEVICE" | sed 's/^[ \t]*//;s/ (.*)$//')
+            DEST="platform=iOS Simulator,name=$DEVICE_NAME,OS=$SDK"
+            echo "Using device: $DEVICE_NAME with OS: $SDK"
+          else
+            echo "No available devices found, using fallback"
             DEST="platform=iOS Simulator,name=iPhone 14,OS=$SDK"
           fi
 
