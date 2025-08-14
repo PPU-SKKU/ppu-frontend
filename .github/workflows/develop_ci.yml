@@ -87,12 +87,16 @@ jobs:
 
       - name: Build iOS Debug
         run: |
+          # 설치된 첫 번째 iOS 시뮬레이터 런타임 가져오기
+          IOS_RUNTIME=$(xcrun simctl list runtimes | grep -i "iOS" | grep -v "unavailable" | head -n 1 | awk '{print $2}' | tr -d '()')
+          echo "Using iOS runtime: $IOS_RUNTIME"
+
           cd ios && xcodebuild \
             -workspace ppu_frontend.xcworkspace \
             -scheme ppu_frontend \
             -configuration Debug \
             -sdk iphonesimulator \
-            -destination "platform=iOS Simulator,name=iPhone 16 Pro,OS=18.0" \
+            -destination "platform=iOS Simulator,name=iPhone 16 Pro,OS=$IOS_RUNTIME" \
             CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
 
   discord-notify:
