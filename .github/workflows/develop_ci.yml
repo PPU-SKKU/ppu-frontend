@@ -106,7 +106,12 @@ jobs:
 
           echo "=== Installed iOS Simulator SDKs ==="
           # 설치된 iOS 시뮬레이터 SDK 확인
-          SDK_VERSION=$(xcodebuild -showsdks | grep "iOS Simulator" | head -n 1 | awk '{print $NF}' | sed 's/-sdk iphonesimulator//')
+          SDK_VERSION=$(xcodebuild -showsdks \
+            | grep "iphonesimulator" \
+            | head -n 1 \
+            | awk '{print $NF}' \
+            | sed 's/.*iphonesimulator//')
+
           echo "Using SDK version: $SDK_VERSION"
 
           # iOS 빌드 실행
