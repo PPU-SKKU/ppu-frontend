@@ -95,49 +95,48 @@ jobs:
           xcrun simctl list devices | grep -i "iPhone"
           echo "=== End devices ==="
 
-  - name: Build iOS Debug
-    shell: bash
-    run: |
-      echo "=== Detect Available iOS Simulator ==="
+      - name: Build iOS Debug
+        shell: bash
+        run: |
+          echo "=== Detect Available iOS Simulator ==="
 
-      # 가장 최신 iOS 런타임 버전 가져오기 (unavailable 제외)
-      OS_VERSION=$(xcrun simctl list runtimes | \
-        grep "iOS" | grep -v "unavailable" | \
-        awk -F '[()]' '{print $2}' | sort -V | tail -n 1)
+          # 가장 최신 iOS 런타임 버전 가져오기 (unavailable 제외)
+          OS_VERSION=$(xcrun simctl list runtimes | \
+            grep "iOS" | grep -v "unavailable" | \
+            awk -F '[()]' '{print $2}' | sort -V | tail -n 1)
 
-      # 해당 OS 버전의 첫 번째 iPhone 기기명 가져오기
-      DEVICE_NAME=$(xcrun simctl list devices available | \
-        grep "iPhone" | grep "$OS_VERSION" | \
-        head -n 1 | awk -F '[()]' '{print $1}' | sed 's/^[[:space:]]*//')
+          # 해당 OS 버전의 첫 번째 iPhone 기기명 가져오기
+          DEVICE_NAME=$(xcrun simctl list devices available | \
+            grep "iPhone" | grep "$OS_VERSION" | \
+            head -n 1 | awk -F '[()]' '{print $1}' | sed 's/^[[:space:]]*//')
 
-      # fallback: 해당 OS 버전 기기가 없으면 첫 번째 사용 가능 iPhone 선택
-      if [ -z "$DEVICE_NAME" ]; then
-        echo "No device found for iOS $OS_VERSION. Falling back to first available iPhone."
-        DEVICE_NAME=$(xcrun simctl list devices available | \
-          grep "iPhone" | head -n 1 | awk -F '[()]' '{print $1}' | sed 's/^[[:space:]]*//')
-        # fallback OS 버전도 맞춰줌
-        OS_VERSION=$(xcrun simctl list devices available | \
-          grep "$DEVICE_NAME" | awk -F '[()]' '{print $2}' | head -n 1)
-      fi
+          # fallback: 해당 OS 버전 기기가 없으면 첫 번째 사용 가능 iPhone 선택
+          if [ -z "$DEVICE_NAME" ]; then
+            echo "No device found for iOS $OS_VERSION. Falling back to first available iPhone."
+            DEVICE_NAME=$(xcrun simctl list devices available | \
+              grep "iPhone" | head -n 1 | awk -F '[()]' '{print $1}' | sed 's/^[[:space:]]*//')
+            # fallback OS 버전도 맞춰줌
+            OS_VERSION=$(xcrun simctl list devices available | \
+              grep "$DEVICE_NAME" | awk -F '[()]' '{print $2}' | head -n 1)
+          fi
 
-      echo "Using simulator device: $DEVICE_NAME ($OS_VERSION)"
+          echo "Using simulator device: $DEVICE_NAME ($OS_VERSION)"
 
-      # iOS SDK 버전 추출
-      SDK_VERSION=$(xcodebuild -showsdks | \
-        grep "iphonesimulator" | head -n 1 | \
-        sed 's/.*iphonesimulator//')
+          # iOS SDK 버전 추출
+          SDK_VERSION=$(xcodebuild -showsdks | \
+            grep "iphonesimulator" | head -n 1 | \
+            sed 's/.*iphonesimulator//')
 
-      echo "Using SDK version: $SDK_VERSION"
+          echo "Using SDK version: $SDK_VERSION"
 
-      cd ios && xcodebuild \
-        -workspace ppu_frontend.xcworkspace \
-        -scheme ppu_frontend \
-        -configuration Debug \
-        -sdk iphonesimulator${SDK_VERSION} \
-        -destination "platform=iOS Simulator,name=\"${DEVICE_NAME}\",OS=${OS_VERSION}" \
-        CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
+          cd ios && xcodebuild \
+            -workspace ppu_frontend.xcworkspace \
+            -scheme ppu_frontend \
+            -configuration Debug \
+            -sdk iphonesimulator${SDK_VERSION} \
+            -destination "platform=iOS Simulator,name=\"${DEVICE_NAME}\",OS=${OS_VERSION}" \
+            CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
 
-      
   discord-notify:
     runs-on: ubuntu-latest
     needs: [lint-and-prettier, android-build, ios-build]
