@@ -98,29 +98,33 @@ jobs:
       - name: Build iOS Debug
         shell: bash
         run: |
-          echo "=== Available iOS Simulator Devices ==="
-          # 설치된 시뮬레이터 기기 중 사용 가능한 것만 추출
-          DEVICE_INFO=$(xcrun simctl list devices available | grep -i "iPhone" | head -n 1)
-          DEVICE_NAME=$(echo "$DEVICE_INFO" | awk -F '[()]' '{print $2}')
-          echo "Using simulator device: $DEVICE_NAME"
+          echo "=== Detect Available iOS Simulator ==="
 
-          echo "=== Installed iOS Simulator SDKs ==="
-          # 설치된 iOS 시뮬레이터 SDK 확인
-          SDK_VERSION=$(xcodebuild -showsdks \
-            | grep "iphonesimulator" \
-            | head -n 1 \
-            | awk '{print $NF}' \
-            | sed 's/.*iphonesimulator//')
+          # 가장 최신 iOS 런타임 버전 가져오기 (unavailable 제외)
+          OS_VERSION=$(xcrun simctl list runtimes | \
+            grep "iOS" | grep -v "unavailable" | \
+            awk -F '[()]' '{print $2}' | sort -V | tail -n 1)
+
+          # 해당 OS 버전의 첫 번째 iPhone 기기명 가져오기
+          DEVICE_NAME=$(xcrun simctl list devices available | \
+            grep "iPhone" | grep "$OS_VERSION" | \
+            head -n 1 | awk -F '[()]' '{print $1}' | sed 's/^[[:space:]]*//')
+
+          echo "Using simulator device: $DEVICE_NAME ($OS_VERSION)"
+
+          # iOS SDK 버전 추출
+          SDK_VERSION=$(xcodebuild -showsdks | \
+            grep "iphonesimulator" | head -n 1 | \
+            sed 's/.*iphonesimulator//')
 
           echo "Using SDK version: $SDK_VERSION"
 
-          # iOS 빌드 실행
           cd ios && xcodebuild \
             -workspace ppu_frontend.xcworkspace \
             -scheme ppu_frontend \
             -configuration Debug \
             -sdk iphonesimulator${SDK_VERSION} \
-            -destination "platform=iOS Simulator,name=${DEVICE_NAME},OS=${SDK_VERSION}" \
+            -destination "platform=iOS Simulator,name=${DEVICE_NAME},OS=${OS_VERSION}" \
             CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
 
   discord-notify:
