@@ -19,7 +19,7 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
       - run: npm ci
       - name: Run ESLint
-        run: npx eslint . --ext .js,.jsx,.ts,.tsx
+        run: npm run lint:ci
       - name: Run Prettier
         run: npx prettier --check .
 
@@ -54,7 +54,7 @@ jobs:
         run: cd android && ./gradlew assembleDebug
 
   ios-build:
-    runs-on: macos-latest
+    runs-on: macos-13
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -78,8 +78,33 @@ jobs:
           version: '1.16.2'
       - name: Install Pods
         run: cd ios && pod install
+
+      - name: Show installed SDKs
+        run: xcodebuild -showsdks
+
+      - name: List available simulator runtimes
+        run: |
+          echo "=== Installed iOS Simulator Runtimes ==="
+          xcrun simctl list runtimes | grep -i "iOS"
+          echo "=== End runtimes ==="
+
+      - name: List installed iOS Simulator devices
+        shell: bash
+        run: |
+          echo "=== Installed iOS Simulator Devices ==="
+          xcrun simctl list devices | grep -i "iPhone"
+          echo "=== End devices ==="
+
       - name: Build iOS Debug
-        run: cd ios && xcodebuild -workspace ppu_frontend.xcworkspace -scheme ppu_frontend -configuration Debug -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 14,OS=latest' CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
+        shell: bash
+        run: |
+          cd ios && xcodebuild \
+            -workspace ppu_frontend.xcworkspace \
+            -scheme ppu_frontend \
+            -configuration Debug \
+            -sdk iphonesimulator \
+            -destination "platform=iOS Simulator,name=iPhone 15 Pro,OS=latest" \
+            CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
 
   discord-notify:
     runs-on: ubuntu-latest
