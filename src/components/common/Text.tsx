@@ -13,6 +13,20 @@ interface Props extends TextProps {
   color?: string;
 }
 
+/**
+ *
+ * variant(타입) + weight(굵기) 조합 적용
+ *
+ * Example :
+ *
+ * ```tsx
+ * // 헤드라인 ExtraBold (32/44/-1.0%)
+ * <Text variant="headline" weight="extraBold">
+ *   헤드라인 ExtraBold
+ * </Text>
+ * ```
+ */
+
 export const Text = ({
   variant = 'body',
   weight = 'regular',
