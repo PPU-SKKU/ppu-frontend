@@ -6,6 +6,7 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "lint": "eslint .",
+    "lint:ci": "eslint . --ext .js,.jsx,.ts,.tsx --quiet",
     "start": "react-native start",
     "test": "jest"
   },
@@ -17,7 +18,8 @@
     "react-native": "0.80.0",
     "react-native-safe-area-context": "^5.5.2",
     "react-native-screens": "^4.13.1",
-    "react-native-vector-icons": "^10.2.0"
+    "react-native-vector-icons": "^10.2.0",
+    "react-native-image-crop-picker": "^0.50.1"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
