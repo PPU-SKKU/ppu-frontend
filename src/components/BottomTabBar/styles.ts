@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     color: '#A3A9B6',
   },
   addCircle: {
-    backgroundColor: '#212121',
+    backgroundColor: '#242424',
     borderRadius: 100,
     width: 48,
     height: 48,
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
   },
   activeLabel: {
-    color: '#212121',
+    color: '#242424',
   },
 });
 
