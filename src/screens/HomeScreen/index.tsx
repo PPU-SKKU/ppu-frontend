@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import styles from './styles';
-import Button from '../../components/common/Buttons';
+import Button from '../../components/Buttons';
 
 const HomeScreen: React.FC = () => (
   <View style={styles.container}>

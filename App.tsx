@@ -2,7 +2,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import { StyleSheet } from 'react-native';
-import BottomTabBar from './src/components/common/BottomTabBar';
+import BottomTabBar from './src/components/BottomTabBar';
 import HomeScreen from './src/screens/HomeScreen';
 import OppuScreen from './src/screens/OppuScreen';
 import AddScreen from './src/screens/AddScreen';

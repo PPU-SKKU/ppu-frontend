@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text } from 'react-native';
 import styles from './styles';
-import Button from '../../components/common/Buttons';
+import Button from '../../components/Buttons';
 
 const ArchiveScreen: React.FC = () => {
   const [perfumeReviewList, setPerfumeReviewList] = useState<any[]>([]);
