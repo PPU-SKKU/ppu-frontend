@@ -23,7 +23,7 @@ const SubmitButton: React.FC<SubmitButtonProps> = ({
       style={[
         styles.container,
         { backgroundColor: backgroundColor },
-        disabled && { opacity: 0.12 },
+        disabled ? { opacity: 0.12 } : null,
       ]}
       disabled={disabled}
       onPress={onPress}
