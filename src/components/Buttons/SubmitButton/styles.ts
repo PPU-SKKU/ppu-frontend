@@ -1,5 +1,4 @@
 import { StyleSheet } from 'react-native';
-import { isDisabled } from 'react-native/types_generated/Libraries/LogBox/Data/LogBoxData';
 
 const styles = StyleSheet.create({
   container: {
