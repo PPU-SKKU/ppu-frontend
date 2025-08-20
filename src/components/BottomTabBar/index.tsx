@@ -21,9 +21,9 @@ const BottomTabBar: React.FC<BottomTabBarProps> = ({ state, navigation }) => {
         accessibilityRole="button"
       >
         {state.index === 0 ? (
-          <HomeActiveIcon width={20} height={20} />
+          <HomeActiveIcon width={24} height={24} />
         ) : (
-          <HomeDefaultIcon width={20} height={20} />
+          <HomeDefaultIcon width={24} height={24} />
         )}
         <Text style={[styles.label, state.index === 0 && styles.activeLabel]}>
           홈
@@ -37,9 +37,9 @@ const BottomTabBar: React.FC<BottomTabBarProps> = ({ state, navigation }) => {
         accessibilityRole="button"
       >
         {state.index === 1 ? (
-          <HomeActiveIcon width={20} height={20} />
+          <HomeActiveIcon width={24} height={24} />
         ) : (
-          <HomeDefaultIcon width={20} height={20} />
+          <HomeDefaultIcon width={24} height={24} />
         )}
         <Text style={[styles.label, state.index === 1 && styles.activeLabel]}>
           오뿌
@@ -65,9 +65,9 @@ const BottomTabBar: React.FC<BottomTabBarProps> = ({ state, navigation }) => {
         accessibilityRole="button"
       >
         {state.index === 3 ? (
-          <PpuchiveActiveIcon width={20} height={20} />
+          <PpuchiveActiveIcon width={24} height={24} />
         ) : (
-          <PpuchiveDefaultIcon width={20} height={20} />
+          <PpuchiveDefaultIcon width={24} height={24} />
         )}
         <Text style={[styles.label, state.index === 3 && styles.activeLabel]}>
           시향
@@ -81,9 +81,9 @@ const BottomTabBar: React.FC<BottomTabBarProps> = ({ state, navigation }) => {
         accessibilityRole="button"
       >
         {state.index === 4 ? (
-          <MyActiveIcon width={20} height={20} />
+          <MyActiveIcon width={24} height={24} />
         ) : (
-          <MyDefaultIcon width={20} height={20} />
+          <MyDefaultIcon width={24} height={24} />
         )}
         <Text style={[styles.label, state.index === 4 && styles.activeLabel]}>
           마이
