@@ -1,9 +1,14 @@
 import React from 'react';
 import { View, TouchableOpacity, Text } from 'react-native';
 import type { BottomTabBarProps } from '@react-navigation/bottom-tabs';
-import FeatherIcon from 'react-native-vector-icons/Feather';
-import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome6';
-import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+import HomeDefaultIcon from '../../assets/svgs/home_default.svg';
+import HomeActiveIcon from '../../assets/svgs/home_active.svg';
+import OppuDefaultIcon from '../../assets/svgs/oppu_default.svg';
+import OppuActiveIcon from '../../assets/svgs/oppu_active.svg';
+import PpuchiveDefaultIcon from '../../assets/svgs/ppuchive_default.svg';
+import PpuchiveActiveIcon from '../../assets/svgs/ppuchive_active.svg';
+import MyDefaultIcon from '../../assets/svgs/my_default.svg';
+import MyActiveIcon from '../../assets/svgs/my_active.svg';
 import styles from './styles';
 
 const BottomTabBar: React.FC<BottomTabBarProps> = ({ state, navigation }) => {
@@ -15,11 +20,11 @@ const BottomTabBar: React.FC<BottomTabBarProps> = ({ state, navigation }) => {
         onPress={() => navigation.navigate('HOME')}
         accessibilityRole="button"
       >
-        <FeatherIcon
-          name="home"
-          size={20}
-          color={state.index === 0 ? '#34618E' : '#A3A9B6'}
-        />
+        {state.index === 0 ? (
+          <HomeActiveIcon width={20} height={20} />
+        ) : (
+          <HomeDefaultIcon width={20} height={20} />
+        )}
         <Text style={[styles.label, state.index === 0 && styles.activeLabel]}>
           홈
         </Text>
@@ -31,11 +36,11 @@ const BottomTabBar: React.FC<BottomTabBarProps> = ({ state, navigation }) => {
         onPress={() => navigation.navigate('OPPU')}
         accessibilityRole="button"
       >
-        <FontAwesomeIcon
-          name="spray-can-sparkles"
-          size={20}
-          color={state.index === 1 ? '#34618E' : '#A3A9B6'}
-        />
+        {state.index === 1 ? (
+          <HomeActiveIcon width={20} height={20} />
+        ) : (
+          <HomeDefaultIcon width={20} height={20} />
+        )}
         <Text style={[styles.label, state.index === 1 && styles.activeLabel]}>
           오뿌
         </Text>
@@ -49,7 +54,7 @@ const BottomTabBar: React.FC<BottomTabBarProps> = ({ state, navigation }) => {
         activeOpacity={0.8}
       >
         <View style={styles.addCircle}>
-          <FeatherIcon name="plus" size={32} color="#fff" />
+          <Text style={styles.addText}>＋</Text>
         </View>
       </TouchableOpacity>
 
@@ -59,11 +64,11 @@ const BottomTabBar: React.FC<BottomTabBarProps> = ({ state, navigation }) => {
         onPress={() => navigation.navigate('ARCHIVE')}
         accessibilityRole="button"
       >
-        <MaterialCommunityIcon
-          name="test-tube"
-          size={20}
-          color={state.index === 3 ? '#34618E' : '#A3A9B6'}
-        />
+        {state.index === 3 ? (
+          <PpuchiveActiveIcon width={20} height={20} />
+        ) : (
+          <PpuchiveDefaultIcon width={20} height={20} />
+        )}
         <Text style={[styles.label, state.index === 3 && styles.activeLabel]}>
           시향
         </Text>
@@ -75,11 +80,11 @@ const BottomTabBar: React.FC<BottomTabBarProps> = ({ state, navigation }) => {
         onPress={() => navigation.navigate('MY')}
         accessibilityRole="button"
       >
-        <FeatherIcon
-          name="user"
-          size={20}
-          color={state.index === 4 ? '#34618E' : '#A3A9B6'}
-        />
+        {state.index === 4 ? (
+          <MyActiveIcon width={20} height={20} />
+        ) : (
+          <MyDefaultIcon width={20} height={20} />
+        )}
         <Text style={[styles.label, state.index === 4 && styles.activeLabel]}>
           마이
         </Text>
