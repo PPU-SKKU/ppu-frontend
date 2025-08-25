@@ -5,6 +5,7 @@ import HomeDefaultIcon from '../../assets/svgs/home_default.svg';
 import HomeActiveIcon from '../../assets/svgs/home_active.svg';
 import OppuDefaultIcon from '../../assets/svgs/oppu_default.svg';
 import OppuActiveIcon from '../../assets/svgs/oppu_active.svg';
+import PlusIcon from '../../assets/svgs/plus.svg';
 import PpuchiveDefaultIcon from '../../assets/svgs/ppuchive_default.svg';
 import PpuchiveActiveIcon from '../../assets/svgs/ppuchive_active.svg';
 import MyDefaultIcon from '../../assets/svgs/my_default.svg';
@@ -61,9 +62,7 @@ const BottomTabBar: React.FC<BottomTabBarProps> = ({ state, navigation }) => {
         activeOpacity={0.8}
       >
         <View style={styles.addCircle}>
-          <Text variant="headline" color="#fff">
-            ＋
-          </Text>
+          <PlusIcon width={24} height={24}></PlusIcon>
         </View>
       </TouchableOpacity>
 
