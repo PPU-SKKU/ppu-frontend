@@ -32,13 +32,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     textAlignVertical: 'center',
   },
-  label: {
-    color: '#6B7280',
-    fontSize: 12,
-  },
-  activeLabel: {
-    color: '#242424',
-  },
 });
 
 export default styles;

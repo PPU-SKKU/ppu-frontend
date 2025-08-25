@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, TouchableOpacity, Text } from 'react-native';
+import { View, TouchableOpacity, Text as RNText } from 'react-native';
 import type { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import HomeDefaultIcon from '../../assets/svgs/home_default.svg';
 import HomeActiveIcon from '../../assets/svgs/home_active.svg';
@@ -9,6 +9,7 @@ import PpuchiveDefaultIcon from '../../assets/svgs/ppuchive_default.svg';
 import PpuchiveActiveIcon from '../../assets/svgs/ppuchive_active.svg';
 import MyDefaultIcon from '../../assets/svgs/my_default.svg';
 import MyActiveIcon from '../../assets/svgs/my_active.svg';
+import { Text } from '../Text';
 import styles from './styles';
 
 const BottomTabBar: React.FC<BottomTabBarProps> = ({ state, navigation }) => {
@@ -25,7 +26,10 @@ const BottomTabBar: React.FC<BottomTabBarProps> = ({ state, navigation }) => {
         ) : (
           <HomeDefaultIcon width={24} height={24} />
         )}
-        <Text style={[styles.label, state.index === 0 && styles.activeLabel]}>
+        <Text
+          variant="caption2"
+          color={state.index === 0 ? '#242424' : '#6B7280'}
+        >
           홈
         </Text>
       </TouchableOpacity>
@@ -37,11 +41,14 @@ const BottomTabBar: React.FC<BottomTabBarProps> = ({ state, navigation }) => {
         accessibilityRole="button"
       >
         {state.index === 1 ? (
-          <HomeActiveIcon width={24} height={24} />
+          <OppuActiveIcon width={24} height={24} />
         ) : (
-          <HomeDefaultIcon width={24} height={24} />
+          <OppuDefaultIcon width={24} height={24} />
         )}
-        <Text style={[styles.label, state.index === 1 && styles.activeLabel]}>
+        <Text
+          variant="caption2"
+          color={state.index === 1 ? '#242424' : '#6B7280'}
+        >
           오뿌
         </Text>
       </TouchableOpacity>
@@ -54,7 +61,7 @@ const BottomTabBar: React.FC<BottomTabBarProps> = ({ state, navigation }) => {
         activeOpacity={0.8}
       >
         <View style={styles.addCircle}>
-          <Text style={styles.addText}>＋</Text>
+          <RNText style={styles.addText}>＋</RNText>
         </View>
       </TouchableOpacity>
 
@@ -69,7 +76,10 @@ const BottomTabBar: React.FC<BottomTabBarProps> = ({ state, navigation }) => {
         ) : (
           <PpuchiveDefaultIcon width={24} height={24} />
         )}
-        <Text style={[styles.label, state.index === 3 && styles.activeLabel]}>
+        <Text
+          variant="caption2"
+          color={state.index === 3 ? '#242424' : '#6B7280'}
+        >
           시향
         </Text>
       </TouchableOpacity>
@@ -85,7 +95,10 @@ const BottomTabBar: React.FC<BottomTabBarProps> = ({ state, navigation }) => {
         ) : (
           <MyDefaultIcon width={24} height={24} />
         )}
-        <Text style={[styles.label, state.index === 4 && styles.activeLabel]}>
+        <Text
+          variant="caption2"
+          color={state.index === 4 ? '#242424' : '#6B7280'}
+        >
           마이
         </Text>
       </TouchableOpacity>
