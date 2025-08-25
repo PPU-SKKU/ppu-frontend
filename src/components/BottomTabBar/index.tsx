@@ -6,8 +6,8 @@ import HomeActiveIcon from '../../assets/svgs/home_active.svg';
 import OppuDefaultIcon from '../../assets/svgs/oppu_default.svg';
 import OppuActiveIcon from '../../assets/svgs/oppu_active.svg';
 import PlusIcon from '../../assets/svgs/plus.svg';
-import PpuchiveDefaultIcon from '../../assets/svgs/ppuchive_default.svg';
-import PpuchiveActiveIcon from '../../assets/svgs/ppuchive_active.svg';
+import ArchiveDefaultIcon from '../../assets/svgs/archive_default.svg';
+import ArchiveActiveIcon from '../../assets/svgs/archive_active.svg';
 import MyDefaultIcon from '../../assets/svgs/my_default.svg';
 import MyActiveIcon from '../../assets/svgs/my_active.svg';
 import { Text } from '../Text';
@@ -73,9 +73,9 @@ const BottomTabBar: React.FC<BottomTabBarProps> = ({ state, navigation }) => {
         accessibilityRole="button"
       >
         {state.index === 3 ? (
-          <PpuchiveActiveIcon width={24} height={24} />
+          <ArchiveActiveIcon width={24} height={24} />
         ) : (
-          <PpuchiveDefaultIcon width={24} height={24} />
+          <ArchiveDefaultIcon width={24} height={24} />
         )}
         <Text
           variant="caption2"
