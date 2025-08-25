@@ -61,7 +61,9 @@ const BottomTabBar: React.FC<BottomTabBarProps> = ({ state, navigation }) => {
         activeOpacity={0.8}
       >
         <View style={styles.addCircle}>
-          <RNText style={styles.addText}>＋</RNText>
+          <Text variant="headline" color="#fff">
+            ＋
+          </Text>
         </View>
       </TouchableOpacity>
 
