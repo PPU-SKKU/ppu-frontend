@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { View } from 'react-native';
 import styles from './styles';
 import { Week, isSameDay } from '../dateUtils';
@@ -19,10 +19,15 @@ const WeeklyCalendar: React.FC<WeeklyCalendarProps> = ({
 }) => {
   const pagerRef = useRef<PagerView>(null);
 
-  const handleSelectDate = (date: Date) => {
-    onSelectDate && onSelectDate(date);
-    // TODO: 날짜 선택 시 동작
-  };
+  const currentWeekIndex = monthWeeks.findIndex(week =>
+    week.some(day => isSameDay(day.date, selectedDate)),
+  );
+
+  useEffect(() => {
+    if (pagerRef.current && currentWeekIndex >= 0) {
+      pagerRef.current.setPage(currentWeekIndex);
+    }
+  }, [currentWeekIndex]);
 
   return (
     <View style={styles.container}>
@@ -30,9 +35,7 @@ const WeeklyCalendar: React.FC<WeeklyCalendarProps> = ({
 
       <PagerView
         style={styles.weeklyPager}
-        initialPage={monthWeeks.findIndex(week =>
-          week.some(day => isSameDay(day.date, selectedDate)),
-        )}
+        initialPage={currentWeekIndex}
         ref={pagerRef}
         onPageSelected={e => {}}
       >
@@ -41,7 +44,7 @@ const WeeklyCalendar: React.FC<WeeklyCalendarProps> = ({
             key={idx}
             week={week}
             focusedDate={selectedDate}
-            onSelectDate={handleSelectDate}
+            onSelectDate={onSelectDate}
           />
         ))}
       </PagerView>

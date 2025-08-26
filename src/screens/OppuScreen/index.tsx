@@ -47,10 +47,14 @@ const OppuScreen: React.FC = () => {
                 console.log('Selected date:', date);
               }}
               onNextMonth={() => {
-                // 다음 달 이동
+                setSelectedDate(
+                  prev => new Date(prev.getFullYear(), prev.getMonth() + 1, 1),
+                );
               }}
               onPrevMonth={() => {
-                // 이전 달 이동
+                setSelectedDate(
+                  prev => new Date(prev.getFullYear(), prev.getMonth() - 1, 1),
+                );
               }}
             />
           </View>
