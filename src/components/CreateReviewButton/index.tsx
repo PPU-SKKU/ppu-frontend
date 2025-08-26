@@ -1,10 +1,11 @@
 import React from 'react';
 import { Pressable } from 'react-native';
-import { Text } from '../../Text';
 import styles from './styles';
-import colors from '../../../theme/color';
+import colors from '../../theme/color';
+import { Text } from '../Text';
+import PlusIcon from '../../assets/svgs/plus.svg';
 
-interface SubmitButtonProps {
+interface CreateReviewButtonProps {
   backgroundColor?: string;
   textColor?: string;
   label?: string;
@@ -12,11 +13,11 @@ interface SubmitButtonProps {
   onPress?: () => void;
 }
 
-const SubmitButton: React.FC<SubmitButtonProps> = ({
+const CreateReviewButton: React.FC<CreateReviewButtonProps> = ({
   backgroundColor = colors.grey100,
   textColor = colors.white100,
   label,
-  disabled = true,
+  disabled = false,
   onPress,
 }) => {
   return (
@@ -29,11 +30,12 @@ const SubmitButton: React.FC<SubmitButtonProps> = ({
       disabled={disabled}
       onPress={onPress}
     >
-      <Text variant="body" weight="bold" color={textColor}>
+      <PlusIcon></PlusIcon>
+      <Text variant="body" weight="semiBold" color={textColor}>
         {label}
       </Text>
     </Pressable>
   );
 };
 
-export default SubmitButton;
+export default CreateReviewButton;

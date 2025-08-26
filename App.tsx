@@ -20,7 +20,11 @@ function App() {
           <Tab.Screen name="HOME" component={HomeScreen} />
           <Tab.Screen name="OPPU" component={OppuScreen} />
           <Tab.Screen name="ADD" component={AddScreen} />
-          <Tab.Screen name="ARCHIVE" component={ArchiveScreen} />
+          <Tab.Screen
+            name="ARCHIVE"
+            component={ArchiveScreen}
+            options={{ headerShown: false }}
+          />
           <Tab.Screen name="MY" component={MyScreen} />
         </Tab.Navigator>
       </NavigationContainer>

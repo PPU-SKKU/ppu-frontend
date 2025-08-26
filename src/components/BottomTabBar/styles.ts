@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import colors from '../../theme/color';
 
 const styles = StyleSheet.create({
   container: {
@@ -18,7 +19,7 @@ const styles = StyleSheet.create({
     color: '#A3A9B6',
   },
   addCircle: {
-    backgroundColor: '#242424',
+    backgroundColor: colors.grey100,
     borderRadius: 100,
     width: 48,
     height: 48,
@@ -26,7 +27,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   addText: {
-    color: '#fff',
+    color: colors.white100,
     fontSize: 32,
     includeFontPadding: false,
     textAlign: 'center',
