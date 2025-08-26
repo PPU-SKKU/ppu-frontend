@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Pressable } from 'react-native';
 import { Text } from '../../../../components/Text';
 import colors from '../../../../theme/color';
-import { CalendarDay, Week, isSameDay } from '../dateUtils';
+import { CalendarDay, Week } from '../dateUtils';
 import styles from './styles';
 
 interface WeekRowProps {
