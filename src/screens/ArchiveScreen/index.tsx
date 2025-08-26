@@ -6,6 +6,7 @@ import { Text } from '../../components/Text';
 import colors from '../../theme/color';
 import PerfumeLimeGreen from '../../assets/svgs/perfume_limegreen.svg';
 import CreateReviewButton from '../../components/CreateReviewButton';
+import ReviewCard from './components/ReviewCard';
 
 const ArchiveScreen: React.FC = () => {
   const [perfumeReviewList, setPerfumeReviewList] = useState<any[]>([]);
@@ -17,7 +18,7 @@ const ArchiveScreen: React.FC = () => {
           PPUCHIVE
         </Text>
       </View>
-      {perfumeReviewList.length === 0 ? (
+      {perfumeReviewList.length !== 0 ? (
         <View style={styles.emptyContainer}>
           <PerfumeLimeGreen></PerfumeLimeGreen>
           <Text variant="title1" weight="medium" color={colors.grey54}>
@@ -35,8 +36,8 @@ const ArchiveScreen: React.FC = () => {
         </View>
       ) : (
         // 시향기 리스트
-        <View>
-          <Text>작성한 시향기 목록</Text>
+        <View style={styles.perfumeReviewListContainer}>
+          <ReviewCard></ReviewCard>
         </View>
       )}
     </SafeAreaView>
