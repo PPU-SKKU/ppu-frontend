@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: 4,
   },
+  calendarContainer: {},
 });
 
 export default styles;
