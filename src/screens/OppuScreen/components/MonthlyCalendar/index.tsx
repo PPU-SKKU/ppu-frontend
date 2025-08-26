@@ -8,11 +8,11 @@ import { Text } from '../../../../components/Text';
 import colors from '../../../../theme/color';
 import WeekDayLabels from '../WeekDayLabels';
 import WeekRow from '../WeekRow';
-import React from 'react';
+import React, { useState } from 'react';
 
 interface MonthlyCalendarProps {
   monthWeeks: Week[];
-  selectedDate?: Date;
+  selectedDate: Date;
   onSelectDate?: (date: Date) => void;
   onNextMonth?: () => void;
   onPrevMonth?: () => void;

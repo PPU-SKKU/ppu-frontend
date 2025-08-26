@@ -8,7 +8,7 @@ import WeekDayLabels from '../WeekDayLabels';
 
 interface WeeklyCalendarProps {
   monthWeeks: Week[];
-  selectedDate?: Date;
+  selectedDate: Date;
   onSelectDate?: (date: Date) => void;
 }
 
@@ -17,14 +17,9 @@ const WeeklyCalendar: React.FC<WeeklyCalendarProps> = ({
   selectedDate,
   onSelectDate,
 }) => {
-  const [focusedDate, setFocusedDate] = useState<Date>(
-    () => selectedDate ?? new Date(),
-  );
-
   const pagerRef = useRef<PagerView>(null);
 
   const handleSelectDate = (date: Date) => {
-    setFocusedDate(date);
     onSelectDate && onSelectDate(date);
     // TODO: 날짜 선택 시 동작
   };
@@ -36,7 +31,7 @@ const WeeklyCalendar: React.FC<WeeklyCalendarProps> = ({
       <PagerView
         style={styles.weeklyPager}
         initialPage={monthWeeks.findIndex(week =>
-          week.some(day => isSameDay(day.date, focusedDate)),
+          week.some(day => isSameDay(day.date, selectedDate)),
         )}
         ref={pagerRef}
         onPageSelected={e => {}}
@@ -45,7 +40,7 @@ const WeeklyCalendar: React.FC<WeeklyCalendarProps> = ({
           <WeekRow
             key={idx}
             week={week}
-            focusedDate={focusedDate}
+            focusedDate={selectedDate}
             onSelectDate={handleSelectDate}
           />
         ))}

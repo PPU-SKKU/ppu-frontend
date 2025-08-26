@@ -8,10 +8,11 @@ import { buildWeeksForMonth } from './components/dateUtils';
 import MonthlyCalendar from './components/MonthlyCalendar';
 
 const OppuScreen: React.FC = () => {
-  const today = new Date();
-  const currentMonth = today.getMonth() + 1;
-
-  const monthWeeks = useMemo(() => buildWeeksForMonth(today), [today]);
+  const [selectedDate, setSelectedDate] = useState(new Date());
+  const monthWeeks = useMemo(
+    () => buildWeeksForMonth(selectedDate),
+    [selectedDate],
+  );
   const [isMonthView, setIsMonthView] = useState(false);
 
   return (
@@ -22,7 +23,7 @@ const OppuScreen: React.FC = () => {
         </Text>
         <View style={styles.monthTitleContainer}>
           <Text variant="headline" weight="extraBold">
-            {currentMonth}월
+            {selectedDate.getMonth() + 1}월
           </Text>
           <Pressable onPress={() => setIsMonthView(prev => !prev)}>
             <ArrowDownIcon
@@ -40,8 +41,9 @@ const OppuScreen: React.FC = () => {
           <View style={styles.monthCalendarWrapper}>
             <MonthlyCalendar
               monthWeeks={monthWeeks}
-              selectedDate={today}
+              selectedDate={selectedDate}
               onSelectDate={date => {
+                setSelectedDate(date);
                 console.log('Selected date:', date);
               }}
               onNextMonth={() => {
@@ -56,8 +58,9 @@ const OppuScreen: React.FC = () => {
         <View style={styles.weekCalendarWrapper}>
           <WeeklyCalendar
             monthWeeks={monthWeeks}
-            selectedDate={today}
+            selectedDate={selectedDate}
             onSelectDate={date => {
+              setSelectedDate(date);
               console.log('Selected date:', date);
             }}
           />
