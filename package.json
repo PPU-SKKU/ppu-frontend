@@ -17,6 +17,7 @@
     "react": "19.1.0",
     "react-native": "0.80.0",
     "react-native-image-crop-picker": "^0.50.1",
+    "react-native-pager-view": "^6.9.1",
     "react-native-safe-area-context": "^5.5.2",
     "react-native-screens": "^4.13.1",
     "react-native-svg": "^15.12.1",
