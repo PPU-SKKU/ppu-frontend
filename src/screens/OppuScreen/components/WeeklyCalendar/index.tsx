@@ -1,8 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { View } from 'react-native';
 import styles from './styles';
-import { Text } from '../../../../components/Text';
-import colors from '../../../../theme/color';
 import { Week, isSameDay } from '../dateUtils';
 import WeekRow from '../WeekRow';
 import PagerView from 'react-native-pager-view';

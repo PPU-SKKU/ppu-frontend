@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     borderRadius: 22,
     marginHorizontal: 12,
     zIndex: 10,
-    backgroundColor: 'yellow',
+    backgroundColor: colors.white,
   },
   headers: {
     flexDirection: 'row',
@@ -28,6 +28,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   body: {},
+  divider: {
+    height: 1,
+    backgroundColor: colors.grey4,
+    marginVertical: 8,
+    marginHorizontal: 16,
+  },
 });
 
 export default styles;

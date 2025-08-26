@@ -5,15 +5,6 @@ const styles = StyleSheet.create({
     width: '100%',
     padding: 8,
   },
-  weekDayLabelRow: {
-    flexDirection: 'row',
-  },
-  weekDayLabelCell: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 8,
-  },
   weeklyPager: {
     height: 64,
   },

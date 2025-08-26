@@ -7,6 +7,8 @@ import PrevIcon from '../../../../assets/svgs/chevron_left.svg';
 import { Text } from '../../../../components/Text';
 import colors from '../../../../theme/color';
 import WeekDayLabels from '../WeekDayLabels';
+import WeekRow from '../WeekRow';
+import React from 'react';
 
 interface MonthlyCalendarProps {
   monthWeeks: Week[];
@@ -32,6 +34,7 @@ const NavButton: React.FC<NavButtonProps> = ({ onPress, icon }) => {
 const MonthlyCalendar: React.FC<MonthlyCalendarProps> = ({
   monthWeeks,
   selectedDate = new Date(),
+  onSelectDate,
   onNextMonth,
   onPrevMonth,
 }) => {
@@ -58,9 +61,22 @@ const MonthlyCalendar: React.FC<MonthlyCalendarProps> = ({
           icon={<NextIcon width={24} height={24} />}
         />
       </View>
-      <View style={styles.body}>
-        <WeekDayLabels />
-      </View>
+      <WeekDayLabels />
+      <View style={styles.divider} />
+      {monthWeeks.map((week, idx) => {
+        const isLast = idx === monthWeeks.length - 1;
+        return (
+          <React.Fragment key={idx}>
+            <WeekRow
+              key={idx}
+              week={week}
+              focusedDate={selectedDate}
+              onSelectDate={onSelectDate}
+            />
+            {!isLast && <View style={styles.divider} />}
+          </React.Fragment>
+        );
+      })}
     </View>
   );
 };

@@ -29,7 +29,7 @@ const getDateStyle = (day: CalendarDay, focusedDate: Date) => {
   if (!isToday && !isSelected && isCurrentMonth) {
     return { backgroundColor: 'transparent', textColor: colors.grey100 };
   }
-  return { backgroundColor: 'transparent', textColor: colors.grey39 };
+  return { backgroundColor: 'transparent', textColor: 'transparent' };
 };
 
 const WeekRow: React.FC<WeekRowProps> = ({
