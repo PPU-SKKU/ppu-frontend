@@ -7,6 +7,11 @@ const styles = StyleSheet.create({
     marginHorizontal: 12,
     zIndex: 10,
     backgroundColor: colors.white,
+    shadowColor: colors.grey100,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 4,
   },
   headers: {
     flexDirection: 'row',
@@ -27,7 +32,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  body: {},
+  body: {
+    padding: 8,
+    marginBottom: 8,
+  },
   divider: {
     height: 1,
     backgroundColor: colors.grey4,

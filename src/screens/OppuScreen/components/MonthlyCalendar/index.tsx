@@ -61,22 +61,24 @@ const MonthlyCalendar: React.FC<MonthlyCalendarProps> = ({
           icon={<NextIcon width={24} height={24} />}
         />
       </View>
-      <WeekDayLabels />
-      <View style={styles.divider} />
-      {monthWeeks.map((week, idx) => {
-        const isLast = idx === monthWeeks.length - 1;
-        return (
-          <React.Fragment key={idx}>
-            <WeekRow
-              key={idx}
-              week={week}
-              focusedDate={selectedDate}
-              onSelectDate={onSelectDate}
-            />
-            {!isLast && <View style={styles.divider} />}
-          </React.Fragment>
-        );
-      })}
+      <View style={styles.body}>
+        <WeekDayLabels />
+        <View style={styles.divider} />
+        {monthWeeks.map((week, idx) => {
+          const isLast = idx === monthWeeks.length - 1;
+          return (
+            <React.Fragment key={idx}>
+              <WeekRow
+                key={idx}
+                week={week}
+                focusedDate={selectedDate}
+                onSelectDate={onSelectDate}
+              />
+              {!isLast && <View style={styles.divider} />}
+            </React.Fragment>
+          );
+        })}
+      </View>
     </View>
   );
 };
