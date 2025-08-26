@@ -21,11 +21,7 @@ const colors = {
   white80: 'rgba(255, 255, 255, 0.80)', // White-80
   white100: '#FFFFFF', // White 100%
 
-  // Calendar colors
-  sunday: '#FF6B6B', // 일요일 색상
-  saturday: '#4ECDC4', // 토요일 색상
-  today: '#FF6B6B', // 오늘 날짜 색상
-  selected: '#4ECDC4', // 선택된 날짜 색상
+  purple: '#B163FF',
 };
 
 export default colors;
