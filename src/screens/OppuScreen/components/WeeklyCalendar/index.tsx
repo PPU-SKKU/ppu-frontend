@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { View } from 'react-native';
 import styles from './styles';
 import { Text } from '../../../../components/Text';
@@ -6,14 +6,13 @@ import colors from '../../../../theme/color';
 import { Week, isSameDay } from '../dateUtils';
 import WeekRow from '../WeekRow';
 import PagerView from 'react-native-pager-view';
+import WeekDayLabels from '../WeekDayLabels';
 
 interface WeeklyCalendarProps {
   monthWeeks: Week[];
   selectedDate?: Date;
   onSelectDate?: (date: Date) => void;
 }
-
-const WEEKDAY_LABELS = ['일', '월', '화', '수', '목', '금', '토'];
 
 const WeeklyCalendar: React.FC<WeeklyCalendarProps> = ({
   monthWeeks,
@@ -34,17 +33,7 @@ const WeeklyCalendar: React.FC<WeeklyCalendarProps> = ({
 
   return (
     <View style={styles.container}>
-      <View style={styles.weekDayLabelRow}>
-        {WEEKDAY_LABELS.map((label, idx) => {
-          return (
-            <View key={idx} style={styles.weekDayLabelCell}>
-              <Text variant="caption1" weight="medium" color={colors.grey54}>
-                {label}
-              </Text>
-            </View>
-          );
-        })}
-      </View>
+      <WeekDayLabels />
 
       <PagerView
         style={styles.weeklyPager}

@@ -3,7 +3,6 @@ import colors from '../../../../theme/color';
 
 const styles = StyleSheet.create({
   container: {
-    width: '100%',
     borderRadius: 22,
     marginHorizontal: 12,
     zIndex: 10,

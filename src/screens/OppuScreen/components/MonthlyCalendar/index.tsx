@@ -6,6 +6,7 @@ import NextIcon from '../../../../assets/svgs/chevron_right.svg';
 import PrevIcon from '../../../../assets/svgs/chevron_left.svg';
 import { Text } from '../../../../components/Text';
 import colors from '../../../../theme/color';
+import WeekDayLabels from '../WeekDayLabels';
 
 interface MonthlyCalendarProps {
   monthWeeks: Week[];
@@ -57,7 +58,9 @@ const MonthlyCalendar: React.FC<MonthlyCalendarProps> = ({
           icon={<NextIcon width={24} height={24} />}
         />
       </View>
-      <View style={styles.body}></View>
+      <View style={styles.body}>
+        <WeekDayLabels />
+      </View>
     </View>
   );
 };
