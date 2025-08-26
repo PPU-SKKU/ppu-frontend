@@ -3,12 +3,12 @@ import { View } from 'react-native';
 import styles from './styles';
 import { Text } from '../../../../components/Text';
 import colors from '../../../../theme/color';
-import { buildWeeksForMonth, isSameDay } from '../dateUtils';
+import { Week, isSameDay } from '../dateUtils';
 import WeekRow from '../WeekRow';
 import PagerView from 'react-native-pager-view';
 
 interface WeeklyCalendarProps {
-  monthDate: Date;
+  monthWeeks: Week[];
   selectedDate?: Date;
   onSelectDate?: (date: Date) => void;
 }
@@ -16,14 +16,13 @@ interface WeeklyCalendarProps {
 const WEEKDAY_LABELS = ['일', '월', '화', '수', '목', '금', '토'];
 
 const WeeklyCalendar: React.FC<WeeklyCalendarProps> = ({
-  monthDate,
+  monthWeeks,
   selectedDate,
   onSelectDate,
 }) => {
   const [focusedDate, setFocusedDate] = useState<Date>(
     () => selectedDate ?? new Date(),
   );
-  const monthWeeks = useMemo(() => buildWeeksForMonth(monthDate), [monthDate]);
 
   const pagerRef = useRef<PagerView>(null);
 
