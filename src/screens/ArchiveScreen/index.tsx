@@ -7,17 +7,23 @@ import colors from '../../theme/color';
 import PerfumeLimeGreen from '../../assets/svgs/perfume_limegreen.svg';
 import CreateReviewButton from '../../components/CreateReviewButton';
 import ReviewCard from './components/ReviewCard';
+import Gradient from '../../components/Gradient';
 
 const ArchiveScreen: React.FC = () => {
   const [perfumeReviewList, setPerfumeReviewList] = useState<any[]>([]);
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
-        <Text variant="headline" weight="extraBold">
-          PPUCHIVE
-        </Text>
-      </View>
+      <Gradient
+        colors={[colors.limeGreenLight, colors.white]}
+        locations={[0, 1]}
+      >
+        <View style={styles.header}>
+          <Text variant="headline" weight="extraBold">
+            PPUCHIVE
+          </Text>
+        </View>
+      </Gradient>
       {perfumeReviewList.length !== 0 ? (
         <View style={styles.emptyContainer}>
           <PerfumeLimeGreen></PerfumeLimeGreen>
