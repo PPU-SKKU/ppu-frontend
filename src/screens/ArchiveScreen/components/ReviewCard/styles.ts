@@ -1,3 +1,4 @@
+// styles.ts
 import { StyleSheet } from 'react-native';
 import colors from '../../../../theme/color';
 
@@ -43,6 +44,11 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(255, 83, 126, 0.12)',
   },
   reviewContentSection: {},
+  inlineLink: {
+    textDecorationLine: 'underline',
+    color: colors.grey54,
+    fontWeight: '600',
+  },
 });
 
 export default styles;
