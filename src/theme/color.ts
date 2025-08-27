@@ -2,7 +2,6 @@ const colors = {
   // Black & White
   black: '#000000',
   white: '#FFFFFF',
-  pink: '#FF537E',
 
   // Grey scale (base #242424 with alpha steps)
   grey4: 'rgba(36, 36, 36, 0.04)', // grey-4
