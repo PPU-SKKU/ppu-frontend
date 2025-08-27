@@ -10,11 +10,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
-    backgroundColor: colors.white,
+    backgroundColor: colors.lightGrey,
   },
   header: {
     paddingVertical: 12,
     paddingHorizontal: 20,
+    backgroundColor: 'transparent',
   },
   emptyContainer: {
     flex: 1,
@@ -25,9 +26,12 @@ const styles = StyleSheet.create({
   perfumeReviewListContainer: {
     flex: 1,
     flexDirection: 'column',
-    alignItems: 'flex-start',
+  },
+  perfumeReviewContent: {
     padding: 12,
     gap: 16,
+    // 내용이 적을 때도 스크롤 영역을 채우려면
+    // flexGrow: 1,
   },
 });
 

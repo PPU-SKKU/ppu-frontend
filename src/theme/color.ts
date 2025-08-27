@@ -23,9 +23,9 @@ const colors = {
 
   purple: '#B163FF',
   softPurple: '#D4A8FF',
-
   pink: '#FF537E',
-  limeGreenLight: '#C5EB90',
+  limeGreenLight: '#CBECC8',
+  lightGrey: '#F4F4F4',
 };
 
 export default colors;
