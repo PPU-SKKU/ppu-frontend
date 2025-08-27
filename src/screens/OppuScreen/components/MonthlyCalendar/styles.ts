@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     borderRadius: 22,
     marginHorizontal: 12,
     zIndex: 10,
-    backgroundColor: colors.white,
+    backgroundColor: colors.white100,
     shadowColor: colors.grey100,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,

@@ -6,6 +6,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     overflow: 'hidden',
     backgroundColor: colors.white,
+    marginHorizontal: 20,
   },
   imageWrapper: {
     height: 362,

@@ -21,7 +21,7 @@ const OppuScreen: React.FC = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Gradient colors={[colors.softPurple, '#F4F4F4']} locations={[0, 0.5]}>
+      <Gradient colors={[colors.softPurple, '#F4F4F4']} locations={[0, 0.6]}>
         <View style={styles.headerContainer}>
           <Text
             variant="headline"
@@ -45,31 +45,48 @@ const OppuScreen: React.FC = () => {
             </Pressable>
           </View>
         </View>
+      </Gradient>
 
-        <View style={styles.calendarContainer}>
-          {isMonthView && (
-            <View style={styles.monthCalendarWrapper}>
-              <MonthlyCalendar
-                monthWeeks={monthWeeks}
-                selectedDate={selectedDate}
-                onSelectDate={date => {
-                  setSelectedDate(date);
-                }}
-                onNextMonth={() => {
-                  setSelectedDate(
-                    prev =>
-                      new Date(prev.getFullYear(), prev.getMonth() + 1, 1),
-                  );
-                }}
-                onPrevMonth={() => {
-                  setSelectedDate(
-                    prev =>
-                      new Date(prev.getFullYear(), prev.getMonth() - 1, 1),
-                  );
-                }}
-              />
-            </View>
-          )}
+      <View style={styles.calendarContainer}>
+        {isMonthView && (
+          <View style={styles.monthCalendarWrapper}>
+            <MonthlyCalendar
+              monthWeeks={monthWeeks}
+              selectedDate={selectedDate}
+              onSelectDate={date => {
+                setSelectedDate(date);
+              }}
+              onNextMonth={() => {
+                setSelectedDate(
+                  prev => new Date(prev.getFullYear(), prev.getMonth() + 1, 1),
+                );
+              }}
+              onPrevMonth={() => {
+                setSelectedDate(
+                  prev => new Date(prev.getFullYear(), prev.getMonth() - 1, 1),
+                );
+              }}
+            />
+          </View>
+        )}
+      </View>
+
+      <FlatList
+        style={styles.contentWrapper}
+        data={dummyList}
+        keyExtractor={(item, index) => index + ''}
+        renderItem={({ item }) => (
+          <OppuItem
+            tag={item.tag}
+            perfumes={item.perfumes}
+            photos={item.photos}
+            record={item.record}
+          />
+        )}
+        contentContainerStyle={{ paddingBottom: 40 }}
+        ItemSeparatorComponent={() => <View style={{ height: 24 }} />}
+        stickyHeaderIndices={[0]}
+        ListHeaderComponent={() => (
           <View style={styles.weekCalendarWrapper}>
             <WeeklyCalendar
               monthWeeks={monthWeeks}
@@ -78,27 +95,16 @@ const OppuScreen: React.FC = () => {
                 setSelectedDate(date);
               }}
             />
-          </View>
-        </View>
-      </Gradient>
-
-      <View style={styles.contentWrapper}>
-        <FlatList
-          style={styles.itemsList}
-          data={dummyList}
-          keyExtractor={(item, index) => index + ''}
-          renderItem={({ item }) => (
-            <OppuItem
-              tag={item.tag}
-              perfumes={item.perfumes}
-              photos={item.photos}
-              record={item.record}
+            <Gradient
+              colors={['rgba(244, 244, 244, 1)', 'rgba(244, 244, 244, 0)']}
+              locations={[0, 1]}
+              style={{
+                height: 15,
+              }}
             />
-          )}
-          contentContainerStyle={{ paddingBottom: 40 }}
-          ItemSeparatorComponent={() => <View style={{ height: 24 }} />}
-        />
-      </View>
+          </View>
+        )}
+      />
     </SafeAreaView>
   );
 };

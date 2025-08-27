@@ -25,7 +25,7 @@ const colors = {
   white100: '#FFFFFF', // White 100%
 
   purple: '#B163FF',
-  softPurple: '#D4A8FF',
+  softPurple: '#E6CEFF',
 };
 
 export default colors;
