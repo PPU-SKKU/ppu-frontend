@@ -1,5 +1,11 @@
 import React, { useMemo, useState } from 'react';
-import { View, SafeAreaView, Pressable, FlatList } from 'react-native';
+import {
+  View,
+  SafeAreaView,
+  Pressable,
+  FlatList,
+  StyleSheet,
+} from 'react-native';
 import { Text } from '../../components/Text';
 import styles from './styles';
 import ArrowDownIcon from '../../assets/svgs/chevron_down.svg';
@@ -33,7 +39,7 @@ const OppuScreen: React.FC = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Gradient colors={[colors.softPurple, '#F4F4F4']} locations={[0, 0.8]}>
+      <Gradient colors={[colors.softPurple, '#F4F4F4']} locations={[0, 0.6]}>
         <View style={styles.headerContainer}>
           <Text
             variant="headline"
@@ -57,7 +63,11 @@ const OppuScreen: React.FC = () => {
             </Pressable>
           </View>
           <View style={styles.moreOptionButton}>
-            <MoreOptionsButton onPress={() => {}} />
+            <MoreOptionsButton
+              onPress={() => {
+                // TODO: 태그 설정 페이지 이동
+              }}
+            />
           </View>
         </View>
       </Gradient>
@@ -89,7 +99,7 @@ const OppuScreen: React.FC = () => {
       <FlatList
         style={styles.contentWrapper}
         data={filteredItems}
-        keyExtractor={(_, index) => index + ''}
+        keyExtractor={(item, index) => index.toString() + item.date}
         renderItem={({ item }) => (
           <OppuItem
             date={item.date}
@@ -121,25 +131,27 @@ const CalendarHeader: React.FC<{
   onSelectDate: (d: Date) => void;
 }> = ({ monthWeeks, selectedDate, onSelectDate }) => (
   <View style={styles.weekCalendarWrapper}>
-    <BlurView
-      blurType="light"
-      blurAmount={10}
-      reducedTransparencyFallbackColor="white"
-    >
+    <View>
+      <BlurView
+        style={StyleSheet.absoluteFill}
+        blurType="light"
+        blurAmount={10}
+        reducedTransparencyFallbackColor="white"
+      />
       <Gradient
         colors={['#F4F4F4', 'rgba(244, 244, 244, 0.4)']}
         locations={[0, 0.8]}
-      >
-        <WeeklyCalendar
-          monthWeeks={monthWeeks}
-          selectedDate={selectedDate}
-          onSelectDate={onSelectDate}
-        />
-      </Gradient>
-    </BlurView>
+        style={StyleSheet.absoluteFill}
+      />
+      <WeeklyCalendar
+        monthWeeks={monthWeeks}
+        selectedDate={selectedDate}
+        onSelectDate={onSelectDate}
+      />
+    </View>
     <Gradient
-      colors={['rgba(244, 244, 244, 0.4)', 'rgba(244, 244, 244, 0)']}
-      locations={[0, 0.9]}
+      colors={['rgba(244, 244, 244, 0.6)', 'rgba(244, 244, 244, 0)']}
+      locations={[0, 0.8]}
       style={{ height: 10 }}
     />
   </View>

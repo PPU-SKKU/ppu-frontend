@@ -1,14 +1,13 @@
-import { View } from 'react-native';
+import { View, StyleSheet, Pressable } from 'react-native';
 import { Week } from '../dateUtils';
 import styles from './styles';
-import { Pressable } from 'react-native';
 import NextIcon from '../../../../assets/svgs/chevron_right.svg';
 import PrevIcon from '../../../../assets/svgs/chevron_left.svg';
 import { Text } from '../../../../components/Text';
 import colors from '../../../../theme/color';
 import WeekDayLabels from '../WeekDayLabels';
 import WeekRow from '../WeekRow';
-import React, { useState } from 'react';
+import React from 'react';
 import { BlurView } from '@react-native-community/blur';
 
 interface MonthlyCalendarProps {
@@ -45,49 +44,48 @@ const MonthlyCalendar: React.FC<MonthlyCalendarProps> = ({
   return (
     <View style={styles.container}>
       <BlurView
+        style={StyleSheet.absoluteFill}
         blurType="light"
         blurAmount={10}
         reducedTransparencyFallbackColor="white"
-      >
-        <View>
-          <View style={styles.headers}>
-            <NavButton
-              onPress={onPrevMonth}
-              icon={<PrevIcon width={24} height={24} />}
-            />
-            <View style={styles.titleContainer}>
-              <Text variant="caption1" weight="medium" color={colors.grey54}>
-                {year}년
-              </Text>
-              <Text variant="title1" weight="bold">
-                {month}월
-              </Text>
-            </View>
-            <NavButton
-              onPress={onNextMonth}
-              icon={<NextIcon width={24} height={24} />}
-            />
+      />
+      <View>
+        <View style={styles.headers}>
+          <NavButton
+            onPress={onPrevMonth}
+            icon={<PrevIcon width={24} height={24} />}
+          />
+          <View style={styles.titleContainer}>
+            <Text variant="caption1" weight="medium" color={colors.grey54}>
+              {year}년
+            </Text>
+            <Text variant="title1" weight="bold">
+              {month}월
+            </Text>
           </View>
-          <View style={styles.body}>
-            <WeekDayLabels />
-            <View style={styles.divider} />
-            {monthWeeks.map((week, idx) => {
-              const isLast = idx === monthWeeks.length - 1;
-              return (
-                <React.Fragment key={idx}>
-                  <WeekRow
-                    key={idx}
-                    week={week}
-                    focusedDate={selectedDate}
-                    onSelectDate={onSelectDate}
-                  />
-                  {!isLast && <View style={styles.divider} />}
-                </React.Fragment>
-              );
-            })}
-          </View>
+          <NavButton
+            onPress={onNextMonth}
+            icon={<NextIcon width={24} height={24} />}
+          />
         </View>
-      </BlurView>
+        <View style={styles.body}>
+          <WeekDayLabels />
+          <View style={styles.divider} />
+          {monthWeeks.map((week, idx) => {
+            const isLast = idx === monthWeeks.length - 1;
+            return (
+              <React.Fragment key={week[0].date.toISOString()}>
+                <WeekRow
+                  week={week}
+                  focusedDate={selectedDate}
+                  onSelectDate={onSelectDate}
+                />
+                {!isLast && <View style={styles.divider} />}
+              </React.Fragment>
+            );
+          })}
+        </View>
+      </View>
     </View>
   );
 };
