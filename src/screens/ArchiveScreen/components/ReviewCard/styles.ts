@@ -18,10 +18,13 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignSelf: 'stretch',
   },
+<<<<<<< HEAD
   perfumeImage: {
     width: 64,
     height: 64,
   },
+=======
+>>>>>>> 74b463bb76ce9c039a303950cb433dd2c9922aca
   metaInfoSection: {
     flexDirection: 'column',
     alignItems: 'flex-start',
@@ -39,7 +42,11 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     gap: 4,
   },
+<<<<<<< HEAD
   ratingLikeBadge: {
+=======
+  ratingBadge: {
+>>>>>>> 74b463bb76ce9c039a303950cb433dd2c9922aca
     flexDirection: 'row',
     alignItems: 'center',
     padding: 10,
@@ -47,6 +54,7 @@ const styles = StyleSheet.create({
     borderRadius: 22,
     backgroundColor: 'rgba(255, 83, 126, 0.12)',
   },
+<<<<<<< HEAD
   ratingUnlikeBadge: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -55,6 +63,8 @@ const styles = StyleSheet.create({
     borderRadius: 22,
     backgroundColor: colors.grey8,
   },
+=======
+>>>>>>> 74b463bb76ce9c039a303950cb433dd2c9922aca
   reviewContentSection: {},
   inlineLink: {
     textDecorationLine: 'underline',
