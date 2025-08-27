@@ -2,13 +2,14 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import styles from './styles';
 import SubmitButton from '../../components/Buttons/SubmitButton';
+import colors from '../../theme/color';
 
 const HomeScreen: React.FC = () => (
   <View style={styles.container}>
     <Text>홈 화면</Text>
     <SubmitButton
-      backgroundColor="#242424"
-      textColor="#fff"
+      backgroundColor={colors.grey100}
+      textColor={colors.white100}
       label="완료"
       disabled={true}
       onPress={() => {
@@ -16,8 +17,8 @@ const HomeScreen: React.FC = () => (
       }}
     ></SubmitButton>
     <SubmitButton
-      backgroundColor="#242424"
-      textColor="#fff"
+      backgroundColor={colors.grey100}
+      textColor={colors.white100}
       label="완료"
       disabled={false}
       onPress={() => {

@@ -12,6 +12,7 @@ import MyDefaultIcon from '../../assets/svgs/my_default.svg';
 import MyActiveIcon from '../../assets/svgs/my_active.svg';
 import { Text } from '../Text';
 import styles from './styles';
+import colors from '../../theme/color';
 
 const BottomTabBar: React.FC<BottomTabBarProps> = ({ state, navigation }) => {
   return (
@@ -29,7 +30,7 @@ const BottomTabBar: React.FC<BottomTabBarProps> = ({ state, navigation }) => {
         )}
         <Text
           variant="caption2"
-          color={state.index === 0 ? '#242424' : '#6B7280'}
+          color={state.index === 0 ? colors.grey100 : '#6B7280'}
         >
           홈
         </Text>
@@ -48,7 +49,7 @@ const BottomTabBar: React.FC<BottomTabBarProps> = ({ state, navigation }) => {
         )}
         <Text
           variant="caption2"
-          color={state.index === 1 ? '#242424' : '#6B7280'}
+          color={state.index === 1 ? colors.grey100 : '#6B7280'}
         >
           오뿌
         </Text>
@@ -79,7 +80,7 @@ const BottomTabBar: React.FC<BottomTabBarProps> = ({ state, navigation }) => {
         )}
         <Text
           variant="caption2"
-          color={state.index === 3 ? '#242424' : '#6B7280'}
+          color={state.index === 3 ? colors.grey100 : '#6B7280'}
         >
           시향
         </Text>
@@ -98,7 +99,7 @@ const BottomTabBar: React.FC<BottomTabBarProps> = ({ state, navigation }) => {
         )}
         <Text
           variant="caption2"
-          color={state.index === 4 ? '#242424' : '#6B7280'}
+          color={state.index === 4 ? colors.grey100 : '#6B7280'}
         >
           마이
         </Text>
