@@ -13,6 +13,7 @@ import { dummyList } from './Dummy';
 import MoreOptionsButton from '../../components/Buttons/MoreOptionsButton';
 import CreateReviewButton from '../../components/CreateReviewButton';
 import DefaultPerfume from '../../assets/svgs/default_perfume_pink.svg';
+import { BlurView } from '@react-native-community/blur';
 
 const OppuScreen: React.FC = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -120,15 +121,26 @@ const CalendarHeader: React.FC<{
   onSelectDate: (d: Date) => void;
 }> = ({ monthWeeks, selectedDate, onSelectDate }) => (
   <View style={styles.weekCalendarWrapper}>
-    <WeeklyCalendar
-      monthWeeks={monthWeeks}
-      selectedDate={selectedDate}
-      onSelectDate={onSelectDate}
-    />
+    <BlurView
+      blurType="light"
+      blurAmount={10}
+      reducedTransparencyFallbackColor="white"
+    >
+      <Gradient
+        colors={['#F4F4F4', 'rgba(244, 244, 244, 0.4)']}
+        locations={[0, 0.8]}
+      >
+        <WeeklyCalendar
+          monthWeeks={monthWeeks}
+          selectedDate={selectedDate}
+          onSelectDate={onSelectDate}
+        />
+      </Gradient>
+    </BlurView>
     <Gradient
-      colors={['rgba(244, 244, 244, 1)', 'rgba(244, 244, 244, 0)']}
-      locations={[0, 1]}
-      style={{ height: 15 }}
+      colors={['rgba(244, 244, 244, 0.4)', 'rgba(244, 244, 244, 0)']}
+      locations={[0, 0.9]}
+      style={{ height: 10 }}
     />
   </View>
 );

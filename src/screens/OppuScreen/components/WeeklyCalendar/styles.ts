@@ -5,7 +5,6 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     paddingHorizontal: 8,
-    backgroundColor: 'rgba(244, 244, 244, 1)',
   },
   weeklyPager: {
     height: 64,
