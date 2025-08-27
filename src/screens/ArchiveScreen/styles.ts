@@ -2,6 +2,11 @@ import { StyleSheet } from 'react-native';
 import colors from '../../theme/color';
 
 const styles = StyleSheet.create({
+  safeAreaViewContainer: {
+    flex: 1,
+    flexDirection: 'column',
+    backgroundColor: colors.limeGreenLight,
+  },
   container: {
     flex: 1,
     flexDirection: 'column',
@@ -18,6 +23,7 @@ const styles = StyleSheet.create({
     gap: 20,
   },
   perfumeReviewListContainer: {
+    flex: 1,
     flexDirection: 'column',
     alignItems: 'flex-start',
     padding: 12,
