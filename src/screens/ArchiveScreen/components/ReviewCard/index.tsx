@@ -24,7 +24,7 @@ interface ReviewCardProps {
   perfumeBrand: string;
   isLiked: boolean;
   score: number;
-  content?: string;
+  content: string;
 }
 
 const ReviewCard: React.FC<ReviewCardProps> = ({
