@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     gap: 16,
     alignSelf: 'stretch',
     borderRadius: 20,
-    backgroundColor: colors.white32,
+    backgroundColor: colors.white,
   },
   headerSection: {
     flexDirection: 'row',

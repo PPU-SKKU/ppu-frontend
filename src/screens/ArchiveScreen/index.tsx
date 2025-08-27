@@ -95,7 +95,9 @@ const ArchiveScreen: React.FC = () => {
           </View>
         ) : (
           // 시향기 리스트
-          <ReviewFlatList data={perfumeReviewList}></ReviewFlatList>
+          <View style={styles.perfumeReviewListContainer}>
+            <ReviewFlatList data={perfumeReviewList}></ReviewFlatList>
+          </View>
         )}
       </View>
     </SafeAreaView>
