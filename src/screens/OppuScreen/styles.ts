@@ -4,7 +4,7 @@ import colors from '../../theme/color';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.white,
+    backgroundColor: colors.softPurple,
   },
   headerContainer: {
     paddingHorizontal: 20,
@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
   },
   calendarContainer: {
     width: '100%',
-    // backgroundColor: 'pink', 테스트용
+    backgroundColor: colors.white,
   },
   weekCalendarWrapper: {},
   monthCalendarWrapper: {
