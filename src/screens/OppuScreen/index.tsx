@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import { View, SafeAreaView, Pressable } from 'react-native';
+import { View, SafeAreaView, Pressable, FlatList } from 'react-native';
 import { Text } from '../../components/Text';
 import styles from './styles';
 import ArrowDownIcon from '../../assets/svgs/chevron_down.svg';
@@ -8,6 +8,8 @@ import { buildWeeksForMonth } from './components/dateUtils';
 import MonthlyCalendar from './components/MonthlyCalendar';
 import Gradient from '../../components/Gradient';
 import colors from '../../theme/color';
+import OppuItem from './components/OppuItem';
+import { dummyList } from './Dummy';
 
 const OppuScreen: React.FC = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -19,7 +21,7 @@ const OppuScreen: React.FC = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Gradient colors={[colors.softPurple, colors.white]} locations={[0, 1]}>
+      <Gradient colors={[colors.softPurple, colors.white]} locations={[0, 0.7]}>
         <View style={styles.headerContainer}>
           <Text
             variant="headline"
@@ -77,7 +79,24 @@ const OppuScreen: React.FC = () => {
           />
         </View>
       </View>
-      <View style={{ flex: 1, backgroundColor: colors.white }}></View>
+
+      <View style={styles.contentWrapper}>
+        <FlatList
+          style={styles.itemsList}
+          data={dummyList}
+          keyExtractor={(item, index) => index + ''}
+          renderItem={({ item }) => (
+            <OppuItem
+              tag={item.tag}
+              perfumes={item.perfumes}
+              photos={item.photos}
+              record={item.record}
+            />
+          )}
+          contentContainerStyle={{ paddingBottom: 40 }}
+          ItemSeparatorComponent={() => <View style={{ height: 24 }} />}
+        />
+      </View>
     </SafeAreaView>
   );
 };

@@ -26,6 +26,13 @@ const styles = StyleSheet.create({
     width: '100%',
     position: 'absolute',
   },
+  contentWrapper: {
+    flex: 1,
+    backgroundColor: '#F4F4F4',
+  },
+  itemsList: {
+    padding: 20,
+  },
 });
 
 export default styles;
