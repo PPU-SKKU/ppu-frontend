@@ -87,19 +87,19 @@ function App() {
     <SafeAreaView style={styles.container}>
       <NavigationContainer>
         <Tab.Navigator tabBar={props => <BottomTabBar {...props} />}>
-          <Tab.Screen name="HOME" component={HomeStackNavigator} />
+          <Tab.Screen name="HOMESTACK" component={HomeStackNavigator} />
           <Tab.Screen
-            name="OPPU"
+            name="OPPUSTACK"
             component={OppuScreen}
             options={{ headerShown: false }}
           />
-          <Tab.Screen name="ADD" component={AddStackNavigator} />
+          <Tab.Screen name="ADDSTACK" component={AddStackNavigator} />
           <Tab.Screen
-            name="ARCHIVE"
+            name="ARCHIVESTACK"
             component={ArchiveStackNavigator}
             options={{ headerShown: false }}
           />
-          <Tab.Screen name="MY" component={MyStackNavigator} />
+          <Tab.Screen name="MYSTACK" component={MyStackNavigator} />
         </Tab.Navigator>
       </NavigationContainer>
     </SafeAreaView>
