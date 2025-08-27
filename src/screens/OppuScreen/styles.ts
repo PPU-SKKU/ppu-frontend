@@ -33,6 +33,15 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#F4F4F4',
   },
+  emptyWrapper: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: 20,
+  },
+  separator: {
+    height: 24,
+  },
 });
 
 export default styles;

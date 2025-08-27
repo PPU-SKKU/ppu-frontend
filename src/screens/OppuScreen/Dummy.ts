@@ -2,6 +2,7 @@ import colors from '../../theme/color';
 import { OppuItemProps } from './components/OppuItem';
 
 export const DummyOppuItem: OppuItemProps = {
+  date: new Date('2025-08-27'),
   tag: {
     id: 'tag1',
     label: '오뿌',

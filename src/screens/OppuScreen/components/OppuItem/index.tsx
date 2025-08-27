@@ -9,6 +9,7 @@ import OppuPerfume from '../OppuPerfume';
 import MoreOptionsButton from '../../../../components/Buttons/MoreOptionsButton';
 
 export interface OppuItemProps {
+  date: Date;
   tag: Tag;
   perfumes: PerfumeInfo[];
   photos?: string[];
