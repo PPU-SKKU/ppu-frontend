@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
   },
   calendarContainer: {
     width: '100%',
-    backgroundColor: colors.white,
+    // backgroundColor: colors.white,
   },
   weekCalendarWrapper: {},
   monthCalendarWrapper: {

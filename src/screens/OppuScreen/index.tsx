@@ -21,7 +21,7 @@ const OppuScreen: React.FC = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Gradient colors={[colors.softPurple, colors.white]} locations={[0, 0.7]}>
+      <Gradient colors={[colors.softPurple, '#F4F4F4']} locations={[0, 0.5]}>
         <View style={styles.headerContainer}>
           <Text
             variant="headline"
@@ -45,40 +45,42 @@ const OppuScreen: React.FC = () => {
             </Pressable>
           </View>
         </View>
-      </Gradient>
 
-      <View style={styles.calendarContainer}>
-        {isMonthView && (
-          <View style={styles.monthCalendarWrapper}>
-            <MonthlyCalendar
+        <View style={styles.calendarContainer}>
+          {isMonthView && (
+            <View style={styles.monthCalendarWrapper}>
+              <MonthlyCalendar
+                monthWeeks={monthWeeks}
+                selectedDate={selectedDate}
+                onSelectDate={date => {
+                  setSelectedDate(date);
+                }}
+                onNextMonth={() => {
+                  setSelectedDate(
+                    prev =>
+                      new Date(prev.getFullYear(), prev.getMonth() + 1, 1),
+                  );
+                }}
+                onPrevMonth={() => {
+                  setSelectedDate(
+                    prev =>
+                      new Date(prev.getFullYear(), prev.getMonth() - 1, 1),
+                  );
+                }}
+              />
+            </View>
+          )}
+          <View style={styles.weekCalendarWrapper}>
+            <WeeklyCalendar
               monthWeeks={monthWeeks}
               selectedDate={selectedDate}
               onSelectDate={date => {
                 setSelectedDate(date);
               }}
-              onNextMonth={() => {
-                setSelectedDate(
-                  prev => new Date(prev.getFullYear(), prev.getMonth() + 1, 1),
-                );
-              }}
-              onPrevMonth={() => {
-                setSelectedDate(
-                  prev => new Date(prev.getFullYear(), prev.getMonth() - 1, 1),
-                );
-              }}
             />
           </View>
-        )}
-        <View style={styles.weekCalendarWrapper}>
-          <WeeklyCalendar
-            monthWeeks={monthWeeks}
-            selectedDate={selectedDate}
-            onSelectDate={date => {
-              setSelectedDate(date);
-            }}
-          />
         </View>
-      </View>
+      </Gradient>
 
       <View style={styles.contentWrapper}>
         <FlatList
