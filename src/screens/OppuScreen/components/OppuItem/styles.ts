@@ -3,15 +3,26 @@ import colors from '../../../../theme/color';
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     borderRadius: 20,
     overflow: 'hidden',
     backgroundColor: colors.white,
     marginHorizontal: 20,
   },
+  headerWrapper: {
+    position: 'relative',
+    minHeight: 40,
+  },
+  moreButton: {
+    position: 'absolute',
+    zIndex: 20,
+    top: 20,
+    right: 20,
+  },
   imageWrapper: {
     height: 362,
   },
-  contentWrapper: {
+  recordWrapper: {
     padding: 20,
     gap: 12,
   },

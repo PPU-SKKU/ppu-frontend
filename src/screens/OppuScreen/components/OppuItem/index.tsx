@@ -6,6 +6,7 @@ import ImagePager from '../../../../components/ImagePager';
 import OppuTagBadge from '../../../../components/OppuTagBadge';
 import { Text } from '../../../../components/Text';
 import OppuPerfume from '../OppuPerfume';
+import MoreOptionsButton from '../../../../components/Buttons/MoreOptionsButton';
 
 export interface OppuItemProps {
   tag: Tag;
@@ -22,13 +23,19 @@ const OppuItem: React.FC<OppuItemProps> = ({
 }) => {
   return (
     <View style={styles.container}>
-      {photos?.length ? (
-        <View style={styles.imageWrapper}>
-          <ImagePager images={photos} />
-        </View>
-      ) : null}
+      <View style={styles.headerWrapper}>
+        {photos?.length ? (
+          <View style={styles.imageWrapper}>
+            <ImagePager images={photos} />
+          </View>
+        ) : null}
 
-      <View style={styles.contentWrapper}>
+        <View style={styles.moreButton}>
+          <MoreOptionsButton onPress={() => {}} />
+        </View>
+      </View>
+
+      <View style={styles.recordWrapper}>
         <OppuTagBadge tag={tag} />
         <Text variant="body" weight="medium">
           {record}
