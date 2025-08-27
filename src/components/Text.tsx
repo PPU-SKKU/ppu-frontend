@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text as RNText, TextProps } from 'react-native';
 import { typography, fontFamilies, Variant, Weight } from '../theme/typography';
+import colors from '../theme/color';
 
 interface Props extends TextProps {
   variant?: Variant;
@@ -25,7 +26,7 @@ interface Props extends TextProps {
 export const Text = ({
   variant = 'body',
   weight = 'regular',
-  color = '#000',
+  color = colors.grey100,
   style,
   ...rest
 }: Props) => {

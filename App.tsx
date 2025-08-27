@@ -18,7 +18,11 @@ function App() {
       <NavigationContainer>
         <Tab.Navigator tabBar={props => <BottomTabBar {...props} />}>
           <Tab.Screen name="HOME" component={HomeScreen} />
-          <Tab.Screen name="OPPU" component={OppuScreen} />
+          <Tab.Screen
+            name="OPPU"
+            component={OppuScreen}
+            options={{ headerShown: false }}
+          />
           <Tab.Screen name="ADD" component={AddScreen} />
           <Tab.Screen
             name="ARCHIVE"

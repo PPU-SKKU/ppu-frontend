@@ -21,6 +21,9 @@ const colors = {
   white70: 'rgba(255, 255, 255, 0.70)', // White-70
   white80: 'rgba(255, 255, 255, 0.80)', // White-80
   white100: '#FFFFFF', // White 100%
+
+  purple: '#B163FF',
+  softPurple: '#D4A8FF',
 };
 
 export default colors;

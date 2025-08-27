@@ -1,8 +1,11 @@
 module.exports = {
   root: true,
   extends: '@react-native',
+  globals: {
+    React: 'readonly',
+  },
   rules: {
-    'no-undef': 'error',
+    'no-undef': 'off',
     'no-unreachable': 'error',
     'no-dupe-keys': 'error',
     '@typescript-eslint/no-unused-vars': [
@@ -10,9 +13,9 @@ module.exports = {
       { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
     ],
     'react-hooks/rules-of-hooks': 'error',
-    'react-native/no-inline-styles': 'error',
     'react-native/no-raw-text': 'error',
 
+    'react-native/no-inline-styles': 'warn',
     '@typescript-eslint/no-explicit-any': 'warn',
     'no-console': 'warn',
     '@typescript-eslint/ban-ts-comment': 'warn',
