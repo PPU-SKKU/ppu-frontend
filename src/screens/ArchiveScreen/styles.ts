@@ -22,12 +22,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: 20,
   },
-  perfumeReviewListContainer: {
-    flex: 1,
-    flexDirection: 'column',
-    padding: 12,
-    gap: 16,
-  },
 });
 
 export default styles;
