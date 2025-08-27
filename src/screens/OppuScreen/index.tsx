@@ -10,6 +10,7 @@ import Gradient from '../../components/Gradient';
 import colors from '../../theme/color';
 import OppuItem from './components/OppuItem';
 import { dummyList } from './Dummy';
+import MoreOptionsButton from '../../components/Buttons/MoreOptionsButton';
 
 const OppuScreen: React.FC = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -43,6 +44,9 @@ const OppuScreen: React.FC = () => {
                 }}
               />
             </Pressable>
+          </View>
+          <View style={styles.moreOptionButton}>
+            <MoreOptionsButton onPress={() => {}} />
           </View>
         </View>
       </Gradient>

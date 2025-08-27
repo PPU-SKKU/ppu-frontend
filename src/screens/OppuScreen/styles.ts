@@ -11,6 +11,9 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     flexDirection: 'row',
   },
+  moreOptionButton: {
+    marginLeft: 'auto',
+  },
   monthTitleContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
