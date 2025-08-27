@@ -6,3 +6,8 @@ export interface Perfume {
   brandOriginalName: string;
   image: string | null;
 }
+
+export interface PerfumeInfo {
+  perfum: Perfume;
+  spray: number;
+}

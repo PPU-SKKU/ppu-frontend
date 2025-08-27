@@ -2,16 +2,19 @@ import { StyleSheet } from 'react-native';
 import colors from '../../../../theme/color';
 
 const styles = StyleSheet.create({
+  shadow: {
+    shadowColor: colors.grey100,
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0.35,
+    shadowRadius: 32,
+    elevation: 4,
+    zIndex: 10,
+  },
   container: {
     borderRadius: 22,
     marginHorizontal: 12,
-    zIndex: 10,
-    backgroundColor: colors.white,
-    shadowColor: colors.grey100,
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 4,
+    backgroundColor: colors.white70,
+    overflow: 'hidden',
   },
   headers: {
     flexDirection: 'row',

@@ -12,6 +12,8 @@ const colors = {
   grey54: 'rgba(36, 36, 36, 0.54)', // grey-54
   grey100: '#242424', // grey 100%
 
+  greyVisible: '#808080',
+
   // White scale (#FFFFFF with alpha steps)
   white8: 'rgba(255, 255, 255, 0.08)', // White-8
   white20: 'rgba(255, 255, 255, 0.20)', // White-20

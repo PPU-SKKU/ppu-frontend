@@ -2,12 +2,9 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    width: '100%',
-    paddingHorizontal: 8,
-  },
-  weeklyPager: {
-    height: 64,
+    padding: 8,
+    borderRadius: 16,
+    alignSelf: 'flex-start',
   },
 });
 

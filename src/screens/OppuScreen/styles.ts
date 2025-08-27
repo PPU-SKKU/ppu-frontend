@@ -11,6 +11,9 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     flexDirection: 'row',
   },
+  moreOptionButton: {
+    marginLeft: 'auto',
+  },
   monthTitleContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
@@ -19,12 +22,25 @@ const styles = StyleSheet.create({
   },
   calendarContainer: {
     width: '100%',
-    backgroundColor: colors.white,
+    // backgroundColor: colors.white,
   },
   weekCalendarWrapper: {},
   monthCalendarWrapper: {
     width: '100%',
     position: 'absolute',
+  },
+  contentWrapper: {
+    flex: 1,
+    backgroundColor: '#F4F4F4',
+  },
+  emptyWrapper: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: 20,
+  },
+  separator: {
+    height: 24,
   },
 });
 
