@@ -77,6 +77,7 @@ const OppuScreen: React.FC = () => {
           />
         </View>
       </View>
+      <View style={{ flex: 1, backgroundColor: colors.white }}></View>
     </SafeAreaView>
   );
 };
