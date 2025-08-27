@@ -53,7 +53,6 @@ const OppuScreen: React.FC = () => {
               selectedDate={selectedDate}
               onSelectDate={date => {
                 setSelectedDate(date);
-                console.log('Selected date:', date);
               }}
               onNextMonth={() => {
                 setSelectedDate(
@@ -74,7 +73,6 @@ const OppuScreen: React.FC = () => {
             selectedDate={selectedDate}
             onSelectDate={date => {
               setSelectedDate(date);
-              console.log('Selected date:', date);
             }}
           />
         </View>
