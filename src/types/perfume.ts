@@ -1,8 +1,10 @@
 export interface Perfume {
   id: number;
-  brand: string;
-  name: string;
-  image: string;
+  koreanName: string;
+  originalName: string;
+  brandKoreanName: string;
+  brandOriginalName: string;
+  image: string | null;
 }
 
 export interface PerfumeInfo {

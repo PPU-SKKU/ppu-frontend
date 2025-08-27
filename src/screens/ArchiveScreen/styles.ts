@@ -2,10 +2,15 @@ import { StyleSheet } from 'react-native';
 import colors from '../../theme/color';
 
 const styles = StyleSheet.create({
+  safeAreaViewContainer: {
+    flex: 1,
+    flexDirection: 'column',
+    backgroundColor: colors.limeGreenLight,
+  },
   container: {
     flex: 1,
     flexDirection: 'column',
-    backgroundColor: colors.white,
+    backgroundColor: colors.lightGrey,
   },
   header: {
     paddingVertical: 12,
@@ -16,12 +21,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     gap: 20,
-  },
-  perfumeReviewListContainer: {
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-    padding: 12,
-    gap: 16,
   },
 });
 

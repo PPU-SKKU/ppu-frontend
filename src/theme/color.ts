@@ -2,7 +2,6 @@ const colors = {
   // Black & White
   black: '#000000',
   white: '#FFFFFF',
-  pink: '#FF537E',
 
   // Grey scale (base #242424 with alpha steps)
   grey4: 'rgba(36, 36, 36, 0.04)', // grey-4
@@ -25,7 +24,10 @@ const colors = {
   white100: '#FFFFFF', // White 100%
 
   purple: '#B163FF',
-  softPurple: '#E6CEFF',
+  softPurple: '#D4A8FF',
+  pink: '#FF537E',
+  limeGreenLight: '#CBECC8',
+  lightGrey: '#F4F4F4',
 };
 
 export default colors;

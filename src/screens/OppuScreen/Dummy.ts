@@ -12,8 +12,10 @@ export const DummyOppuItem: OppuItemProps = {
     {
       perfum: {
         id: 1,
-        brand: '톰 포드',
-        name: '블랙 오키드',
+        brandKoreanName: '톰 포드',
+        brandOriginalName: '',
+        koreanName: '블랙 오키드',
+        originalName: '',
         image: 'https://i.ibb.co/kgjsZWMz/Image.png',
       },
       spray: 3,
@@ -21,8 +23,10 @@ export const DummyOppuItem: OppuItemProps = {
     {
       perfum: {
         id: 2,
-        brand: '아틀리에 코롱',
-        name: '라보라토리 오브 화이트',
+        brandKoreanName: '아틀리에 코롱',
+        brandOriginalName: '',
+        koreanName: '라보라토리 오브 화이트',
+        originalName: '',
         image: 'https://i.ibb.co/kgjsZWMz/Image.png',
       },
       spray: 1,

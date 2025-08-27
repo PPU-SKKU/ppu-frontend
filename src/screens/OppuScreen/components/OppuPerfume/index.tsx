@@ -19,14 +19,14 @@ const OppuPerfume: React.FC<OppuPerfumeProps> = ({
     <View style={styles.container}>
       <View style={styles.titleWrapper}>
         <Text variant="title2" weight="semiBold">
-          {perfume.name}
+          {perfume.koreanName}
         </Text>
         <Text variant="caption2" weight="medium" color={colors.grey54}>
-          {perfume.brand}
+          {perfume.brandKoreanName}
         </Text>
       </View>
       <View style={styles.perfumeWrapper}>
-        <Image source={{ uri: perfume.image }} style={styles.image} />
+        <Image source={{ uri: perfume.image ?? '' }} style={styles.image} />
 
         <View style={styles.sprayBadge}>
           <Text variant="caption1" weight="semiBold" color={colors.white}>

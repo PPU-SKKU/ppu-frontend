@@ -10,13 +10,17 @@ const styles = StyleSheet.create({
     gap: 16,
     alignSelf: 'stretch',
     borderRadius: 20,
-    backgroundColor: colors.white32,
+    backgroundColor: colors.white,
   },
   headerSection: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     alignSelf: 'stretch',
+  },
+  perfumeImage: {
+    width: 64,
+    height: 64,
   },
   metaInfoSection: {
     flexDirection: 'column',
@@ -35,13 +39,21 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     gap: 4,
   },
-  ratingBadge: {
+  ratingLikeBadge: {
     flexDirection: 'row',
     alignItems: 'center',
     padding: 10,
     gap: 4,
     borderRadius: 22,
     backgroundColor: 'rgba(255, 83, 126, 0.12)',
+  },
+  ratingUnlikeBadge: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 10,
+    gap: 4,
+    borderRadius: 22,
+    backgroundColor: colors.grey8,
   },
   reviewContentSection: {},
   inlineLink: {
