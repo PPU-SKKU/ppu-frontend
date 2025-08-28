@@ -21,7 +21,6 @@ const styles = StyleSheet.create({
   },
   perfumeWrapper: {
     padding: 20,
-    gap: 20,
   },
   addPerfumeButton: {
     flexDirection: 'row',
@@ -31,6 +30,7 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     padding: 16,
     backgroundColor: colors.black,
+    marginTop: 8,
   },
   tagWrapper: {
     padding: 20,

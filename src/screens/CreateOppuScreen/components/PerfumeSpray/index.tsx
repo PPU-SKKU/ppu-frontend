@@ -50,7 +50,13 @@ const PerfumeSpray: React.FC<PerfumeSprayProps> = ({
           </Text>
         </View>
         <View style={{ height: 12 }} />
-        <Stepper count={1} onIncrement={() => {}} onDecrement={() => {}} />
+        <Stepper
+          count={count}
+          onIncrement={onIncrement}
+          onDecrement={onDecrement}
+          disableIncrement={count == 10}
+          disableDecrement={count == 1}
+        />
       </View>
     </View>
   );
