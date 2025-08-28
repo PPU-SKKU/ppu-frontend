@@ -3,6 +3,7 @@ import colors from '../../theme/color';
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: colors.white,
     flexDirection: 'row',
     paddingVertical: 12,
     paddingHorizontal: 16,

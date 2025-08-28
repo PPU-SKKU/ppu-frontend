@@ -20,7 +20,7 @@ const BottomTabBar: React.FC<BottomTabBarProps> = ({ state, navigation }) => {
       {/* 홈 탭 */}
       <TouchableOpacity
         style={styles.tab}
-        onPress={() => navigation.navigate('HOMESTACK')}
+        onPress={() => navigation.navigate('HomeStack')}
         accessibilityRole="button"
       >
         {state.index === 0 ? (
@@ -39,7 +39,7 @@ const BottomTabBar: React.FC<BottomTabBarProps> = ({ state, navigation }) => {
       {/* 오뿌 탭 */}
       <TouchableOpacity
         style={styles.tab}
-        onPress={() => navigation.navigate('OPPUSTACK')}
+        onPress={() => navigation.navigate('OppuStack')}
         accessibilityRole="button"
       >
         {state.index === 1 ? (
@@ -58,7 +58,7 @@ const BottomTabBar: React.FC<BottomTabBarProps> = ({ state, navigation }) => {
       {/* Add 탭 */}
       <TouchableOpacity
         style={styles.tab}
-        onPress={() => navigation.navigate('ADDSTACK')}
+        onPress={() => navigation.navigate('AddStack')}
         accessibilityRole="button"
         activeOpacity={0.8}
       >
@@ -70,7 +70,7 @@ const BottomTabBar: React.FC<BottomTabBarProps> = ({ state, navigation }) => {
       {/* 시향 탭 */}
       <TouchableOpacity
         style={styles.tab}
-        onPress={() => navigation.navigate('ARCHIVESTACK')}
+        onPress={() => navigation.navigate('ArchiveStack')}
         accessibilityRole="button"
       >
         {state.index === 3 ? (
@@ -89,7 +89,7 @@ const BottomTabBar: React.FC<BottomTabBarProps> = ({ state, navigation }) => {
       {/* 마이 탭 */}
       <TouchableOpacity
         style={styles.tab}
-        onPress={() => navigation.navigate('MYSTACK')}
+        onPress={() => navigation.navigate('MyStack')}
         accessibilityRole="button"
       >
         {state.index === 4 ? (
