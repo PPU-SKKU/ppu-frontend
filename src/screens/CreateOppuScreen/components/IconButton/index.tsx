@@ -7,6 +7,7 @@ import styles from './styles';
 interface IconButtonProps {
   icon: 'x' | 'plus' | 'minus';
   onPress: () => void;
+  disabled?: boolean;
   size?: number;
   color?: string;
   style?: ViewStyle;
@@ -15,6 +16,7 @@ interface IconButtonProps {
 const IconButton: React.FC<IconButtonProps> = ({
   icon,
   onPress,
+  disabled = false,
   size = 20,
   color = colors.black,
   style,
@@ -22,6 +24,7 @@ const IconButton: React.FC<IconButtonProps> = ({
   return (
     <Pressable
       onPress={onPress}
+      disabled={disabled}
       style={({ pressed }) => [
         {
           borderRadius: 22,
@@ -29,12 +32,17 @@ const IconButton: React.FC<IconButtonProps> = ({
           justifyContent: 'center',
           alignItems: 'center',
           alignSelf: 'center',
+          backgroundColor: disabled ? 'transparent' : colors.white,
         },
         style,
         pressed && { opacity: 0.7 },
       ]}
     >
-      <Feather name={icon} size={size} color={color} />
+      <Feather
+        name={icon}
+        size={size}
+        color={disabled ? colors.grey39 : color}
+      />
     </Pressable>
   );
 };
