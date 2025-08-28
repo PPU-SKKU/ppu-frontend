@@ -19,10 +19,22 @@ const styles = StyleSheet.create({
     padding: 20,
     gap: 20,
   },
-  tagWrapper: {},
-  photoWrapper: {},
-  recordWrapper: {},
-  feedbackWrapper: {},
+  tagWrapper: {
+    padding: 20,
+    gap: 20,
+  },
+  photoWrapper: {
+    padding: 20,
+    gap: 20,
+  },
+  recordWrapper: {
+    padding: 20,
+    gap: 16,
+  },
+  feedbackWrapper: {
+    padding: 20,
+    gap: 16,
+  },
 });
 
 export default styles;
