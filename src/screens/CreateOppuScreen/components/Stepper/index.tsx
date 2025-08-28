@@ -26,7 +26,6 @@ const Stepper: React.FC<StepperProps> = ({
       <IconButton
         icon="minus"
         onPress={onDecrement}
-        style={styles.button}
         disabled={disableDecrement}
       />
       <Text variant="bodyCompact" weight="semiBold" style={styles.count}>
@@ -35,7 +34,6 @@ const Stepper: React.FC<StepperProps> = ({
       <IconButton
         icon="plus"
         onPress={onIncrement}
-        style={styles.button}
         disabled={disableIncrement}
       />
     </View>

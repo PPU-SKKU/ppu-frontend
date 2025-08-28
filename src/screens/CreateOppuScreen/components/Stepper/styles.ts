@@ -14,9 +14,6 @@ const styles = StyleSheet.create({
     flex: 1,
     textAlign: 'center',
   },
-  button: {
-    backgroundColor: colors.white,
-  },
 });
 
 export default styles;
