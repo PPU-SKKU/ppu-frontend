@@ -8,10 +8,15 @@ import CreateReviewButton from '../../components/CreateReviewButton';
 import Gradient from '../../components/Gradient';
 import ReviewFlatList from './components/ReviewFlatList';
 import { useNavigation } from '@react-navigation/native';
+import { RootNavProp } from '../../types/navigationProps';
 
 const ArchiveScreen: React.FC = () => {
-  const navigation = useNavigation();
   const [perfumeReviewList, setPerfumeReviewList] = useState<any[]>([]);
+  const navigation = useNavigation<RootNavProp>();
+
+  const NavigateToCreateReview = () => {
+    navigation.navigate('CreateReview');
+  };
 
   return (
     <SafeAreaView style={styles.safeAreaViewContainer}>
@@ -37,7 +42,7 @@ const ArchiveScreen: React.FC = () => {
               textColor={colors.white}
               label="시향기 작성하기"
               disabled={false}
-              onPress={() => navigation.navigate('CREATEREVIEW' as never)}
+              onPress={NavigateToCreateReview}
             ></CreateReviewButton>
           </View>
         ) : (
