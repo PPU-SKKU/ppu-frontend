@@ -21,10 +21,18 @@ import CreateReviewButton from '../../components/CreateReviewButton';
 import DefaultPerfume from '../../assets/svgs/default_perfume_pink.svg';
 import { BlurView } from '@react-native-community/blur';
 
+import { useNavigation } from '@react-navigation/native';
+import { RootNavProp } from '../../types/navigationProps';
+
 const OppuScreen: React.FC = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [isMonthView, setIsMonthView] = useState(false);
   const [oppuItems, setItems] = useState(dummyList);
+  const navigation = useNavigation<RootNavProp>();
+
+  const NavigateToCreateReview = () => {
+    navigation.navigate('CreateOppu');
+  };
 
   const monthWeeks = useMemo(
     () => buildWeeksForMonth(selectedDate),
@@ -119,7 +127,9 @@ const OppuScreen: React.FC = () => {
             onSelectDate={setSelectedDate}
           />
         }
-        ListEmptyComponent={<EmptyScreen onButtonClicked={() => {}} />}
+        ListEmptyComponent={
+          <EmptyScreen onButtonClicked={NavigateToCreateReview} />
+        }
       />
     </SafeAreaView>
   );
