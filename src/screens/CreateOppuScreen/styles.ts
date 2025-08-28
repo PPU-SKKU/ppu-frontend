@@ -45,6 +45,13 @@ const styles = StyleSheet.create({
     borderColor: 'rgba(255, 255, 255, 0.8)',
     borderRadius: 20,
   },
+  photoWrapper: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    gap: 12,
+  },
+
   feedbackHeader: {
     flexDirection: 'row',
     justifyContent: 'center',

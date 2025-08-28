@@ -6,7 +6,7 @@ import styles from './styles';
 
 interface IconButtonProps {
   icon: 'x' | 'plus' | 'minus';
-  onPress: () => void;
+  onPress?: () => void;
   disabled?: boolean;
   size?: number;
   color?: string;

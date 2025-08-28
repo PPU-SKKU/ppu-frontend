@@ -15,6 +15,7 @@ import PlusIcon from '../../assets/svgs/plus.svg';
 import Toggle from '../../components/Toggle';
 import PerfumeSpray from './components/PerfumeSpray';
 import { PerfumeInfo } from '../../types/perfume';
+import PhotoSlot from './components/PhotoSlot';
 
 const dummyPerfume = {
   id: 1,
@@ -38,8 +39,16 @@ const dummyPerfumes = [
   },
 ];
 
+const dummyPic =
+  'https://images.unsplash.com/photo-1756142188854-34b1e9a9e415?q=80&w=1364&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
+
 const CreateOppuScreen: React.FC = () => {
   const [perfumes, setPerfumes] = useState<PerfumeInfo[]>(dummyPerfumes);
+  const [photos, setPhotos] = useState<string[]>([
+    dummyPic,
+    dummyPic,
+    dummyPic,
+  ]);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -103,6 +112,19 @@ const CreateOppuScreen: React.FC = () => {
             title="사진"
             description="향수와 함께한 오늘의 순간을 사진으로 남겨보세요"
           />
+
+          <View style={styles.photoWrapper}>
+            {[0, 1, 2].map(i => (
+              <PhotoSlot
+                key={i}
+                image={photos[i]}
+                isAddButton={i === photos.length}
+                onPick={() => {
+                  // 갤러리 접근
+                }}
+              />
+            ))}
+          </View>
         </View>
 
         <Spacer />
