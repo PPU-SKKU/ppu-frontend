@@ -8,9 +8,12 @@ const styles = StyleSheet.create({
     backgroundColor: colors.limeGreenLight,
   },
 
-  container: {
+  bodyContainer: {
     flex: 1,
     flexDirection: 'column',
+    alignItems: 'flex-start',
+    padding: 20,
+    gap: 20,
     backgroundColor: colors.lightGrey,
   },
 });
