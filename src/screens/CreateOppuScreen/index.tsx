@@ -16,6 +16,8 @@ import Toggle from '../../components/Toggle';
 import PerfumeSpray from './components/PerfumeSpray';
 import { PerfumeInfo } from '../../types/perfume';
 import PhotoSlot from './components/PhotoSlot';
+import IconButton from './components/IconButton';
+import ClickableOppuTagBadge from '../../components/OppuTagBadge/ClickableOppuTagBadge';
 
 const dummyPerfume = {
   id: 1,
@@ -41,6 +43,12 @@ const dummyPerfumes = [
 
 const dummyPic =
   'https://images.unsplash.com/photo-1756142188854-34b1e9a9e415?q=80&w=1364&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
+
+const dummyTags = [
+  { id: '1', label: '오뿌', color: '#FF6B6B' },
+  { id: '2', label: '잠뿌', color: '#4ECDC4' },
+  { id: '3', label: '뿌', color: '#FFD93D' },
+];
 
 const CreateOppuScreen: React.FC = () => {
   const [perfumes, setPerfumes] = useState<PerfumeInfo[]>(dummyPerfumes);
@@ -101,11 +109,34 @@ const CreateOppuScreen: React.FC = () => {
         {/* TODO: 작성 날짜 설정 */}
 
         <View style={styles.tagWrapper}>
-          <TitleHeaderText
-            title="태그"
-            description="향수를 잘 표현하는 키워드를 선택해주세요"
+          <View style={styles.tagHeader}>
+            <TitleHeaderText
+              title="태그"
+              description="향수를 잘 표현하는 키워드를 선택해주세요"
+            />
+            <IconButton
+              icon="plus"
+              onPress={() => {}}
+              style={{ backgroundColor: colors.grey12 }}
+            />
+          </View>
+
+          <FlatList
+            data={dummyTags}
+            horizontal
+            keyExtractor={item => item.id}
+            ItemSeparatorComponent={() => <View style={{ width: 8 }} />}
+            renderItem={({ item }) => (
+              <ClickableOppuTagBadge
+                tag={item}
+                selected={false}
+                onPress={() => {}}
+              />
+            )}
           />
         </View>
+
+        <Spacer />
 
         <View style={styles.optionalWrapper}>
           <SubtitleHeaderText

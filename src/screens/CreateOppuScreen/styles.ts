@@ -36,6 +36,10 @@ const styles = StyleSheet.create({
     padding: 20,
     gap: 20,
   },
+  tagHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
   optionalWrapper: {
     padding: 20,
     gap: 16,

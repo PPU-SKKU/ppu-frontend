@@ -5,6 +5,7 @@ const styles = StyleSheet.create({
     padding: 8,
     borderRadius: 16,
     alignSelf: 'flex-start',
+    borderWidth: 1,
   },
 });
 
