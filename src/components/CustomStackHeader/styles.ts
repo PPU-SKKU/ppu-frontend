@@ -2,12 +2,13 @@ import { StyleSheet } from 'react-native';
 import colors from '../../theme/color';
 
 const styles = StyleSheet.create({
-  safeAreaViewContainer: {
-    flex: 1,
-    flexDirection: 'column',
-    backgroundColor: colors.limeGreenLight,
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingVertical: 12,
+    paddingHorizontal: 20,
   },
-
   container: {
     flex: 1,
     flexDirection: 'column',
