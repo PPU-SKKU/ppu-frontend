@@ -49,9 +49,9 @@ const OppuItem: React.FC<OppuItemProps> = ({
         style={styles.perfumesWrapper}
         data={perfumes}
         scrollEnabled={false}
-        keyExtractor={(item, index) => item.perfum.id.toString() + index}
+        keyExtractor={(item, index) => item.id.toString() + index}
         renderItem={({ item }) => (
-          <OppuPerfume perfume={item.perfum} spray={item.spray} />
+          <OppuPerfume perfume={item.perfume} spray={item.spray} />
         )}
         contentContainerStyle={styles.perfumesWrapper}
         ItemSeparatorComponent={() => <View style={{ height: 24 }} />}

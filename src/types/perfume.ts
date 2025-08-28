@@ -8,6 +8,7 @@ export interface Perfume {
 }
 
 export interface PerfumeInfo {
-  perfum: Perfume;
+  id: number;
+  perfume: Perfume;
   spray: number;
 }
