@@ -1,8 +1,11 @@
 import { StyleSheet } from 'react-native';
+import colors from '../../theme/color';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#F6F6F6',
+    // TODO: 배경색상 변수 지정
   },
   header: {
     width: '100%',
@@ -14,26 +17,38 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
+    gap: 20,
   },
   perfumeWrapper: {
     padding: 20,
     gap: 20,
   },
+  addPerfumeButton: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: 8,
+    borderRadius: 16,
+    padding: 16,
+    backgroundColor: colors.black,
+  },
   tagWrapper: {
     padding: 20,
     gap: 20,
   },
-  photoWrapper: {
-    padding: 20,
-    gap: 20,
-  },
-  recordWrapper: {
+  optionalWrapper: {
     padding: 20,
     gap: 16,
+    marginHorizontal: 20,
+    backgroundColor: colors.white32,
+    borderWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.8)',
+    borderRadius: 20,
   },
-  feedbackWrapper: {
-    padding: 20,
-    gap: 16,
+  feedbackHeader: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 
