@@ -8,7 +8,7 @@ import Segment from '../\bSegment';
 interface SegmentedFieldProps {
   label: string;
   description: string;
-  options: string[];
+  options: Option[];
   value: string;
   onSelect: (value: string) => void;
 }
@@ -32,10 +32,18 @@ const SegmentedField: React.FC<SegmentedFieldProps> = ({
       </View>
       <View style={styles.segmentedControlsContainer}>
         {options.map((option, key) =>
-          option === value ? (
-            <Segment label={option} isSelected={true} key={key} />
+          option.value === value ? (
+            <Segment
+              label={option.value}
+              isSelected={option.isSelected}
+              key={key}
+            />
           ) : (
-            <Segment label={option} isSelected={false} key={key} />
+            <Segment
+              label={option.value}
+              isSelected={option.isSelected}
+              key={key}
+            />
           ),
         )}
       </View>

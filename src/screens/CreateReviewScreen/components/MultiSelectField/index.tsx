@@ -8,7 +8,7 @@ import SelectTag from '../SelectTag';
 interface MultiSelctFieldProps {
   label: string;
   description: string;
-  options: string[];
+  options: Option[];
   onSelect: (value: string) => void;
 }
 
@@ -30,7 +30,11 @@ const MultiSelectField: React.FC<MultiSelctFieldProps> = ({
       </View>
       <View style={styles.multiSelectTabContainer}>
         {options.map((option, key) => (
-          <SelectTag label={option} isSelected={true} key={key}></SelectTag>
+          <SelectTag
+            label={option.value}
+            isSelected={option.isSelected}
+            key={key}
+          ></SelectTag>
         ))}
       </View>
     </View>

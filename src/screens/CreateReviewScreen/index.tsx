@@ -13,11 +13,23 @@ const CreateReviewScreen: React.FC = () => {
   const [memo, setMemo] = useState('');
   const [isOwned, setIsOwned] = useState(false);
   const [isWishListed, setIsWishListed] = useState(true);
-  const genderOptions = ['남성', '여성', '공용'];
-  const [gender, setGender] = useState(genderOptions[1]);
-  const wearStatusOptions = ['착향', '시향'];
-  const [wearStatus, setWearStatus] = useState(wearStatusOptions[0]);
-  const seasonOptions = ['봄', '여름', '가을', '겨울'];
+  const genderOptions = [
+    { value: '남성', isSelected: false },
+    { value: '여성', isSelected: true },
+    { value: '공용', isSelected: false },
+  ];
+  const [gender, setGender] = useState(genderOptions[1].value);
+  const wearStatusOptions = [
+    { value: '착향', isSelected: true },
+    { value: '남성', isSelected: false },
+  ];
+  const [wearStatus, setWearStatus] = useState(wearStatusOptions[0].value);
+  const seasonOptions = [
+    { value: '봄', isSelected: true },
+    { value: '여름', isSelected: true },
+    { value: '가을', isSelected: false },
+    { value: '겨울', isSelected: false },
+  ];
 
   return (
     <SafeAreaView style={styles.safeAreaViewContainer}>
