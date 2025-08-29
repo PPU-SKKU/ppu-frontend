@@ -20,6 +20,9 @@ import PhotoSlot from './components/PhotoSlot';
 import IconButton from './components/IconButton';
 import ClickableOppuTagBadge from '../../components/OppuTagBadge/ClickableOppuTagBadge';
 import TextField from '../../components/TextField';
+import CustomStackHeader from '../../components/CustomStackHeader';
+import { useNavigation } from '@react-navigation/native';
+import { RootNavProp } from '../../types/navigationProps';
 
 const dummyPerfume = {
   id: 1,
@@ -60,16 +63,17 @@ const CreateOppuScreen: React.FC = () => {
     dummyPic,
   ]);
   const [text, setText] = useState('');
+  const navigation = useNavigation<RootNavProp>();
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
-        <SubmitButton onPress={() => {}} label={'이전'} />
-        <Text variant="title2" weight="extraBold">
-          오뿌 작성
-        </Text>
-        <SubmitButton onPress={() => {}} label={'완료'} />
-      </View>
+      <CustomStackHeader
+        title="오뿌 작성"
+        onPress={() => {}}
+        onBackPress={() => {
+          navigation.goBack();
+        }}
+      />
 
       <ScrollView style={styles.content}>
         {/* 향수 설정 파트 */}
