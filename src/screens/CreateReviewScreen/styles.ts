@@ -16,6 +16,11 @@ const styles = StyleSheet.create({
     gap: 20,
     backgroundColor: colors.lightGrey,
   },
+  imageContainer: {},
+  perfumeDetailContainer: {},
+  perfumeInfoContainer: {},
+  perfumeStatusTagContainer: {},
+  preferenceSelectorContainer: {},
 });
 
 export default styles;

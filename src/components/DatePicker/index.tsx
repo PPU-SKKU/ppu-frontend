@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View } from 'react-native';
 import styles from './styles';
+import Divider from '../Divider';
 
 interface DatePickerProps {}
 
@@ -10,7 +11,7 @@ const DatePicker: React.FC<DatePickerProps> = ({}) => {
   return (
     <View style={styles.datePickerContainer}>
       <View style={styles.labelContainer}></View>
-      <View style={styles.datePickerIndicator}></View>
+      <Divider></Divider>
     </View>
   );
 };

@@ -18,11 +18,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
   },
-  datePickerIndicator: {
-    height: 1,
-    alignSelf: 'stretch',
-    backgroundColor: colors.grey4,
-  },
 });
 
 export default styles;
