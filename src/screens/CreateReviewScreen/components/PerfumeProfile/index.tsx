@@ -16,13 +16,16 @@ import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import colors from '../../../../theme/color';
 import Divider from '../../../../components/Divider';
 import Segment from '../\bSegment';
+import { Perfume } from '../../../../types/perfume';
 
 interface PerfumeProfileProps {
+  perfume: Perfume;
   isOwned: boolean;
   isWishListed: boolean;
 }
 
 const PerfumeProfile: React.FC<PerfumeProfileProps> = ({
+  perfume,
   isOwned,
   isWishListed,
 }) => {
@@ -33,20 +36,29 @@ const PerfumeProfile: React.FC<PerfumeProfileProps> = ({
         style={styles.perfumeImageContainer}
         resizeMode="cover"
       ></ImageBackground>*/}
-      <View style={styles.perfumeImageContainer}>
-        <DefaultPerfumeLimeGreen
-          width="100%"
-          height="100%"
-        ></DefaultPerfumeLimeGreen>
-      </View>
+      {perfume.image ? (
+        <ImageBackground
+          source={require('../../../../assets/svgs/default_perfume_limegreen.png')}
+          style={styles.perfumeImageContainer}
+          resizeMode="cover"
+        ></ImageBackground>
+      ) : (
+        <View style={styles.perfumeImageContainer}>
+          <DefaultPerfumeLimeGreen
+            width="100%"
+            height="100%"
+          ></DefaultPerfumeLimeGreen>
+        </View>
+      )}
+
       <View style={styles.perfumeOverViewContainer}>
         <View style={styles.perfumeDetailContainer}>
           <View style={styles.perfumeInfoSection}>
             <Text variant="title2" weight="semiBold" color={colors.grey100}>
-              오 드 빠르펭
+              {perfume.koreanName}
             </Text>
             <Text variant="caption1" weight="medium" color={colors.grey54}>
-              샤넬
+              {perfume.brandKoreanName}
             </Text>
           </View>
           <View style={styles.perfumeStatusTagSection}>

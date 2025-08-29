@@ -10,11 +10,17 @@ import Divider from '../../components/Divider';
 import MultiSelectField from './components/MultiSelectField';
 import { useNavigation } from '@react-navigation/native';
 import { RootNavProp } from '../../types/navigationProps';
+import { Perfume } from '../../types/perfume';
+import DummySelectedPerfume from './dummy';
 
 const CreateReviewScreen: React.FC = () => {
-  const [memo, setMemo] = useState('');
+  const [isSubmitButtonDisabled, setIsSubmitButtonDisabled] = useState(true);
+  const [selectedPerfume, setSelectedPerfume] = useState<Perfume | null>(
+    DummySelectedPerfume,
+  );
   const [isOwned, setIsOwned] = useState(false);
   const [isWishListed, setIsWishListed] = useState(true);
+  const [memo, setMemo] = useState('');
   const genderOptions = [
     { value: '남성', isSelected: false },
     { value: '여성', isSelected: true },
@@ -38,7 +44,7 @@ const CreateReviewScreen: React.FC = () => {
     <SafeAreaView style={styles.safeAreaViewContainer}>
       <CustomStackHeader
         title="시향기 작성"
-        disabled={false}
+        disabled={isSubmitButtonDisabled}
         onPress={() => {
           console.log('시향기 작성 완료!');
         }}
@@ -50,10 +56,15 @@ const CreateReviewScreen: React.FC = () => {
         contentContainerStyle={styles.bodyContainer}
         showsVerticalScrollIndicator={false}
       >
-        <PerfumeProfile
-          isOwned={isOwned}
-          isWishListed={isWishListed}
-        ></PerfumeProfile>
+        {selectedPerfume ? (
+          <PerfumeProfile
+            perfume={selectedPerfume}
+            isOwned={isOwned}
+            isWishListed={isWishListed}
+          ></PerfumeProfile>
+        ) : (
+          <View></View>
+        )}
         <TextField
           label="나의 향기 기록"
           value={memo}

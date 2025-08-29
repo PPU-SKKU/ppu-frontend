@@ -21,6 +21,7 @@ const styles = StyleSheet.create({
   perfumeImage: {
     width: 64,
     height: 64,
+    borderRadius: 12,
   },
   metaInfoSection: {
     flexDirection: 'column',
