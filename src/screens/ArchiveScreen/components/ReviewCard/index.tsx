@@ -9,7 +9,7 @@ import {
 import styles from './styles';
 import { Text } from '../../../../components/Text';
 import colors from '../../../../theme/color';
-import PerfumeLimeGreen from '../../../../assets/svgs/perfume_limegreen.svg';
+import DefaultPerfumeLimeGreen from '../../../../assets/svgs/default_perfume_limegreen.svg';
 import HeartLikeIcon from '../../../../assets/svgs/heart_like.svg';
 import HeartUnlikeIcon from '../../../../assets/svgs/heart_unlike.svg';
 import MoreOptionsButton from '../../../../components/Buttons/MoreOptionsButton';
@@ -97,7 +97,7 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
         {perfumeImage ? (
           <Image source={{ uri: perfumeImage }} style={styles.perfumeImage} />
         ) : (
-          <PerfumeLimeGreen width={64} height={64} />
+          <DefaultPerfumeLimeGreen width={64} height={64} />
         )}
         <View style={styles.productInfoSection}>
           <Text variant="title2" weight="semiBold" color={colors.grey100}>
