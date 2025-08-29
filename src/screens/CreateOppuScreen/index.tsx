@@ -6,6 +6,8 @@ import {
   Pressable,
   FlatList,
   TextInput,
+  KeyboardAvoidingView,
+  Platform,
 } from 'react-native';
 import styles from './styles';
 import { Text } from '../../components/Text';
@@ -23,6 +25,7 @@ import TextField from '../../components/TextField';
 import CustomStackHeader from '../../components/CustomStackHeader';
 import { useNavigation } from '@react-navigation/native';
 import { RootNavProp } from '../../types/navigationProps';
+import Divider from '../../components/Divider';
 
 const dummyPerfume = {
   id: 1,
@@ -57,11 +60,7 @@ const dummyTags = [
 
 const CreateOppuScreen: React.FC = () => {
   const [perfumes, setPerfumes] = useState<PerfumeInfo[]>(dummyPerfumes);
-  const [photos, setPhotos] = useState<string[]>([
-    dummyPic,
-    dummyPic,
-    dummyPic,
-  ]);
+  const [photos, setPhotos] = useState<string[]>([dummyPic]);
   const [text, setText] = useState('');
   const navigation = useNavigation<RootNavProp>();
 
@@ -74,7 +73,6 @@ const CreateOppuScreen: React.FC = () => {
           navigation.goBack();
         }}
       />
-
       <ScrollView style={styles.content}>
         {/* 향수 설정 파트 */}
         <View style={styles.perfumeWrapper}>
@@ -190,6 +188,7 @@ const CreateOppuScreen: React.FC = () => {
             />
             <Toggle onToggle={() => {}} isOn={false} />
           </View>
+          <Divider />
           <Text variant="caption1" weight="regular" color={colors.grey54}>
             호드백은 향수를 사용했을 때 주변에서 들은 긍정적인 피드백을 의미해요
           </Text>
