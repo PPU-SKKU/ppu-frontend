@@ -3,7 +3,7 @@ import { SafeAreaView, View } from 'react-native';
 import styles from './styles';
 import { Text } from '../../components/Text';
 import colors from '../../theme/color';
-import PerfumeLimeGreen from '../../assets/svgs/perfume_limegreen.svg';
+import DefaultPerfumeLimeGreen from '../../assets/svgs/default_perfume_limegreen.svg';
 import CreateReviewButton from '../../components/CreateReviewButton';
 import Gradient from '../../components/Gradient';
 import ReviewFlatList from './components/ReviewFlatList';
@@ -33,7 +33,7 @@ const ArchiveScreen: React.FC = () => {
       <View style={styles.container}>
         {perfumeReviewList.length === 0 ? (
           <View style={styles.emptyContainer}>
-            <PerfumeLimeGreen></PerfumeLimeGreen>
+            <DefaultPerfumeLimeGreen></DefaultPerfumeLimeGreen>
             <Text variant="title1" weight="medium" color={colors.grey54}>
               나만의 시향기를 작성해보세요!
             </Text>
