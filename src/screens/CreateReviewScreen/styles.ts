@@ -5,7 +5,6 @@ const styles = StyleSheet.create({
   safeAreaViewContainer: {
     flex: 1,
     flexDirection: 'column',
-    backgroundColor: colors.limeGreenLight,
   },
 
   bodyContainer: {

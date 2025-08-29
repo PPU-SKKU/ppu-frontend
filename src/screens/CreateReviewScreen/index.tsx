@@ -37,7 +37,6 @@ const CreateReviewScreen: React.FC = () => {
   return (
     <SafeAreaView style={styles.safeAreaViewContainer}>
       <CustomStackHeader
-        gradientStartColor={colors.limeGreenLight}
         title="시향기 작성"
         disabled={false}
         onPress={() => {

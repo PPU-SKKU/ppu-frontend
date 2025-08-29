@@ -1,8 +1,15 @@
 import React from 'react';
-import { ImageBackground, TextInput, TextInputProps, View } from 'react-native';
+import {
+  ImageBackground,
+  StyleSheet,
+  TextInput,
+  TextInputProps,
+  View,
+} from 'react-native';
 import styles from './styles';
 import { Text } from '../../../../components/Text';
 import StateTag from '../StateTag';
+import DefaultPerfumeLimeGreen from '../../../../assets/svgs/default_perfume_limegreen.svg';
 import EntypoIcon from 'react-native-vector-icons/Entypo';
 import FontAwesome6Icon from 'react-native-vector-icons/FontAwesome6';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
@@ -21,11 +28,17 @@ const PerfumeProfile: React.FC<PerfumeProfileProps> = ({
 }) => {
   return (
     <View style={styles.perfumeProfileContainer}>
-      <ImageBackground
+      {/*<ImageBackground
         source={require('../../../../assets/svgs/default_perfume_limegreen.png')}
-        style={styles.imageBackgroundContainer}
+        style={styles.perfumeImageContainer}
         resizeMode="cover"
-      ></ImageBackground>
+      ></ImageBackground>*/}
+      <View style={styles.perfumeImageContainer}>
+        <DefaultPerfumeLimeGreen
+          width="100%"
+          height="100%"
+        ></DefaultPerfumeLimeGreen>
+      </View>
       <View style={styles.perfumeOverViewContainer}>
         <View style={styles.perfumeDetailContainer}>
           <View style={styles.perfumeInfoSection}>
