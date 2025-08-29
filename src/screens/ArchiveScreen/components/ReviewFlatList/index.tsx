@@ -3,10 +3,6 @@ import { FlatList, View } from 'react-native'; // 방금 만든 컴포넌트
 import ReviewCard from '../ReviewCard';
 import { Review } from '../../../../types/review';
 import styles from './styles';
-import { Text } from '../../../../components/Text';
-import CreateReviewButton from '../../../../components/CreateReviewButton';
-import colors from '../../../../theme/color';
-import PerfumeLimeGreen from '../../../../assets/svgs/perfume_limegreen.svg';
 
 type Props = { data: Review[] };
 
