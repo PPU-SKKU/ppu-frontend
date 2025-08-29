@@ -55,7 +55,12 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     gap: 12,
   },
-
+  textInput: {
+    fontFamily: 'Pretendard-Regular',
+    fontSize: 16,
+    lineHeight: 24,
+    color: colors.grey100,
+  },
   feedbackHeader: {
     flexDirection: 'row',
     justifyContent: 'center',

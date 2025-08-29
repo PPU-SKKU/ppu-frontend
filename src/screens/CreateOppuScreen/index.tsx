@@ -5,6 +5,7 @@ import {
   SafeAreaView,
   Pressable,
   FlatList,
+  TextInput,
 } from 'react-native';
 import styles from './styles';
 import { Text } from '../../components/Text';
@@ -18,6 +19,7 @@ import { PerfumeInfo } from '../../types/perfume';
 import PhotoSlot from './components/PhotoSlot';
 import IconButton from './components/IconButton';
 import ClickableOppuTagBadge from '../../components/OppuTagBadge/ClickableOppuTagBadge';
+import TextField from '../../components/TextField';
 
 const dummyPerfume = {
   id: 1,
@@ -57,6 +59,7 @@ const CreateOppuScreen: React.FC = () => {
     dummyPic,
     dummyPic,
   ]);
+  const [text, setText] = useState('');
 
   return (
     <SafeAreaView style={styles.container}>
@@ -162,6 +165,15 @@ const CreateOppuScreen: React.FC = () => {
 
         <View style={styles.optionalWrapper}>
           <SubtitleHeaderText title="기록" />
+          <TextInput
+            style={styles.textInput}
+            value={text}
+            onChangeText={setText}
+            placeholder={'향수와 함께한 오늘을 기록하세요'}
+            placeholderTextColor={colors.grey31}
+            multiline={true}
+            numberOfLines={5}
+          />
         </View>
 
         <Spacer />
@@ -178,6 +190,8 @@ const CreateOppuScreen: React.FC = () => {
             호드백은 향수를 사용했을 때 주변에서 들은 긍정적인 피드백을 의미해요
           </Text>
         </View>
+
+        <View style={{ height: 78 }} />
       </ScrollView>
     </SafeAreaView>
   );
