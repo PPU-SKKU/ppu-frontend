@@ -8,6 +8,8 @@ import PerfumeProfile from './components/PerfumeProfile';
 import SegmentedField from './components/SegmentedField';
 import Divider from '../../components/Divider';
 import MultiSelectField from './components/MultiSelectField';
+import { useNavigation } from '@react-navigation/native';
+import { RootNavProp } from '../../types/navigationProps';
 
 const CreateReviewScreen: React.FC = () => {
   const [memo, setMemo] = useState('');
@@ -30,6 +32,7 @@ const CreateReviewScreen: React.FC = () => {
     { value: '가을', isSelected: false },
     { value: '겨울', isSelected: false },
   ];
+  const navigation = useNavigation<RootNavProp>();
 
   return (
     <SafeAreaView style={styles.safeAreaViewContainer}>
@@ -39,6 +42,9 @@ const CreateReviewScreen: React.FC = () => {
         disabled={false}
         onPress={() => {
           console.log('시향기 작성 완료!');
+        }}
+        onBackPress={() => {
+          navigation.goBack();
         }}
       />
       <ScrollView
