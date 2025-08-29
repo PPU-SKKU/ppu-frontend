@@ -11,12 +11,15 @@ import MultiSelectField from './components/MultiSelectField';
 import { useNavigation } from '@react-navigation/native';
 import { RootNavProp } from '../../types/navigationProps';
 import { Perfume } from '../../types/perfume';
-import DummySelectedPerfume from './dummy';
+import {
+  DummySelectedPerfumeNoImage,
+  DummySelectedPerfumeWithImage,
+} from './dummy';
 
 const CreateReviewScreen: React.FC = () => {
   const [isSubmitButtonDisabled, setIsSubmitButtonDisabled] = useState(true);
   const [selectedPerfume, setSelectedPerfume] = useState<Perfume | null>(
-    DummySelectedPerfume,
+    DummySelectedPerfumeWithImage,
   );
   const [isOwned, setIsOwned] = useState(false);
   const [isWishListed, setIsWishListed] = useState(true);

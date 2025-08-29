@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  Image,
   ImageBackground,
   StyleSheet,
   TextInput,
@@ -37,11 +38,13 @@ const PerfumeProfile: React.FC<PerfumeProfileProps> = ({
         resizeMode="cover"
       ></ImageBackground>*/}
       {perfume.image ? (
-        <ImageBackground
-          source={require('../../../../assets/svgs/default_perfume_limegreen.png')}
-          style={styles.perfumeImageContainer}
-          resizeMode="cover"
-        ></ImageBackground>
+        <View style={styles.perfumeImageContainer}>
+          <Image
+            source={{ uri: perfume.image }}
+            style={styles.perfumeImage}
+            resizeMode="cover"
+          ></Image>
+        </View>
       ) : (
         <View style={styles.perfumeImageContainer}>
           <DefaultPerfumeLimeGreen

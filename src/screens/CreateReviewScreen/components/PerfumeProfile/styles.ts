@@ -12,7 +12,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-
+  perfumeImage: {
+    width: '100%',
+    height: '100%',
+  },
   perfumeOverViewContainer: {
     marginTop: -120,
     alignSelf: 'stretch',
