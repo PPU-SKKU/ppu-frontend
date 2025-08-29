@@ -1,6 +1,7 @@
 import { View, StyleSheet, Pressable } from 'react-native';
 import { Week } from '../dateUtils';
 import styles from './styles';
+import FeatherIcon from 'react-native-vector-icons/Feather';
 import NextIcon from '../../../../assets/svgs/chevron_right.svg';
 import PrevIcon from '../../../../assets/svgs/chevron_left.svg';
 import { Text } from '../../../../components/Text';
@@ -17,19 +18,6 @@ interface MonthlyCalendarProps {
   onNextMonth?: () => void;
   onPrevMonth?: () => void;
 }
-
-interface NavButtonProps {
-  onPress?: () => void;
-  icon: React.ReactNode;
-}
-
-const NavButton: React.FC<NavButtonProps> = ({ onPress, icon }) => {
-  return (
-    <Pressable onPress={onPress} style={styles.navButton}>
-      {icon}
-    </Pressable>
-  );
-};
 
 const MonthlyCalendar: React.FC<MonthlyCalendarProps> = ({
   monthWeeks,
@@ -52,10 +40,7 @@ const MonthlyCalendar: React.FC<MonthlyCalendarProps> = ({
         />
         <View>
           <View style={styles.headers}>
-            <NavButton
-              onPress={onPrevMonth}
-              icon={<PrevIcon width={24} height={24} />}
-            />
+            <NavButton onPress={onPrevMonth} iconName="chevron-left" />
             <View style={styles.titleContainer}>
               <Text variant="caption1" weight="medium" color={colors.grey54}>
                 {year}년
@@ -64,10 +49,7 @@ const MonthlyCalendar: React.FC<MonthlyCalendarProps> = ({
                 {month}월
               </Text>
             </View>
-            <NavButton
-              onPress={onNextMonth}
-              icon={<NextIcon width={24} height={24} />}
-            />
+            <NavButton onPress={onNextMonth} iconName="chevron-right" />
           </View>
           <View style={styles.body}>
             <WeekDayLabels />
@@ -89,6 +71,21 @@ const MonthlyCalendar: React.FC<MonthlyCalendarProps> = ({
         </View>
       </View>
     </View>
+  );
+};
+
+type FeatherIconName = 'chevron-left' | 'chevron-right';
+
+interface NavButtonProps {
+  onPress?: () => void;
+  iconName: FeatherIconName;
+}
+
+const NavButton: React.FC<NavButtonProps> = ({ onPress, iconName }) => {
+  return (
+    <Pressable style={styles.navButton} onPress={onPress}>
+      <FeatherIcon name={iconName} size={24} color={colors.grey100} />
+    </Pressable>
   );
 };
 

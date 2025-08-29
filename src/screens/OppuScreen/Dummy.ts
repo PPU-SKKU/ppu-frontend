@@ -10,7 +10,8 @@ export const DummyOppuItem: OppuItemProps = {
   },
   perfumes: [
     {
-      perfum: {
+      id: 1,
+      perfume: {
         id: 1,
         brandKoreanName: '톰 포드',
         brandOriginalName: '',
@@ -21,7 +22,8 @@ export const DummyOppuItem: OppuItemProps = {
       spray: 3,
     },
     {
-      perfum: {
+      id: 2,
+      perfume: {
         id: 2,
         brandKoreanName: '아틀리에 코롱',
         brandOriginalName: '',

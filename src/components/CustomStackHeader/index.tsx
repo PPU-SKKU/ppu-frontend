@@ -14,6 +14,7 @@ interface CustomStackHeaderProps {
   title?: string;
   disabled?: boolean;
   onPress: () => void;
+  onBackPress: () => void;
 }
 
 const CustomStackHeader: React.FC<CustomStackHeaderProps> = ({
@@ -21,19 +22,15 @@ const CustomStackHeader: React.FC<CustomStackHeaderProps> = ({
   title = '',
   disabled = true,
   onPress,
+  onBackPress,
 }) => {
-  const navigation = useNavigation<RootNavProp>();
   return (
     <Gradient
       colors={[gradientStartColor, colors.lightGrey]}
       locations={[0, 1]}
     >
       <View style={styles.header}>
-        <BackButton
-          onPress={() => {
-            navigation.goBack();
-          }}
-        ></BackButton>
+        <BackButton onPress={onBackPress}></BackButton>
         <Text variant="title2" weight="extraBold">
           {title}
         </Text>
