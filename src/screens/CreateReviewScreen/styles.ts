@@ -16,6 +16,12 @@ const styles = StyleSheet.create({
     gap: 20,
     backgroundColor: colors.lightGrey,
   },
+  optionalContainer: {
+    alignSelf: 'stretch',
+    flexDirection: 'column',
+    padding: 20,
+    gap: 20,
+  },
 
   ratingContainer: {},
   ratingLabelSection: {},
