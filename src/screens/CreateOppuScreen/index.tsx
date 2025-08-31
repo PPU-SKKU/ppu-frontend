@@ -6,12 +6,9 @@ import {
   Pressable,
   FlatList,
   TextInput,
-  KeyboardAvoidingView,
-  Platform,
 } from 'react-native';
 import styles from './styles';
 import { Text } from '../../components/Text';
-import SubmitButton from '../../components/Buttons/SubmitButton';
 import { TitleHeaderText, SubtitleHeaderText } from './components/HeaderText';
 import colors from '../../theme/color';
 import PlusIcon from '../../assets/svgs/plus.svg';
@@ -21,7 +18,6 @@ import { PerfumeInfo } from '../../types/perfume';
 import PhotoSlot from './components/PhotoSlot';
 import IconButton from './components/IconButton';
 import ClickableOppuTagBadge from '../../components/OppuTagBadge/ClickableOppuTagBadge';
-import TextField from '../../components/TextField';
 import CustomStackHeader from '../../components/CustomStackHeader';
 import { useNavigation } from '@react-navigation/native';
 import { RootNavProp } from '../../types/navigationProps';
