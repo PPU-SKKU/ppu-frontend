@@ -3,7 +3,6 @@ import {
   View,
   FlatList,
   Pressable,
-  Text,
   Alert,
   Modal,
   SafeAreaView,
@@ -12,6 +11,7 @@ import { CameraRoll } from '@react-native-camera-roll/camera-roll';
 import styles from './styles';
 import PhotoItem from './PhotoItem';
 import { requestPermission } from './permission';
+import { Text } from '../Text';
 
 interface CustomGalleryProps {
   visible: boolean;
@@ -100,16 +100,18 @@ const CustomGallery: React.FC<CustomGalleryProps> = ({
       <SafeAreaView style={styles.container}>
         <View style={styles.header}>
           <Pressable onPress={onCancel} style={styles.headerButton}>
-            <Text style={styles.headerButtonText}>취소</Text>
+            <Text variant="body" weight="regular">
+              취소
+            </Text>
           </Pressable>
-          <Text style={styles.headerTitle}>
+          <Text variant="title1" weight="semiBold">
             사진 선택 ({selected.length}/{maxSelect})
           </Text>
           <Pressable
             onPress={() => onConfirm(selected)}
             style={styles.headerButton}
           >
-            <Text style={[styles.headerButtonText, styles.confirmText]}>
+            <Text variant="body" weight="regular">
               확인
             </Text>
           </Pressable>
