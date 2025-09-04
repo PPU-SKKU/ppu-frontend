@@ -28,13 +28,13 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     gap: 4,
   },
-  productDetailSection: {
+  perfumeDetailSection: {
     flexDirection: 'row',
     alignItems: 'center',
     alignSelf: 'stretch',
     gap: 12,
   },
-  productInfoSection: {
+  perfumeInfoSection: {
     flex: 1,
     flexDirection: 'column',
     alignItems: 'flex-start',
