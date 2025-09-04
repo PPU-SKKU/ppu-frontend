@@ -13,7 +13,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0.4)',
     justifyContent: 'flex-end',
     alignItems: 'center',
-    paddingBottom: 96,
   },
   contentContainer: {
     flexDirection: 'row',

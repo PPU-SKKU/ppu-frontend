@@ -5,6 +5,7 @@ import {
   Text as RNText,
   Modal,
   Pressable,
+  SafeAreaView,
 } from 'react-native';
 import type { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import HomeDefaultIcon from '../../assets/svgs/home_default.svg';
@@ -33,7 +34,7 @@ const BottomTabBar: React.FC<BottomTabBarProps> = ({ state, navigation }) => {
             setVisible(false);
           }}
         >
-          <View style={styles.contentContainer}>
+          <SafeAreaView style={styles.contentContainer}>
             <Pressable
               style={styles.createButton}
               onPress={() => {
@@ -56,7 +57,7 @@ const BottomTabBar: React.FC<BottomTabBarProps> = ({ state, navigation }) => {
                 시향 작성하기
               </Text>
             </Pressable>
-          </View>
+          </SafeAreaView>
         </Pressable>
       </Modal>
       {/* 홈 탭 */}
