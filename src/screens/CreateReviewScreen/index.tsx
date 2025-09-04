@@ -26,19 +26,19 @@ const CreateReviewScreen: React.FC = () => {
   const [isOwned, setIsOwned] = useState(false);
   const [isWishListed, setIsWishListed] = useState(true);
   const [memo, setMemo] = useState('');
-  const genderOptions = [
+  const [genderOptions, setGenderOptions] = useState([
     { value: '남성', isSelected: false },
     { value: '여성', isSelected: true },
     { value: '공용', isSelected: false },
-  ];
+  ]);
   const [gender, setGender] = useState(genderOptions[1].value);
   const [wearStatus, setWearStatus] = useState(false);
-  const seasonOptions = [
+  const [seasonOptions, setSeasonOptions] = useState([
     { value: '봄', isSelected: true },
     { value: '여름', isSelected: true },
     { value: '가을', isSelected: false },
     { value: '겨울', isSelected: false },
-  ];
+  ]);
   const navigation = useNavigation<RootNavProp>();
 
   return (
@@ -79,6 +79,7 @@ const CreateReviewScreen: React.FC = () => {
             label="성별"
             description="어떤 성별을 위해 만들어진 향인가요?"
             options={genderOptions}
+            setOptions={setGenderOptions}
             value={gender}
             onSelect={value => {
               setGender(value);

@@ -9,6 +9,7 @@ interface SegmentedFieldProps {
   label: string;
   description: string;
   options: Option[];
+  setOptions?: React.Dispatch<React.SetStateAction<Option[]>>;
   value: string;
   onSelect: (value: string) => void;
 }
@@ -17,9 +18,16 @@ const SegmentedField: React.FC<SegmentedFieldProps> = ({
   label,
   description,
   options,
+  setOptions,
   value,
   onSelect,
 }) => {
+  const handlePress = (selectedValue: string) => {
+    onSelect(selectedValue); // 선택된 값 state 변경
+    setOptions?.(prevOption =>
+      prevOption.map(o => ({ ...o, isSelected: o.value === selectedValue })),
+    );
+  };
   return (
     <View style={styles.segmentedFieldContainer}>
       <View style={styles.labelDescriptionContainer}>
@@ -37,12 +45,18 @@ const SegmentedField: React.FC<SegmentedFieldProps> = ({
               label={option.value}
               isSelected={option.isSelected}
               key={key}
+              onPress={() => {
+                handlePress(option.value);
+              }}
             />
           ) : (
             <Segment
               label={option.value}
               isSelected={option.isSelected}
               key={key}
+              onPress={() => {
+                handlePress(option.value);
+              }}
             />
           ),
         )}
