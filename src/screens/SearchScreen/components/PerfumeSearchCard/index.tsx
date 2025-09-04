@@ -4,7 +4,7 @@ import { Image, Pressable, View } from 'react-native';
 import { Text } from '../../../../components/Text';
 import styles from './styles';
 import colors from '../../../../theme/color';
-import DefaultPerfumeLimeGreen from '../../../assets/svgs/default_perfume_limegreen.svg';
+import DefaultPerfumeLimeGreen from '../../../../assets/svgs/default_perfume_limegreen.svg';
 import EntypoIcon from 'react-native-vector-icons/Entypo';
 
 interface PerfumeSearchCardProps {
