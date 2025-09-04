@@ -1,20 +1,20 @@
 // index.tsx
-import React, { useState, useCallback } from 'react';
+import React from 'react';
 import { Image, Pressable, View } from 'react-native';
+import { Text } from '../../../../components/Text';
 import styles from './styles';
-import { Text } from '../../../components/Text';
-import colors from '../../../theme/color';
+import colors from '../../../../theme/color';
 import DefaultPerfumeLimeGreen from '../../../assets/svgs/default_perfume_limegreen.svg';
 import EntypoIcon from 'react-native-vector-icons/Entypo';
 
-interface PerfumeCardProps {
+interface PerfumeSearchCardProps {
   perfumeImage: string | null;
   perfumeName: string;
   perfumeBrand: string;
   onPress?: () => void;
 }
 
-const PerfumeCard: React.FC<PerfumeCardProps> = ({
+const PerfumeSearchCard: React.FC<PerfumeSearchCardProps> = ({
   perfumeImage,
   perfumeName,
   perfumeBrand,
@@ -46,4 +46,4 @@ const PerfumeCard: React.FC<PerfumeCardProps> = ({
   );
 };
 
-export default PerfumeCard;
+export default PerfumeSearchCard;
