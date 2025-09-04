@@ -55,8 +55,8 @@ const CreateReviewScreen: React.FC = () => {
         onConfirm={() => {
           navigation.goBack();
         }}
-        confirmText="취소"
-        cancelText="나가기"
+        confirmText="나가기"
+        cancelText="취소"
         backgroundColor={colors.grey100}
       >
         {/* 모달 안에 커스텀 UI 넣기 가능 */}
