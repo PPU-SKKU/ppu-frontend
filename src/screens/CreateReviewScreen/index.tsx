@@ -17,6 +17,7 @@ import {
 } from './dummy';
 import { Text } from '../../components/Text';
 import Toggle from '../../components/Toggle';
+import BasicModal from '../../components/Modal';
 
 const CreateReviewScreen: React.FC = () => {
   const [isSubmitButtonDisabled, setIsSubmitButtonDisabled] = useState(true);
@@ -41,8 +42,28 @@ const CreateReviewScreen: React.FC = () => {
   ]);
   const navigation = useNavigation<RootNavProp>();
 
+  const [isCancelEditingModalVisible, setIsCancelEditingModalVisible] =
+    useState(false);
+
   return (
     <SafeAreaView style={styles.safeAreaViewContainer}>
+      <BasicModal
+        visible={isCancelEditingModalVisible}
+        title="작성 취소"
+        description="작성 중인 내용이 모두 사라져요!"
+        onClose={() => setIsCancelEditingModalVisible(false)}
+        onConfirm={() => {
+          navigation.goBack();
+        }}
+        confirmText="취소"
+        cancelText="나가기"
+        backgroundColor={colors.grey100}
+      >
+        {/* 모달 안에 커스텀 UI 넣기 가능 */}
+        {/* <View>
+          <Text></Text>
+        </View>*/}
+      </BasicModal>
       <CustomStackHeader
         title="시향기 작성"
         disabled={isSubmitButtonDisabled}
@@ -50,7 +71,7 @@ const CreateReviewScreen: React.FC = () => {
           console.log('시향기 작성 완료!');
         }}
         onBackPress={() => {
-          navigation.goBack();
+          setIsCancelEditingModalVisible(true);
         }}
       />
       <ScrollView

@@ -128,7 +128,7 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
         {/* 측정을 위해 한 번 렌더 (숨김 X) */}
         {!measured && (
           <Text
-            variant="body"
+            variant="body1"
             weight="regular"
             color={colors.grey54}
             onTextLayout={onTextLayout}
@@ -139,10 +139,10 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
 
         {/* 실제 표시용 */}
         {expanded ? (
-          <Text variant="body" weight="regular" color={colors.grey54}>
+          <Text variant="body1" weight="regular" color={colors.grey54}>
             {fullText}{' '}
             <Text
-              variant="body"
+              variant="body1"
               weight="semiBold"
               onPress={() => setExpanded(false)}
               style={styles.inlineLink}
@@ -152,13 +152,13 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
             </Text>
           </Text>
         ) : (
-          <Text variant="body" weight="regular" color={colors.grey54}>
+          <Text variant="body1" weight="regular" color={colors.grey54}>
             {showReadMore ? (
               <>
                 {collapsedText}
                 {'… '}
                 <Text
-                  variant="body"
+                  variant="body1"
                   weight="semiBold"
                   onPress={() => setExpanded(true)}
                   style={styles.inlineLink}
