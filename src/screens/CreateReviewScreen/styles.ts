@@ -15,13 +15,11 @@ const styles = StyleSheet.create({
     gap: 20,
     backgroundColor: colors.lightGrey,
   },
-
   switchPerfumeButtonContainer: {
     padding: 0,
     alignSelf: 'stretch',
     alignItems: 'flex-end',
   },
-
   switchPerfumeButton: {
     flexDirection: 'row',
     padding: 12,

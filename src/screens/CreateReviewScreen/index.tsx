@@ -80,7 +80,7 @@ const CreateReviewScreen: React.FC = () => {
         contentContainerStyle={styles.bodyContainer}
         showsVerticalScrollIndicator={false}
       >
-        <View style={styles.switchPerfumeButtonContainer}>
+        {/* <View style={styles.switchPerfumeButtonContainer}>
           <Pressable
             style={styles.switchPerfumeButton}
             onPress={() => {
@@ -96,7 +96,7 @@ const CreateReviewScreen: React.FC = () => {
               color={colors.grey100}
             ></EntypoIcon>
           </Pressable>
-        </View>
+        </View>*/}
         <PerfumeProfile
           perfume={selectedPerfume}
           isOwned={isOwned}
