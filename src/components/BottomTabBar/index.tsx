@@ -1,5 +1,11 @@
-import React from 'react';
-import { View, TouchableOpacity, Text as RNText } from 'react-native';
+import React, { useState } from 'react';
+import {
+  View,
+  TouchableOpacity,
+  Text as RNText,
+  Modal,
+  Pressable,
+} from 'react-native';
 import type { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import HomeDefaultIcon from '../../assets/svgs/home_default.svg';
 import HomeActiveIcon from '../../assets/svgs/home_active.svg';
@@ -13,10 +19,41 @@ import MyActiveIcon from '../../assets/svgs/my_active.svg';
 import { Text } from '../Text';
 import styles from './styles';
 import colors from '../../theme/color';
+import BasicModal from '../Modal';
 
 const BottomTabBar: React.FC<BottomTabBarProps> = ({ state, navigation }) => {
+  const [visible, setVisible] = useState(false);
   return (
     <View style={styles.container}>
+      {/* 추가 화면 모달 */}
+      <Modal visible={visible} transparent animationType="fade">
+        <View style={styles.backgroundContainer}>
+          <View style={styles.contentContainer}>
+            <Pressable
+              style={styles.createButton}
+              onPress={() => {
+                setVisible(false);
+                navigation.navigate('CreateOppu');
+              }}
+            >
+              <Text variant="body" weight="semiBold" color={colors.grey100}>
+                오뿌 작성하기
+              </Text>
+            </Pressable>
+            <Pressable
+              style={styles.createButton}
+              onPress={() => {
+                setVisible(false);
+                navigation.navigate('CreateReview');
+              }}
+            >
+              <Text variant="body" weight="semiBold" color={colors.grey100}>
+                시향 작성하기
+              </Text>
+            </Pressable>
+          </View>
+        </View>
+      </Modal>
       {/* 홈 탭 */}
       <TouchableOpacity
         style={styles.tab}
@@ -58,7 +95,10 @@ const BottomTabBar: React.FC<BottomTabBarProps> = ({ state, navigation }) => {
       {/* Add 탭 */}
       <TouchableOpacity
         style={styles.tab}
-        onPress={() => navigation.navigate('AddStack')}
+        onPress={() => {
+          // navigation.navigate('AddStack')
+          setVisible(true);
+        }}
         accessibilityRole="button"
         activeOpacity={0.8}
       >
