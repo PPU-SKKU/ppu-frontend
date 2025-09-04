@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View } from 'react-native';
 import styles from './styles';
 import { Text } from '../../../../components/Text';
@@ -22,10 +22,13 @@ const SegmentedField: React.FC<SegmentedFieldProps> = ({
   value,
   onSelect,
 }) => {
-  const handlePress = (selectedValue: string) => {
-    onSelect(selectedValue); // 선택된 값 state 변경
+  useEffect(() => {
+    console.log('options', options);
+  }, [options]);
+  const handlePress = (pressedValue: string) => {
+    onSelect(pressedValue); // 선택된 값 state 변경
     setOptions?.(prevOption =>
-      prevOption.map(o => ({ ...o, isSelected: o.value === selectedValue })),
+      prevOption.map(o => ({ ...o, isSelected: o.value === pressedValue })),
     );
   };
   return (
@@ -42,18 +45,18 @@ const SegmentedField: React.FC<SegmentedFieldProps> = ({
         {options.map((option, key) =>
           option.value === value ? (
             <Segment
+              key={option.value}
               label={option.value}
               isSelected={option.isSelected}
-              key={key}
               onPress={() => {
                 handlePress(option.value);
               }}
             />
           ) : (
             <Segment
+              key={option.value}
               label={option.value}
               isSelected={option.isSelected}
-              key={key}
               onPress={() => {
                 handlePress(option.value);
               }}

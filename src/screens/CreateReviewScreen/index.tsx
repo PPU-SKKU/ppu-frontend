@@ -1,4 +1,4 @@
-import { SafeAreaView, ScrollView, View } from 'react-native';
+import { BackHandler, SafeAreaView, ScrollView, View } from 'react-native';
 import CustomStackHeader from '../../components/CustomStackHeader';
 import colors from '../../theme/color';
 import styles from './styles';
@@ -86,15 +86,6 @@ const CreateReviewScreen: React.FC = () => {
             }}
           ></SegmentedField>
           <Divider></Divider>
-          {/*<SegmentedField
-            label="착향 여부"
-            description="이 향수를 실제로 착용해보셨나요?"
-            options={wearStatusOptions}
-            value={wearStatus}
-            onSelect={value => {
-              setWearStatus(value);
-            }
-          ></SegmentedField>}*/}
           <View style={styles.isTestedContainer}>
             <View style={styles.isTestedTextContainer}>
               <Text variant="bodyCompact" weight="semiBold">
@@ -117,7 +108,7 @@ const CreateReviewScreen: React.FC = () => {
             label="계절감"
             description="향이 잘 어울리는 계절을 모두 선택해주세요"
             options={seasonOptions}
-            onSelect={() => {}}
+            setOptions={setSeasonOptions}
           ></MultiSelectField>
         </View>
       </ScrollView>
