@@ -15,6 +15,16 @@ const styles = StyleSheet.create({
     gap: 20,
     backgroundColor: colors.lightGrey,
   },
+  switchPerfumeButton: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 16,
+    gap: 8,
+    alignSelf: 'stretch',
+    borderRadius: 16,
+    backgroundColor: colors.grey100,
+  },
   optionalContainer: {
     alignSelf: 'stretch',
     flexDirection: 'column',
@@ -31,11 +41,6 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     gap: 8,
   },
-  toggleContainer: {},
-  ratingContainer: {},
-  ratingLabelSection: {},
-  ratingOptions: {},
-  ratingDescriptionSection: {},
 });
 
 export default styles;

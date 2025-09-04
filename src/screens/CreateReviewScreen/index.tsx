@@ -18,10 +18,11 @@ import {
 import { Text } from '../../components/Text';
 import Toggle from '../../components/Toggle';
 import BasicModal from '../../components/Modal';
+import { Pressable } from 'react-native';
 
 const CreateReviewScreen: React.FC = () => {
   const [isSubmitButtonDisabled, setIsSubmitButtonDisabled] = useState(true);
-  const [selectedPerfume, setSelectedPerfume] = useState<Perfume | null>(
+  const [selectedPerfume, setSelectedPerfume] = useState<Perfume>(
     DummySelectedPerfumeWithImage,
   );
   const [isOwned, setIsOwned] = useState(false);
@@ -78,15 +79,22 @@ const CreateReviewScreen: React.FC = () => {
         contentContainerStyle={styles.bodyContainer}
         showsVerticalScrollIndicator={false}
       >
-        {selectedPerfume ? (
-          <PerfumeProfile
-            perfume={selectedPerfume}
-            isOwned={isOwned}
-            isWishListed={isWishListed}
-          ></PerfumeProfile>
-        ) : (
-          <View></View>
-        )}
+        <Pressable
+          style={styles.switchPerfumeButton}
+          onPress={() => {
+            console.log('향수 변경 클릭');
+          }}
+        >
+          <Text variant="body1" weight="semiBold" color={colors.white}>
+            향수 변경
+          </Text>
+        </Pressable>
+        <PerfumeProfile
+          perfume={selectedPerfume}
+          isOwned={isOwned}
+          isWishListed={isWishListed}
+        ></PerfumeProfile>
+
         <TextField
           label="나의 향기 기록"
           value={memo}
