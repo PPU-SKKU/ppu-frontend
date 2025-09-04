@@ -22,7 +22,9 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     gap: 4,
   },
-  chevronRightContainer: {},
+  chevronRightContainer: {
+    padding: 16,
+  },
 });
 
 export default styles;

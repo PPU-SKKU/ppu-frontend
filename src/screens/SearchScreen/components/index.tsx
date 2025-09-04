@@ -35,13 +35,13 @@ const PerfumeCard: React.FC<PerfumeCardProps> = ({
           {perfumeBrand}
         </Text>
       </View>
-      <View style={styles.chevronRightContainer}>
+      <Pressable style={styles.chevronRightContainer}>
         <EntypoIcon
           name="chevron-right"
           size={24}
           color={colors.grey100}
         ></EntypoIcon>
-      </View>
+      </Pressable>
     </Pressable>
   );
 };
