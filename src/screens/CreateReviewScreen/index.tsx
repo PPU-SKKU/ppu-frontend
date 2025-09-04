@@ -25,8 +25,8 @@ const CreateReviewScreen: React.FC = () => {
   const [selectedPerfume, setSelectedPerfume] = useState<Perfume>(
     DummySelectedPerfumeWithImage,
   );
-  const [isOwned, setIsOwned] = useState(false);
-  const [isWishListed, setIsWishListed] = useState(true);
+  const [isOwned, setIsOwned] = useState(true);
+  const [isWished, setIsWished] = useState(true);
   const [memo, setMemo] = useState('');
   const [genderOptions, setGenderOptions] = useState([
     { value: '남성', isSelected: false },
@@ -92,7 +92,7 @@ const CreateReviewScreen: React.FC = () => {
         <PerfumeProfile
           perfume={selectedPerfume}
           isOwned={isOwned}
-          isWishListed={isWishListed}
+          isWished={isWished}
         ></PerfumeProfile>
 
         <TextField

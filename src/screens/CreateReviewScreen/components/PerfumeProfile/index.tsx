@@ -22,13 +22,13 @@ import { Perfume } from '../../../../types/perfume';
 interface PerfumeProfileProps {
   perfume: Perfume;
   isOwned: boolean;
-  isWishListed: boolean;
+  isWished: boolean;
 }
 
 const PerfumeProfile: React.FC<PerfumeProfileProps> = ({
   perfume,
   isOwned,
-  isWishListed,
+  isWished,
 }) => {
   return (
     <View style={styles.perfumeProfileContainer}>
@@ -65,33 +65,27 @@ const PerfumeProfile: React.FC<PerfumeProfileProps> = ({
             </Text>
           </View>
           <View style={styles.perfumeStatusTagSection}>
-            <StateTag
-              icon={
-                isOwned ? (
+            {isOwned && (
+              <StateTag
+                icon={
                   <EntypoIcon
                     name="check"
                     size={10}
                     color={colors.grey100}
                   ></EntypoIcon>
-                ) : (
-                  <FontAwesome6Icon name="xmark"></FontAwesome6Icon>
-                )
-              }
-              label={isOwned ? '보유중' : '미보유'}
-            ></StateTag>
+                }
+                label={'HAVE'}
+              ></StateTag>
+            )}
             <StateTag
               icon={
-                isWishListed ? (
-                  <FontAwesomeIcon
-                    name="bookmark"
-                    size={10}
-                    color={colors.grey100}
-                  ></FontAwesomeIcon>
-                ) : (
-                  <FontAwesomeIcon name="bookmark-o"></FontAwesomeIcon>
-                )
+                <FontAwesomeIcon
+                  name="bookmark"
+                  size={10}
+                  color={colors.grey100}
+                ></FontAwesomeIcon>
               }
-              label={isWishListed ? '등록됨' : '등록안됨'}
+              label={'WISH'}
             ></StateTag>
           </View>
         </View>
