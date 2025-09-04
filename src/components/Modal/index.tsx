@@ -52,7 +52,7 @@ const BasicModal: React.FC<BasicModalProps> = ({
 
           {/* 설명 */}
           {description && (
-            <Text variant="body2" color={colors.grey100}>
+            <Text style={styles.descriptionText} color={colors.grey100}>
               {description}
             </Text>
           )}
@@ -64,7 +64,7 @@ const BasicModal: React.FC<BasicModalProps> = ({
           <View style={styles.buttonContainer}>
             {/* 취소 버튼 */}
             <Pressable style={styles.cancelButton} onPress={onClose}>
-              <Text variant="body1" weight="bold" color={colors.grey100}>
+              <Text variant="body" weight="bold" color={colors.grey100}>
                 {cancelText}
               </Text>
             </Pressable>
@@ -78,7 +78,7 @@ const BasicModal: React.FC<BasicModalProps> = ({
                   onClose();
                 }}
               >
-                <Text variant="body1" weight="bold" color={colors.white}>
+                <Text variant="body" weight="bold" color={colors.white}>
                   {confirmText}
                 </Text>
               </Pressable>

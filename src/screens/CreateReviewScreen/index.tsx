@@ -85,7 +85,7 @@ const CreateReviewScreen: React.FC = () => {
             console.log('향수 변경 클릭');
           }}
         >
-          <Text variant="body1" weight="semiBold" color={colors.white}>
+          <Text variant="body" weight="semiBold" color={colors.white}>
             향수 변경
           </Text>
         </Pressable>

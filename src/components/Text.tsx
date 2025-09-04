@@ -24,7 +24,7 @@ interface Props extends TextProps {
  */
 
 export const Text = ({
-  variant = 'body1',
+  variant = 'body',
   weight = 'regular',
   color = colors.grey100,
   style,

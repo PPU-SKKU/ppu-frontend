@@ -29,7 +29,7 @@ const SubmitButton: React.FC<SubmitButtonProps> = ({
       disabled={disabled}
       onPress={onPress}
     >
-      <Text variant="body1" weight="bold" color={textColor}>
+      <Text variant="body" weight="bold" color={textColor}>
         {label}
       </Text>
     </Pressable>

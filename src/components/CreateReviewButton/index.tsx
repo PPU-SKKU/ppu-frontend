@@ -31,7 +31,7 @@ const CreateReviewButton: React.FC<CreateReviewButtonProps> = ({
       onPress={onPress}
     >
       <PlusIcon></PlusIcon>
-      <Text variant="body1" weight="semiBold" color={textColor}>
+      <Text variant="body" weight="semiBold" color={textColor}>
         {label}
       </Text>
     </Pressable>
