@@ -21,7 +21,17 @@ const styles = StyleSheet.create({
     padding: 20,
     gap: 20,
   },
-
+  isTestedContainer: {
+    alignSelf: 'stretch',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  isTestedTextContainer: {
+    flexDirection: 'column',
+    gap: 8,
+  },
+  toggleContainer: {},
   ratingContainer: {},
   ratingLabelSection: {},
   ratingOptions: {},

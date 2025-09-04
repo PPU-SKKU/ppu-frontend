@@ -15,6 +15,8 @@ import {
   DummySelectedPerfumeNoImage,
   DummySelectedPerfumeWithImage,
 } from './dummy';
+import { Text } from '../../components/Text';
+import Toggle from '../../components/Toggle';
 
 const CreateReviewScreen: React.FC = () => {
   const [isSubmitButtonDisabled, setIsSubmitButtonDisabled] = useState(true);
@@ -30,11 +32,7 @@ const CreateReviewScreen: React.FC = () => {
     { value: '공용', isSelected: false },
   ];
   const [gender, setGender] = useState(genderOptions[1].value);
-  const wearStatusOptions = [
-    { value: '착향', isSelected: true },
-    { value: '남성', isSelected: false },
-  ];
-  const [wearStatus, setWearStatus] = useState(wearStatusOptions[0].value);
+  const [wearStatus, setWearStatus] = useState(false);
   const seasonOptions = [
     { value: '봄', isSelected: true },
     { value: '여름', isSelected: true },
@@ -87,15 +85,32 @@ const CreateReviewScreen: React.FC = () => {
             }}
           ></SegmentedField>
           <Divider></Divider>
-          <SegmentedField
+          {/*<SegmentedField
             label="착향 여부"
             description="이 향수를 실제로 착용해보셨나요?"
             options={wearStatusOptions}
             value={wearStatus}
             onSelect={value => {
               setWearStatus(value);
-            }}
-          ></SegmentedField>
+            }
+          ></SegmentedField>}*/}
+          <View style={styles.isTestedContainer}>
+            <View style={styles.isTestedTextContainer}>
+              <Text variant="bodyCompact" weight="semiBold">
+                착향 여부
+              </Text>
+              <Text variant="caption1" weight="regular" color={colors.grey54}>
+                이 향수를 실제로 착향해보셨나요?
+              </Text>
+            </View>
+            <Toggle
+              onToggle={() => {
+                setWearStatus(!wearStatus);
+              }}
+              isOn={wearStatus}
+              isOnBackgroundColor={colors.grey100}
+            />
+          </View>
           <Divider></Divider>
           <MultiSelectField
             label="계절감"

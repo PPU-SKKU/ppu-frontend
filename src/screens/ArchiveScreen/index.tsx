@@ -12,9 +12,7 @@ import { RootNavProp } from '../../types/navigationProps';
 import DummyPerfumeReviewList from './dummy';
 
 const ArchiveScreen: React.FC = () => {
-  const [perfumeReviewList, setPerfumeReviewList] = useState<any[]>(
-    DummyPerfumeReviewList,
-  );
+  const [perfumeReviewList, setPerfumeReviewList] = useState<any[]>([]);
   const navigation = useNavigation<RootNavProp>();
 
   const NavigateToCreateReview = () => {
