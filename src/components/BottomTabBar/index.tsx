@@ -27,7 +27,12 @@ const BottomTabBar: React.FC<BottomTabBarProps> = ({ state, navigation }) => {
     <View style={styles.container}>
       {/* 추가 화면 모달 */}
       <Modal visible={visible} transparent animationType="fade">
-        <View style={styles.backgroundContainer}>
+        <Pressable
+          style={styles.backgroundContainer}
+          onPress={() => {
+            setVisible(false);
+          }}
+        >
           <View style={styles.contentContainer}>
             <Pressable
               style={styles.createButton}
@@ -52,7 +57,7 @@ const BottomTabBar: React.FC<BottomTabBarProps> = ({ state, navigation }) => {
               </Text>
             </Pressable>
           </View>
-        </View>
+        </Pressable>
       </Modal>
       {/* 홈 탭 */}
       <TouchableOpacity

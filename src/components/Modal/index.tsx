@@ -13,7 +13,8 @@ interface BasicModalProps {
   confirmText?: string; // 확인 버튼 텍스트
   cancelText?: string; // 취소 버튼 텍스트
   contentContainerStyle?: ViewStyle; // 내용 컨테이너 스타일 오버라이드
-  backgroundColor?: string; // 버튼 배경 색상 (옵션)
+  backgroundColor?: string; // 확인 버튼 배경 색상
+  textColor?: string; // 확인 버튼 텍스트 색깔
   children?: React.ReactNode; // 커스텀 UI
 }
 
@@ -27,6 +28,7 @@ const BasicModal: React.FC<BasicModalProps> = ({
   cancelText = '취소',
   contentContainerStyle,
   backgroundColor = '242424',
+  textColor = '#FFF',
   children,
 }) => {
   return (
@@ -72,13 +74,16 @@ const BasicModal: React.FC<BasicModalProps> = ({
             {/* 확인 버튼 */}
             {onConfirm && (
               <Pressable
-                style={styles.confirmButton}
+                style={[
+                  styles.confirmButton,
+                  { backgroundColor: backgroundColor },
+                ]}
                 onPress={() => {
                   onConfirm();
                   onClose();
                 }}
               >
-                <Text variant="body" weight="bold" color={colors.white}>
+                <Text variant="body" weight="bold" color={textColor}>
                   {confirmText}
                 </Text>
               </Pressable>
