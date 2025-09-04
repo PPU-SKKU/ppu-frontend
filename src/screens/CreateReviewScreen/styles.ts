@@ -15,15 +15,18 @@ const styles = StyleSheet.create({
     gap: 20,
     backgroundColor: colors.lightGrey,
   },
+
+  switchPerfumeButtonContainer: {
+    padding: 0,
+    alignSelf: 'stretch',
+    alignItems: 'flex-end',
+  },
+
   switchPerfumeButton: {
     flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 16,
+    padding: 12,
     gap: 8,
-    alignSelf: 'stretch',
     borderRadius: 16,
-    backgroundColor: colors.grey100,
   },
   optionalContainer: {
     alignSelf: 'stretch',

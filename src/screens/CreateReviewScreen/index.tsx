@@ -19,11 +19,12 @@ import { Text } from '../../components/Text';
 import Toggle from '../../components/Toggle';
 import BasicModal from '../../components/Modal';
 import { Pressable } from 'react-native';
+import EntypoIcon from 'react-native-vector-icons/Entypo';
 
 const CreateReviewScreen: React.FC = () => {
   const [isSubmitButtonDisabled, setIsSubmitButtonDisabled] = useState(true);
   const [selectedPerfume, setSelectedPerfume] = useState<Perfume>(
-    DummySelectedPerfumeWithImage,
+    DummySelectedPerfumeNoImage,
   );
   const [isOwned, setIsOwned] = useState(true);
   const [isWished, setIsWished] = useState(true);
@@ -79,16 +80,23 @@ const CreateReviewScreen: React.FC = () => {
         contentContainerStyle={styles.bodyContainer}
         showsVerticalScrollIndicator={false}
       >
-        <Pressable
-          style={styles.switchPerfumeButton}
-          onPress={() => {
-            console.log('향수 변경 클릭');
-          }}
-        >
-          <Text variant="body" weight="semiBold" color={colors.white}>
-            향수 변경
-          </Text>
-        </Pressable>
+        <View style={styles.switchPerfumeButtonContainer}>
+          <Pressable
+            style={styles.switchPerfumeButton}
+            onPress={() => {
+              console.log('향수 변경 클릭');
+            }}
+          >
+            <Text variant="body" weight="semiBold" color={colors.grey100}>
+              향수 변경
+            </Text>
+            <EntypoIcon
+              name="arrow-right"
+              size={24}
+              color={colors.grey100}
+            ></EntypoIcon>
+          </Pressable>
+        </View>
         <PerfumeProfile
           perfume={selectedPerfume}
           isOwned={isOwned}
