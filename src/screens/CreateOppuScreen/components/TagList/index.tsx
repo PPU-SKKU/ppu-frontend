@@ -1,12 +1,12 @@
 import React from 'react';
 import { View, Pressable, FlatList } from 'react-native';
-import { Tag } from '../../../../types/tag';
+import { UITag } from '../../../../types/tag';
 import styles from './styles';
 import { Text } from '../../../../components/Text';
 import Feather from 'react-native-vector-icons/Feather';
 
 type TagListProps = {
-  tags: Tag[];
+  tags: UITag[];
   selectedTagId: string | null;
   onSelectTag: (id: string) => void;
   onDeleteTagLabel: (id: string) => void;
@@ -18,18 +18,28 @@ export default function TagList({
   onSelectTag,
   onDeleteTagLabel,
 }: TagListProps) {
-  const renderItem = ({ item: tag }: { item: Tag }) => {
+  const renderItem = ({ item: tag }: { item: UITag }) => {
     const isSelected = selectedTagId === tag.id;
     const hasLabel = !!tag.label;
 
     return (
       <Pressable
-        style={[styles.tagItem, isSelected && { borderColor: tag.color }]}
+        style={[
+          styles.tagItem,
+          {
+            borderColor: isSelected ? tag.color : 'transparent',
+            backgroundColor: tag.backgroundColor,
+            width: hasLabel ? undefined : 32,
+            height: hasLabel ? undefined : 32,
+          },
+        ]}
         onPress={() => onSelectTag(tag.id)}
       >
         {hasLabel && (
           <View style={styles.labelContainer}>
-            <Text>{tag.label}</Text>
+            <Text variant="caption1" weight="semiBold" color={tag.color}>
+              {tag.label}
+            </Text>
             <Pressable
               style={styles.deleteButton}
               onPress={e => {
@@ -37,7 +47,7 @@ export default function TagList({
                 onDeleteTagLabel(tag.id);
               }}
             >
-              <Feather name="x" />
+              <Feather name="x" color={tag.color} />
             </Pressable>
           </View>
         )}

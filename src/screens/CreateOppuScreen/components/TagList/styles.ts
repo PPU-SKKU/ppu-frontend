@@ -7,7 +7,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 9,
     paddingVertical: 8,
     borderWidth: 1,
-    borderColor: 'transparent',
   },
   labelContainer: {
     flexDirection: 'row',
@@ -15,7 +14,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   deleteButton: {
-    marginLeft: 8,
+    marginLeft: 4,
   },
 });
 

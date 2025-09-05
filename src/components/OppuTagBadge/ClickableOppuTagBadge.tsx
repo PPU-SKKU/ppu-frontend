@@ -1,9 +1,9 @@
 import { Pressable, View } from 'react-native';
-import { Tag } from '../../types/tag';
+import { UITag } from '../../types/tag';
 import OppuTagBadge from '.';
 
 interface ClickableOppuTagBadgeProps {
-  tag: Tag;
+  tag: UITag;
   selected: boolean;
   onPress: () => void;
 }

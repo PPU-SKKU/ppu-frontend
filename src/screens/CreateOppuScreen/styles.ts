@@ -21,16 +21,6 @@ const styles = StyleSheet.create({
   perfumeWrapper: {
     padding: 20,
   },
-  addPerfumeButton: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    gap: 8,
-    borderRadius: 16,
-    padding: 16,
-    backgroundColor: colors.black,
-    marginTop: 8,
-  },
   tagWrapper: {
     padding: 20,
     gap: 20,

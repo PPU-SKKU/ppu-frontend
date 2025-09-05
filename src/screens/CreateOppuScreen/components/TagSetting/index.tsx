@@ -1,5 +1,5 @@
 import { Pressable, TextInput, View } from 'react-native';
-import { Tag } from '../../../../types/tag';
+import { UITag } from '../../../../types/tag';
 import { useState } from 'react';
 import styles from './styles';
 import { Text } from '../../../../components/Text';
@@ -8,12 +8,12 @@ import TagList from '../TagList';
 import { BottomSheetTextInput } from '@gorhom/bottom-sheet';
 
 type TagSettingProps = {
-  tags: Tag[];
-  onComplete: (newTags: Tag[]) => void;
+  tags: UITag[];
+  onComplete: (newTags: UITag[]) => void;
 };
 
 function TagSetting({ tags, onComplete }: TagSettingProps) {
-  const [currentTags, setCurrentTags] = useState<Tag[]>([...tags]);
+  const [currentTags, setCurrentTags] = useState<UITag[]>([...tags]);
   const [selectedTagId, setSelectedTagId] = useState<string | null>(null);
 
   const selectedTag = currentTags.find(tag => tag.id === selectedTagId) || null;

@@ -28,6 +28,7 @@ import {
 } from '@gorhom/bottom-sheet';
 import { AddPerfumeButton } from './components/BaseButton';
 import TagSetting from './components/TagSetting';
+import { Tag, mapTags } from '../../types/tag';
 
 const dummyPerfume = {
   id: 1,
@@ -54,10 +55,12 @@ const dummyPerfumes = [
 const dummyPic =
   'https://images.unsplash.com/photo-1756142188854-34b1e9a9e415?q=80&w=1364&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
 
-const dummyTags = [
-  { id: '1', label: '오뿌', color: '#FF6B6B' },
-  { id: '2', label: '잠뿌', color: '#4ECDC4' },
-  { id: '3', label: '뿌', color: '#FFD93D' },
+const dummyTags: Tag[] = [
+  { id: '1', label: '오뿌', color: '#AF52DE' },
+  { id: '2', label: '잠뿌', color: '#0059FF' },
+  { id: '3', label: '뿌', color: '#5856D6' },
+  { id: '4', color: '#73BB4B' },
+  { id: '5', color: '#FF47D1' },
 ];
 
 const CreateOppuScreen: React.FC = () => {
@@ -65,6 +68,9 @@ const CreateOppuScreen: React.FC = () => {
   const [photos, setPhotos] = useState<string[]>([dummyPic]);
   const [text, setText] = useState('');
   const navigation = useNavigation<RootNavProp>();
+
+  const uiTags = useMemo(() => mapTags(dummyTags), [dummyTags]);
+  const [selectedTagId, setSelectedTagId] = useState<string>(uiTags[0].id);
 
   const bottomSheetRef = useRef<BottomSheetModal>(null);
   const snapPoints = useMemo(() => ['80%'], []);
@@ -147,15 +153,15 @@ const CreateOppuScreen: React.FC = () => {
             </View>
 
             <FlatList
-              data={dummyTags}
+              data={uiTags.filter(tag => tag.label && tag.label.trim() !== '')}
               horizontal
               keyExtractor={item => item.id}
               ItemSeparatorComponent={() => <View style={{ width: 8 }} />}
               renderItem={({ item }) => (
                 <ClickableOppuTagBadge
                   tag={item}
-                  selected={false}
-                  onPress={() => {}}
+                  selected={selectedTagId == item.id}
+                  onPress={() => setSelectedTagId(item.id)}
                 />
               )}
             />
@@ -240,7 +246,7 @@ const CreateOppuScreen: React.FC = () => {
           enableDynamicSizing={false}
         >
           <TagSetting
-            tags={dummyTags}
+            tags={uiTags}
             onComplete={newTags => {
               console.log('변경된 태그:', newTags);
               handleDismissModalPress();

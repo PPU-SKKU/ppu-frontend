@@ -1,11 +1,11 @@
 import { View } from 'react-native';
-import { Tag } from '../../types/tag';
+import { UITag } from '../../types/tag';
 import styles from './style';
 import { Text } from '../Text';
 import colors from '../../theme/color';
 
 interface OppuTagBadgeProps {
-  tag: Tag;
+  tag: UITag;
   selected?: boolean;
 }
 
@@ -18,7 +18,7 @@ const OppuTagBadge: React.FC<OppuTagBadgeProps> = ({
       style={[
         styles.container,
         {
-          backgroundColor: selected ? tag.color + '80' : colors.grey4,
+          backgroundColor: selected ? tag.backgroundColor : 'transparent',
           borderColor: selected ? tag.color : colors.grey8,
         },
       ]}
