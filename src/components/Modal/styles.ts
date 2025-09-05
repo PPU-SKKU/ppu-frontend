@@ -24,22 +24,12 @@ const styles = StyleSheet.create({
     letterSpacing: -1.0,
   },
   buttonContainer: { flexDirection: 'row', gap: 12 },
-  cancelButton: {
+  button: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     paddingVertical: 12,
     paddingHorizontal: 14,
-    backgroundColor: colors.grey12,
-    borderRadius: 22,
-  },
-  confirmButton: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingVertical: 12,
-    paddingHorizontal: 14,
-    backgroundColor: colors.grey100,
     borderRadius: 22,
   },
 });

@@ -57,9 +57,13 @@ const CreateReviewScreen: React.FC = () => {
         onConfirm={() => {
           navigation.goBack();
         }}
+        buttonType="double"
         confirmText="나가기"
         cancelText="취소"
-        backgroundColor={colors.grey100}
+        confirmBackgroundColor={colors.grey100}
+        confirmTextColor={colors.white}
+        cancelBackgroundColor={colors.grey12}
+        cancelTextColor={colors.grey100}
       >
         {/* 모달 안에 커스텀 UI 넣기 가능 */}
         {/* <View>

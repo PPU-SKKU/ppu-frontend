@@ -5,17 +5,20 @@ import colors from '../../theme/color';
 import styles from './styles';
 
 interface BasicModalProps {
-  visible: boolean; // 모달 열림 여부
-  title?: string; // 제목
-  description?: string; // 설명
-  onClose: () => void; // 닫기 함수
-  onConfirm?: () => void; // 확인 함수 (옵션)
-  confirmText?: string; // 확인 버튼 텍스트
-  cancelText?: string; // 취소 버튼 텍스트
-  contentContainerStyle?: ViewStyle; // 내용 컨테이너 스타일 오버라이드
-  backgroundColor?: string; // 확인 버튼 배경 색상
-  textColor?: string; // 확인 버튼 텍스트 색깔
-  children?: React.ReactNode; // 커스텀 UI
+  visible: boolean;
+  title?: string;
+  description?: string;
+  children?: React.ReactNode;
+  onClose: () => void;
+  onConfirm?: () => void;
+  buttonType?: 'single' | 'double'; // ✅ 버튼 타입 추가
+  confirmText?: string;
+  cancelText?: string;
+  confirmBackgroundColor?: string;
+  confirmTextColor?: string;
+  cancelBackgroundColor?: string;
+  cancelTextColor?: string;
+  contentContainerStyle?: ViewStyle;
 }
 
 const BasicModal: React.FC<BasicModalProps> = ({
@@ -24,11 +27,14 @@ const BasicModal: React.FC<BasicModalProps> = ({
   description,
   onClose,
   onConfirm,
+  buttonType = 'double', // 기본값 double
   confirmText = '확인',
   cancelText = '취소',
   contentContainerStyle,
-  backgroundColor = '242424',
-  textColor = '#FFF',
+  confirmBackgroundColor = '#242424',
+  confirmTextColor = '#FFFFFF',
+  cancelBackgroundColor = 'rgba(36, 36, 36, 0.12)',
+  cancelTextColor = '#242424',
   children,
 }) => {
   return (
@@ -43,7 +49,7 @@ const BasicModal: React.FC<BasicModalProps> = ({
         {/* 모달 컨텐츠 */}
         <Pressable
           style={[styles.contentContainer, contentContainerStyle]}
-          onPress={e => e.stopPropagation()} // 배경 터치 이벤트 차단
+          onPress={e => e.stopPropagation()}
         >
           {/* 제목 */}
           {title && (
@@ -64,29 +70,57 @@ const BasicModal: React.FC<BasicModalProps> = ({
 
           {/* 버튼 영역 */}
           <View style={styles.buttonContainer}>
-            {/* 취소 버튼 */}
-            <Pressable style={styles.cancelButton} onPress={onClose}>
-              <Text variant="body" weight="bold" color={colors.grey100}>
-                {cancelText}
-              </Text>
-            </Pressable>
+            {buttonType === 'double' ? (
+              <>
+                {/* 취소 버튼 */}
+                <Pressable
+                  style={[
+                    styles.button,
+                    { backgroundColor: cancelBackgroundColor },
+                  ]}
+                  onPress={onClose}
+                >
+                  <Text variant="body" weight="bold" color={cancelTextColor}>
+                    {cancelText}
+                  </Text>
+                </Pressable>
 
-            {/* 확인 버튼 */}
-            {onConfirm && (
-              <Pressable
-                style={[
-                  styles.confirmButton,
-                  { backgroundColor: backgroundColor },
-                ]}
-                onPress={() => {
-                  onConfirm();
-                  onClose();
-                }}
-              >
-                <Text variant="body" weight="bold" color={textColor}>
-                  {confirmText}
-                </Text>
-              </Pressable>
+                {/* 확인 버튼 */}
+                {onConfirm && (
+                  <Pressable
+                    style={[
+                      styles.button,
+                      { backgroundColor: confirmBackgroundColor },
+                    ]}
+                    onPress={() => {
+                      onConfirm();
+                      onClose();
+                    }}
+                  >
+                    <Text variant="body" weight="bold" color={confirmTextColor}>
+                      {confirmText}
+                    </Text>
+                  </Pressable>
+                )}
+              </>
+            ) : (
+              // single 타입일 때 확인 버튼만 노출
+              onConfirm && (
+                <Pressable
+                  style={[
+                    styles.button,
+                    { backgroundColor: confirmBackgroundColor, flex: 1 },
+                  ]}
+                  onPress={() => {
+                    onConfirm();
+                    onClose();
+                  }}
+                >
+                  <Text variant="body" weight="bold" color={confirmTextColor}>
+                    {confirmText}
+                  </Text>
+                </Pressable>
+              )
             )}
           </View>
         </Pressable>
