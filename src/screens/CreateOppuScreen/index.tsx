@@ -189,7 +189,8 @@ const CreateOppuScreen: React.FC = () => {
             <Toggle
               onToggle={() => {}}
               isOn={false}
-              isOnBackgroundColor={colors.softPurple}
+              toggleOffColor={colors.grey12}
+              toggleOnColor={colors.softPurple}
             />
           </View>
           <Divider />

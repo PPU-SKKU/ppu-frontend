@@ -137,7 +137,8 @@ const CreateReviewScreen: React.FC = () => {
                 setWearStatus(!wearStatus);
               }}
               isOn={wearStatus}
-              isOnBackgroundColor={colors.grey100}
+              toggleOffColor={colors.grey12}
+              toggleOnColor={colors.grey100}
             />
           </View>
           <Divider></Divider>

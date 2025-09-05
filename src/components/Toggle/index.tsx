@@ -5,19 +5,21 @@ import styles from './styles';
 type ToggleProps = {
   onToggle: () => void;
   isOn: boolean;
-  isOnBackgroundColor: string;
+  toggleOffColor: string;
+  toggleOnColor: string;
 };
 
 const Toggle: React.FC<ToggleProps> = ({
   onToggle,
   isOn = false,
-  isOnBackgroundColor,
+  toggleOffColor,
+  toggleOnColor,
 }) => {
   return (
     <TouchableOpacity
       style={[
         styles.toggleContainer,
-        isOn && { backgroundColor: isOnBackgroundColor },
+        { backgroundColor: isOn ? toggleOnColor : toggleOffColor },
       ]}
       onPress={onToggle}
       activeOpacity={0.8}
