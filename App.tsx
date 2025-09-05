@@ -1,5 +1,8 @@
 import React from 'react';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import {
+  SafeAreaProvider,
+  initialWindowMetrics,
+} from 'react-native-safe-area-context';
 import RootStackNavigator from '../ppu-frontend/src/navigators/RootStackNavigator';
 import { NavigationContainer } from '@react-navigation/native';
 import { StyleSheet } from 'react-native';
@@ -8,11 +11,11 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 function App() {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <SafeAreaView style={styles.container}>
+      <SafeAreaProvider initialMetrics={initialWindowMetrics}>
         <NavigationContainer>
           <RootStackNavigator />
         </NavigationContainer>
-      </SafeAreaView>
+      </SafeAreaProvider>
     </GestureHandlerRootView>
   );
 }

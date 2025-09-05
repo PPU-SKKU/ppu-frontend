@@ -21,19 +21,20 @@ const styles = StyleSheet.create({
   perfumeImage: {
     width: 64,
     height: 64,
+    borderRadius: 12,
   },
   metaInfoSection: {
     flexDirection: 'column',
     alignItems: 'flex-start',
     gap: 4,
   },
-  productDetailSection: {
+  perfumeDetailSection: {
     flexDirection: 'row',
     alignItems: 'center',
     alignSelf: 'stretch',
     gap: 12,
   },
-  productInfoSection: {
+  perfumeInfoSection: {
     flex: 1,
     flexDirection: 'column',
     alignItems: 'flex-start',
