@@ -9,6 +9,7 @@ import Gradient from '../../components/Gradient';
 import ReviewFlatList from './components/ReviewFlatList';
 import { useNavigation } from '@react-navigation/native';
 import { RootNavProp } from '../../types/navigationProps';
+import DummyPerfumeReviewList from './dummy';
 
 const ArchiveScreen: React.FC = () => {
   const [perfumeReviewList, setPerfumeReviewList] = useState<any[]>([]);

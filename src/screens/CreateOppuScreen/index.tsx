@@ -186,7 +186,12 @@ const CreateOppuScreen: React.FC = () => {
               title="호드백 받은 날"
               description="오늘 향수를 뿌리고 반응이 좋았나요?"
             />
-            <Toggle onToggle={() => {}} isOn={false} />
+            <Toggle
+              onToggle={() => {}}
+              isOn={false}
+              toggleOffColor={colors.grey12}
+              toggleOnColor={colors.softPurple}
+            />
           </View>
           <Divider />
           <Text variant="caption1" weight="regular" color={colors.grey54}>

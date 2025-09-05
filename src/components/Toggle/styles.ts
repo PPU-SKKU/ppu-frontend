@@ -10,9 +10,6 @@ export default StyleSheet.create({
     justifyContent: 'center',
     padding: 3,
   },
-  toggleContainerOn: {
-    backgroundColor: colors.softPurple,
-  },
   toggleCircle: {
     width: 24,
     height: 24,
