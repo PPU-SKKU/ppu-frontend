@@ -16,7 +16,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   content: {
-    flex: 1,
     gap: 20,
   },
   perfumeWrapper: {
@@ -39,6 +38,9 @@ const styles = StyleSheet.create({
   tagHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+  },
+  tagIcon: {
+    backgroundColor: colors.grey12,
   },
   optionalWrapper: {
     padding: 20,
