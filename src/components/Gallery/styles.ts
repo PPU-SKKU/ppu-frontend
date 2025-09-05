@@ -26,10 +26,6 @@ const styles = StyleSheet.create({
     right: 0,
     alignItems: 'center',
   },
-  loadingText: {
-    color: '#fff',
-    fontSize: 14,
-  },
 });
 
 export default styles;

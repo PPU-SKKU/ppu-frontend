@@ -29,6 +29,7 @@ import {
 import { AddPerfumeButton } from './components/BaseButton';
 import TagSetting from './components/TagSetting';
 import { Tag, mapTags } from '../../types/tag';
+import CustomGallery from '../../components/Gallery';
 
 const dummyPerfume = {
   id: 1,
@@ -65,7 +66,8 @@ const dummyTags: Tag[] = [
 
 const CreateOppuScreen: React.FC = () => {
   const [perfumes, setPerfumes] = useState<PerfumeInfo[]>(dummyPerfumes);
-  const [photos, setPhotos] = useState<string[]>([dummyPic]);
+  const [selectedPhotos, setSelectedPhotos] = useState<string[]>([]);
+  const [galleryVisible, setGalleryVisible] = useState(false);
   const [text, setText] = useState('');
   const navigation = useNavigation<RootNavProp>();
 
@@ -179,10 +181,10 @@ const CreateOppuScreen: React.FC = () => {
               {[0, 1, 2].map(i => (
                 <PhotoSlot
                   key={i}
-                  image={photos[i]}
-                  isAddButton={i === photos.length}
+                  image={selectedPhotos[i]}
+                  isAddButton={i === selectedPhotos.length}
                   onPick={() => {
-                    // 갤러리 접근
+                    setGalleryVisible(true);
                   }}
                 />
               ))}
@@ -228,6 +230,17 @@ const CreateOppuScreen: React.FC = () => {
 
           <View style={{ height: 78 }} />
         </ScrollView>
+
+        <CustomGallery
+          visible={galleryVisible}
+          maxSelect={3}
+          initialSelected={selectedPhotos}
+          onConfirm={uris => {
+            setSelectedPhotos(uris);
+            setGalleryVisible(false);
+          }}
+          onCancel={() => setGalleryVisible(false)}
+        />
 
         <BottomSheetModal
           ref={bottomSheetRef}

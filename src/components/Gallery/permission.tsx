@@ -1,11 +1,9 @@
 import { Platform, PermissionsAndroid } from 'react-native';
-import { request, PERMISSIONS, RESULTS } from 'react-native-permissions';
 
 export const requestPermission = async (): Promise<boolean> => {
   try {
     if (Platform.OS === 'ios') {
-      const result = await request(PERMISSIONS.IOS.PHOTO_LIBRARY);
-      return result === RESULTS.GRANTED;
+      return true; // iOS는 Info.plist만 있어도 됨
     } else {
       const version = Number(Platform.Version);
       if (version >= 33) {

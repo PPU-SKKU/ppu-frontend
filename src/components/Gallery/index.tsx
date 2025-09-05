@@ -35,6 +35,16 @@ const CustomGallery: React.FC<CustomGalleryProps> = ({
   const fetchPhotos = async () => {
     if (!hasNextPage || loading) return;
 
+    const granted = await requestPermission();
+    if (!granted) {
+      Alert.alert(
+        '권한 필요',
+        '사진 접근 권한이 필요합니다. 설정에서 허용해주세요.',
+      );
+      onCancel();
+      return;
+    }
+
     setLoading(true);
     try {
       const result = await CameraRoll.getPhotos({
@@ -75,18 +85,7 @@ const CustomGallery: React.FC<CustomGalleryProps> = ({
       setSelected([]);
       setEndCursor(undefined);
       setHasNextPage(true);
-
-      requestPermission().then(granted => {
-        if (granted) {
-          fetchPhotos();
-        } else {
-          Alert.alert(
-            '권한 필요',
-            '사진 접근 권한이 필요합니다. 설정에서 허용해주세요.',
-          );
-          onCancel();
-        }
-      });
+      fetchPhotos();
     }
   }, [visible]);
 

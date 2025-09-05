@@ -28,7 +28,12 @@ const PhotoSlot: React.FC<PhotoSlotProps> = ({
           />
         )}
         {isAddButton && !image && (
-          <IconButton icon="plus" color={colors.white} style={styles.button} />
+          <IconButton
+            icon="plus"
+            color={colors.white}
+            style={styles.button}
+            onPress={onPick}
+          />
         )}
       </Pressable>
 
