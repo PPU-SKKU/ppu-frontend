@@ -75,6 +75,7 @@ function TagSetting({ tags, onComplete }: TagSettingProps) {
           onPress={() => {
             onComplete(currentTags);
           }}
+          disabled={true}
         />
       </View>
     </View>

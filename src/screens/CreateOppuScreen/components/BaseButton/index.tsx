@@ -10,13 +10,32 @@ type BaseButtonProps = {
   onPress: () => void;
   icon?: React.ReactNode;
   style?: StyleProp<ViewStyle>;
+  disabled?: boolean;
 };
 
-function BaseButton({ title, onPress, icon, style }: BaseButtonProps) {
+function BaseButton({
+  title,
+  onPress,
+  icon,
+  style,
+  disabled,
+}: BaseButtonProps) {
   return (
-    <Pressable style={[styles.container, style]} onPress={onPress}>
+    <Pressable
+      style={[
+        styles.container,
+        style,
+        disabled && { backgroundColor: colors.grey12 },
+      ]}
+      onPress={onPress}
+      disabled={disabled}
+    >
       {icon && <View style={styles.iconWrapper}>{icon}</View>}
-      <Text variant="body" weight="semiBold" color={colors.white}>
+      <Text
+        variant="body"
+        weight="semiBold"
+        color={disabled ? colors.black : colors.white}
+      >
         {title}
       </Text>
     </Pressable>
@@ -26,16 +45,19 @@ function BaseButton({ title, onPress, icon, style }: BaseButtonProps) {
 export function AddPerfumeButton({
   onPress,
   style,
+  disabled = false,
 }: {
   onPress: () => void;
   style?: StyleProp<ViewStyle>;
+  disabled?: boolean;
 }) {
   return (
     <BaseButton
       title="향수 추가"
       onPress={onPress}
       icon={<Feather name="plus" />}
-      style={style} // 스타일 전달
+      style={style}
+      disabled={disabled}
     />
   );
 }
@@ -43,9 +65,18 @@ export function AddPerfumeButton({
 export function CompleteButton({
   onPress,
   style,
+  disabled,
 }: {
   onPress: () => void;
   style?: StyleProp<ViewStyle>;
+  disabled?: boolean;
 }) {
-  return <BaseButton title="완료" onPress={onPress} style={style} />;
+  return (
+    <BaseButton
+      title="설정 완료"
+      onPress={onPress}
+      style={style}
+      disabled={disabled}
+    />
+  );
 }
