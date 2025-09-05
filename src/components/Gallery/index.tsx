@@ -16,6 +16,7 @@ import { Text } from '../Text';
 interface CustomGalleryProps {
   visible: boolean;
   maxSelect?: number;
+  initialSelected?: string[];
   onConfirm: (uris: string[]) => void;
   onCancel: () => void;
 }
@@ -23,6 +24,7 @@ interface CustomGalleryProps {
 const CustomGallery: React.FC<CustomGalleryProps> = ({
   visible,
   maxSelect = 3,
+  initialSelected = [],
   onConfirm,
   onCancel,
 }) => {
@@ -82,7 +84,7 @@ const CustomGallery: React.FC<CustomGalleryProps> = ({
   useEffect(() => {
     if (visible) {
       setPhotos([]);
-      setSelected([]);
+      setSelected(initialSelected || []);
       setEndCursor(undefined);
       setHasNextPage(true);
       fetchPhotos();
