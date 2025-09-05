@@ -5,19 +5,26 @@ import { Text } from '../../../../components/Text';
 import colors from '../../../../theme/color';
 import SelectTag from '../SelectTag';
 
-interface MultiSelctFieldProps {
+interface MultiSelectFieldProps {
   label: string;
   description: string;
   options: Option[];
-  onSelect: (value: string) => void;
+  setOptions: React.Dispatch<React.SetStateAction<Option[]>>;
 }
 
-const MultiSelectField: React.FC<MultiSelctFieldProps> = ({
+const MultiSelectField: React.FC<MultiSelectFieldProps> = ({
   label,
   description,
   options,
-  onSelect,
+  setOptions,
 }) => {
+  const handlePress = (pressedValue: string) => {
+    setOptions(prev =>
+      prev.map(o =>
+        o.value === pressedValue ? { ...o, isSelected: !o.isSelected } : o,
+      ),
+    );
+  };
   return (
     <View style={styles.segmentedFieldContainer}>
       <View style={styles.labelDescriptionContainer}>
@@ -31,9 +38,10 @@ const MultiSelectField: React.FC<MultiSelctFieldProps> = ({
       <View style={styles.multiSelectTabContainer}>
         {options.map((option, key) => (
           <SelectTag
+            key={option.value}
             label={option.value}
             isSelected={option.isSelected}
-            key={key}
+            onPress={() => handlePress(option.value)}
           ></SelectTag>
         ))}
       </View>

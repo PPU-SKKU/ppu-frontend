@@ -5,7 +5,6 @@ const styles = StyleSheet.create({
   safeAreaViewContainer: {
     flex: 1,
     flexDirection: 'column',
-    backgroundColor: colors.limeGreenLight,
   },
 
   bodyContainer: {
@@ -16,17 +15,33 @@ const styles = StyleSheet.create({
     gap: 20,
     backgroundColor: colors.lightGrey,
   },
+  switchPerfumeButtonContainer: {
+    padding: 0,
+    alignSelf: 'stretch',
+    alignItems: 'flex-end',
+  },
+  switchPerfumeButton: {
+    flexDirection: 'row',
+    padding: 12,
+    gap: 8,
+    borderRadius: 16,
+  },
   optionalContainer: {
     alignSelf: 'stretch',
     flexDirection: 'column',
     padding: 20,
     gap: 20,
   },
-
-  ratingContainer: {},
-  ratingLabelSection: {},
-  ratingOptions: {},
-  ratingDescriptionSection: {},
+  isTestedContainer: {
+    alignSelf: 'stretch',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  isTestedTextContainer: {
+    flexDirection: 'column',
+    gap: 8,
+  },
 });
 
 export default styles;

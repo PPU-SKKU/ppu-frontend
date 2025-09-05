@@ -16,21 +16,10 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   content: {
-    flex: 1,
     gap: 20,
   },
   perfumeWrapper: {
     padding: 20,
-  },
-  addPerfumeButton: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    gap: 8,
-    borderRadius: 16,
-    padding: 16,
-    backgroundColor: colors.black,
-    marginTop: 8,
   },
   tagWrapper: {
     padding: 20,
@@ -39,6 +28,9 @@ const styles = StyleSheet.create({
   tagHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+  },
+  tagIcon: {
+    backgroundColor: colors.grey12,
   },
   optionalWrapper: {
     padding: 20,

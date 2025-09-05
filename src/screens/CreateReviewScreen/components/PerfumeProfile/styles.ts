@@ -6,12 +6,15 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch',
     flexDirection: 'column',
   },
-  imageBackgroundContainer: {
+  perfumeImageContainer: {
     alignSelf: 'stretch',
     aspectRatio: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    overflow: 'hidden',
+  },
+  perfumeImage: {
+    width: '100%',
+    height: '100%',
   },
   perfumeOverViewContainer: {
     marginTop: -120,

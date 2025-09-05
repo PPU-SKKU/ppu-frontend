@@ -93,13 +93,13 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
         ></MoreOptionsButton>
       </View>
 
-      <View style={styles.productDetailSection}>
+      <View style={styles.perfumeDetailSection}>
         {perfumeImage ? (
           <Image source={{ uri: perfumeImage }} style={styles.perfumeImage} />
         ) : (
           <DefaultPerfumeLimeGreen width={64} height={64} />
         )}
-        <View style={styles.productInfoSection}>
+        <View style={styles.perfumeInfoSection}>
           <Text variant="title2" weight="semiBold" color={colors.grey100}>
             {perfumeName}
           </Text>
