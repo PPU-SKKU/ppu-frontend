@@ -2,7 +2,7 @@ import { hexToRgba } from '../utils/\bcolorsUtils';
 
 export interface Tag {
   id: string;
-  label?: string;
+  label?: string | null;
   color: string;
 }
 

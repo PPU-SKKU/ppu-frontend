@@ -73,7 +73,7 @@ export function CompleteButton({
 }) {
   return (
     <BaseButton
-      title="설정 완료"
+      title="태그 설정 완료"
       onPress={onPress}
       style={style}
       disabled={disabled}

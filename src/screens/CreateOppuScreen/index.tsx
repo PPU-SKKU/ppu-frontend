@@ -88,8 +88,8 @@ const CreateOppuScreen: React.FC = () => {
       <BottomSheetBackdrop
         {...props}
         pressBehavior="close"
-        appearsOnIndex={0} // 이거 추가
-        disappearsOnIndex={-1} // 이거 추가
+        appearsOnIndex={0}
+        disappearsOnIndex={-1}
       />
     ),
     [],
