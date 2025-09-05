@@ -6,14 +6,17 @@ import {
 import RootStackNavigator from '../ppu-frontend/src/navigators/RootStackNavigator';
 import { NavigationContainer } from '@react-navigation/native';
 import { StyleSheet } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 function App() {
   return (
-    <SafeAreaProvider initialMetrics={initialWindowMetrics}>
-      <NavigationContainer>
-        <RootStackNavigator />
-      </NavigationContainer>
-    </SafeAreaProvider>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <SafeAreaProvider initialMetrics={initialWindowMetrics}>
+        <NavigationContainer>
+          <RootStackNavigator />
+        </NavigationContainer>
+      </SafeAreaProvider>
+    </GestureHandlerRootView>
   );
 }
 
