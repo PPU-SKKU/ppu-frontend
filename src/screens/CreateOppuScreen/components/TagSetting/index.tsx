@@ -9,7 +9,7 @@ import { BottomSheetTextInput } from '@gorhom/bottom-sheet';
 
 type TagSettingProps = {
   tags: UITag[];
-  onComplete: (newTags: UITag[]) => void;
+  onComplete: (newTags: UITag[]) => void; // TODO: 서버 연결 부분
 };
 
 function TagSetting({ tags, onComplete }: TagSettingProps) {
@@ -25,6 +25,12 @@ function TagSetting({ tags, onComplete }: TagSettingProps) {
     setDraftLabel(text);
     if (isEditing) return;
     setIsEditing(true);
+  };
+
+  const resetEditingState = () => {
+    setIsEditing(false);
+    setSelectedTagId(null);
+    setDraftLabel('');
   };
 
   const handleSelectTag = (id: string) => {
@@ -46,9 +52,7 @@ function TagSetting({ tags, onComplete }: TagSettingProps) {
       ),
     );
 
-    setIsEditing(false);
-    setSelectedTagId(null);
-    setDraftLabel('');
+    resetEditingState();
   };
 
   const handleDelete = (id: string) => {
@@ -65,11 +69,7 @@ function TagSetting({ tags, onComplete }: TagSettingProps) {
       prev.map(tag => (tag.id === id ? { ...tag, label: null } : tag)),
     );
 
-    if (selectedTagId == id) {
-      setIsEditing(false);
-      setSelectedTagId(null);
-      setDraftLabel('');
-    }
+    if (selectedTagId == id) resetEditingState();
   };
 
   let placeholderText = '태그 색상을 먼저 선택해주세요!';
