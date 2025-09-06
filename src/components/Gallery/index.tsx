@@ -7,12 +7,12 @@ import {
   Modal,
   SafeAreaView,
 } from 'react-native';
-import { CameraRoll } from '@react-native-camera-roll/camera-roll';
 import styles from './styles';
 import PhotoItem from './PhotoItem';
 import { requestPermission } from '../../utils/permission';
 import SubmitButton from '../Buttons/SubmitButton';
 import { Text } from '../Text';
+import { getPhotos } from '../../services/photoService';
 
 interface CustomGalleryProps {
   visible: boolean;
@@ -50,12 +50,7 @@ const CustomGallery: React.FC<CustomGalleryProps> = ({
 
     setLoading(true);
     try {
-      const result = await CameraRoll.getPhotos({
-        first: 50,
-        after: endCursor,
-        assetType: 'Photos',
-        include: ['filename', 'fileSize', 'imageSize'],
-      });
+      const result = await getPhotos(endCursor);
 
       const uris = result.edges
         .map((edge: any) => edge.node.image.uri)
@@ -65,7 +60,7 @@ const CustomGallery: React.FC<CustomGalleryProps> = ({
       setEndCursor(result.page_info.end_cursor);
       setHasNextPage(result.page_info.has_next_page);
     } catch (err) {
-      console.warn('사진 불러오기 실패:', err);
+      console.log('사진 불러오기 실패:', err);
       Alert.alert('오류', '사진을 불러오는데 실패했습니다.');
     } finally {
       setLoading(false);
