@@ -22,7 +22,7 @@ interface CustomGalleryProps {
   onCancel: () => void;
 }
 
-const CustomGallery: React.FC<CustomGalleryProps> = ({
+const Gallery: React.FC<CustomGalleryProps> = ({
   visible,
   maxSelect = 3,
   initialSelected = [],
@@ -159,4 +159,4 @@ function Header({
   );
 }
 
-export default CustomGallery;
+export default Gallery;

@@ -29,7 +29,7 @@ import {
 import { AddPerfumeButton } from './components/BaseButton';
 import TagSetting from './components/TagSetting';
 import { Tag, mapTags } from '../../types/tag';
-import CustomGallery from '../../components/Gallery';
+import Gallery from '../../components/Gallery';
 
 const dummyPerfume = {
   id: 1,
@@ -228,7 +228,7 @@ const CreateOppuScreen: React.FC = () => {
           <View style={{ height: 78 }} />
         </ScrollView>
 
-        <CustomGallery
+        <Gallery
           visible={galleryVisible}
           maxSelect={3}
           initialSelected={selectedPhotos}
