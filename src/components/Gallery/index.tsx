@@ -10,7 +10,8 @@ import {
 import { CameraRoll } from '@react-native-camera-roll/camera-roll';
 import styles from './styles';
 import PhotoItem from './PhotoItem';
-import { requestPermission } from './permission';
+import { requestPermission } from '../../utils/permission';
+import SubmitButton from '../Buttons/SubmitButton';
 import { Text } from '../Text';
 
 interface CustomGalleryProps {
@@ -101,21 +102,18 @@ const CustomGallery: React.FC<CustomGalleryProps> = ({
       <SafeAreaView style={styles.container}>
         <View style={styles.header}>
           <Pressable onPress={onCancel} style={styles.headerButton}>
-            <Text variant="body" weight="regular">
-              취소
+            <Text variant="body" weight="semiBold">
+              닫기
             </Text>
           </Pressable>
-          <Text variant="title1" weight="semiBold">
+          <Text variant="title2" weight="semiBold">
             사진 선택 ({selected.length}/{maxSelect})
           </Text>
-          <Pressable
+          <SubmitButton
+            label="완료"
+            disabled={false}
             onPress={() => onConfirm(selected)}
-            style={styles.headerButton}
-          >
-            <Text variant="body" weight="regular">
-              확인
-            </Text>
-          </Pressable>
+          />
         </View>
 
         <FlatList
