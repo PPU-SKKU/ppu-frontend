@@ -29,6 +29,7 @@ import {
 import { AddPerfumeButton } from './components/BaseButton';
 import TagSetting from './components/TagSetting';
 import { Tag, mapTags } from '../../types/tag';
+import Gallery from '../../components/Gallery';
 
 const dummyPerfume = {
   id: 1,
@@ -52,9 +53,6 @@ const dummyPerfumes = [
   },
 ];
 
-const dummyPic =
-  'https://images.unsplash.com/photo-1756142188854-34b1e9a9e415?q=80&w=1364&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
-
 const dummyTags: Tag[] = [
   { id: '1', label: '오뿌', color: '#AF52DE' },
   { id: '2', label: '잠뿌', color: '#0059FF' },
@@ -65,7 +63,8 @@ const dummyTags: Tag[] = [
 
 const CreateOppuScreen: React.FC = () => {
   const [perfumes, setPerfumes] = useState<PerfumeInfo[]>(dummyPerfumes);
-  const [photos, setPhotos] = useState<string[]>([dummyPic]);
+  const [selectedPhotos, setSelectedPhotos] = useState<string[]>([]);
+  const [galleryVisible, setGalleryVisible] = useState(false);
   const [text, setText] = useState('');
   const navigation = useNavigation<RootNavProp>();
 
@@ -179,10 +178,10 @@ const CreateOppuScreen: React.FC = () => {
               {[0, 1, 2].map(i => (
                 <PhotoSlot
                   key={i}
-                  image={photos[i]}
-                  isAddButton={i === photos.length}
+                  image={selectedPhotos[i]}
+                  isAddButton={i === selectedPhotos.length}
                   onPick={() => {
-                    // 갤러리 접근
+                    setGalleryVisible(true);
                   }}
                 />
               ))}
@@ -228,6 +227,17 @@ const CreateOppuScreen: React.FC = () => {
 
           <View style={{ height: 78 }} />
         </ScrollView>
+
+        <Gallery
+          visible={galleryVisible}
+          maxSelect={3}
+          initialSelected={selectedPhotos}
+          onConfirm={uris => {
+            setSelectedPhotos(uris);
+            setGalleryVisible(false);
+          }}
+          onCancel={() => setGalleryVisible(false)}
+        />
 
         <BottomSheetModal
           ref={bottomSheetRef}

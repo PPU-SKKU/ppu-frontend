@@ -11,6 +11,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@react-native-camera-roll/camera-roll": "^7.10.2",
     "@gorhom/bottom-sheet": "^5.2.4",
     "@react-native-community/blur": "^4.4.1",
     "@react-native/new-app-screen": "0.80.0",
@@ -23,6 +24,7 @@
     "react-native-image-crop-picker": "^0.50.1",
     "react-native-linear-gradient": "^2.8.3",
     "react-native-pager-view": "^6.9.1",
+    "react-native-permissions": "^5.4.2",
     "react-native-reanimated": "^3.19.1",
     "react-native-safe-area-context": "^5.5.2",
     "react-native-screens": "^4.13.1",
