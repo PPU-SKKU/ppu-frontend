@@ -53,9 +53,6 @@ const dummyPerfumes = [
   },
 ];
 
-const dummyPic =
-  'https://images.unsplash.com/photo-1756142188854-34b1e9a9e415?q=80&w=1364&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
-
 const dummyTags: Tag[] = [
   { id: '1', label: '오뿌', color: '#AF52DE' },
   { id: '2', label: '잠뿌', color: '#0059FF' },
