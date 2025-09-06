@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Pressable, Image, View } from 'react-native';
 import styles from './styles';
 import { Text } from '../../Text';
@@ -30,4 +30,4 @@ const PhotoItem: React.FC<PhotoItemProps> = ({
   </Pressable>
 );
 
-export default PhotoItem;
+export default memo(PhotoItem);

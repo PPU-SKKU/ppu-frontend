@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import {
   View,
   FlatList,
@@ -67,15 +67,18 @@ const CustomGallery: React.FC<CustomGalleryProps> = ({
     }
   };
 
-  const toggleSelect = (uri: string) => {
-    if (selected.includes(uri)) {
-      setSelected(selected.filter(item => item !== uri));
-    } else if (selected.length < maxSelect) {
-      setSelected([...selected, uri]);
-    } else {
-      Alert.alert(`최대 ${maxSelect}장만 선택 가능합니다.`);
-    }
-  };
+  const toggleSelect = useCallback(
+    (uri: string) => {
+      if (selected.includes(uri)) {
+        setSelected(selected.filter(item => item !== uri));
+      } else if (selected.length < maxSelect) {
+        setSelected([...selected, uri]);
+      } else {
+        Alert.alert(`최대 ${maxSelect}장만 선택 가능합니다.`);
+      }
+    },
+    [selected, maxSelect],
+  );
 
   useEffect(() => {
     if (visible) {
@@ -95,21 +98,12 @@ const CustomGallery: React.FC<CustomGalleryProps> = ({
       onRequestClose={onCancel}
     >
       <SafeAreaView style={styles.container}>
-        <View style={styles.header}>
-          <Pressable onPress={onCancel} style={styles.headerButton}>
-            <Text variant="body" weight="semiBold">
-              닫기
-            </Text>
-          </Pressable>
-          <Text variant="title2" weight="semiBold">
-            사진 선택 ({selected.length}/{maxSelect})
-          </Text>
-          <SubmitButton
-            label="완료"
-            disabled={false}
-            onPress={() => onConfirm(selected)}
-          />
-        </View>
+        <Header
+          selectedCount={selected.length}
+          maxSelect={maxSelect}
+          onCancel={onCancel}
+          onConfirm={() => onConfirm(selected)}
+        />
 
         <FlatList
           data={photos}
@@ -136,5 +130,33 @@ const CustomGallery: React.FC<CustomGalleryProps> = ({
     </Modal>
   );
 };
+
+function Header({
+  selectedCount,
+  maxSelect,
+  onCancel,
+  onConfirm,
+}: {
+  selectedCount: number;
+  maxSelect: number;
+  onCancel: () => void;
+  onConfirm: () => void;
+}) {
+  return (
+    <View style={styles.header}>
+      <Pressable onPress={onCancel} style={styles.headerButton}>
+        <Text variant="body" weight="semiBold">
+          닫기
+        </Text>
+      </Pressable>
+
+      <Text variant="title2" weight="semiBold">
+        사진 선택 ({selectedCount}/{maxSelect})
+      </Text>
+
+      <SubmitButton label="완료" disabled={false} onPress={onConfirm} />
+    </View>
+  );
+}
 
 export default CustomGallery;
