@@ -1,4 +1,10 @@
-import { BackHandler, SafeAreaView, ScrollView, View } from 'react-native';
+import {
+  BackHandler,
+  Button,
+  SafeAreaView,
+  ScrollView,
+  View,
+} from 'react-native';
 import CustomStackHeader from '../../components/CustomStackHeader';
 import colors from '../../theme/color';
 import styles from './styles';
@@ -18,8 +24,7 @@ import {
 import { Text } from '../../components/Text';
 import Toggle from '../../components/Toggle';
 import BasicModal from '../../components/Modal';
-import { Pressable } from 'react-native';
-import EntypoIcon from 'react-native-vector-icons/Entypo';
+import CustomDatePicker from '../../components/DatePicker';
 
 const CreateReviewScreen: React.FC = () => {
   const [isSubmitButtonDisabled, setIsSubmitButtonDisabled] = useState(true);
@@ -28,6 +33,8 @@ const CreateReviewScreen: React.FC = () => {
   );
   const [isOwned, setIsOwned] = useState(true);
   const [isWished, setIsWished] = useState(true);
+  const [date, setDate] = useState(new Date()); // 선택된 날짜 상태
+  const [open, setOpen] = useState(false);
   const [memo, setMemo] = useState('');
   const [genderOptions, setGenderOptions] = useState([
     { value: '남성', isSelected: false },
@@ -106,7 +113,13 @@ const CreateReviewScreen: React.FC = () => {
           isOwned={isOwned}
           isWished={isWished}
         ></PerfumeProfile>
-
+        <CustomDatePicker
+          label="시향 · 착향 날짜"
+          value={date}
+          onChange={setDate}
+          open={open}
+          onOpenChange={setOpen}
+        />
         <TextField
           label="나의 향기 기록"
           value={memo}
