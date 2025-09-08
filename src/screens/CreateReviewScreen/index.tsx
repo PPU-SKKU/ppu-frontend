@@ -63,6 +63,7 @@ const CreateReviewScreen: React.FC = () => {
         onClose={() => setIsCancelEditingModalVisible(false)}
         onConfirm={() => {
           navigation.goBack();
+          navigation.goBack();
         }}
         buttonType="double"
         confirmText="나가기"

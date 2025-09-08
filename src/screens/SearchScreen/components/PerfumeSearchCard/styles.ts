@@ -7,9 +7,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignSelf: 'stretch',
     alignItems: 'center',
+    paddingVertical: 4,
     gap: 12,
-    borderRadius: 20,
-    backgroundColor: colors.lightGrey,
+    borderRadius: 12,
+    backgroundColor: colors.white32,
   },
   perfumeImage: {
     width: 64,
@@ -22,7 +23,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     gap: 4,
   },
-  chevronRightContainer: {
+  iconContainer: {
     padding: 16,
   },
 });

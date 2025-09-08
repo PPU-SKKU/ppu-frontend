@@ -2,12 +2,12 @@ import { StyleSheet } from 'react-native';
 import colors from '../../theme/color';
 
 const styles = StyleSheet.create({
-  container: {
+  screenContainer: {
     flex: 1,
     flexDirection: 'column',
     backgroundColor: colors.lightGrey,
   },
-  header: {
+  headerContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     gap: 12,
   },
-  searchInput: {
+  searchInputContainer: {
     flex: 1,
     fontFamily: 'Pretendard-Regular',
     fontSize: 16,
@@ -23,9 +23,26 @@ const styles = StyleSheet.create({
     letterSpacing: -1.0,
     color: colors.grey100,
   },
+  bodyContainer: {
+    flex: 1,
+  },
   perfumeSearchCardContainer: {
     padding: 20,
-    gap: 8,
+    gap: 12,
+  },
+  footerContainer: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    padding: 20,
+  },
+  buttonContainer: {
+    padding: 16,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: colors.grey100,
+    borderRadius: 16,
   },
 });
 

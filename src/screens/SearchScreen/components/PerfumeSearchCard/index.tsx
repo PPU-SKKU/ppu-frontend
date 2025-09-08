@@ -11,6 +11,8 @@ interface PerfumeSearchCardProps {
   perfumeImage: string | null;
   perfumeName: string;
   perfumeBrand: string;
+  isSelected?: boolean;
+  backgroundColor?: string;
   onPress?: () => void;
 }
 
@@ -18,10 +20,15 @@ const PerfumeSearchCard: React.FC<PerfumeSearchCardProps> = ({
   perfumeImage,
   perfumeName,
   perfumeBrand,
+  isSelected = false,
+  backgroundColor,
   onPress,
 }) => {
   return (
-    <Pressable style={styles.perfumeContainer} onPress={onPress}>
+    <Pressable
+      style={[styles.perfumeContainer, { backgroundColor: backgroundColor }]}
+      onPress={onPress}
+    >
       {perfumeImage ? (
         <Image source={{ uri: perfumeImage }} style={styles.perfumeImage} />
       ) : (
@@ -35,13 +42,15 @@ const PerfumeSearchCard: React.FC<PerfumeSearchCardProps> = ({
           {perfumeBrand}
         </Text>
       </View>
-      <Pressable style={styles.chevronRightContainer}>
-        <EntypoIcon
-          name="chevron-right"
-          size={24}
-          color={colors.grey100}
-        ></EntypoIcon>
-      </Pressable>
+      {isSelected && (
+        <View style={styles.iconContainer}>
+          <EntypoIcon
+            name="check"
+            size={24}
+            color={colors.grey100}
+          ></EntypoIcon>
+        </View>
+      )}
     </Pressable>
   );
 };
