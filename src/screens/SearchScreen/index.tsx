@@ -14,6 +14,7 @@ import { RootNavProp } from '../../types/navigationProps';
 import colors from '../../theme/color';
 import PerfumeSearchCard from './components/PerfumeSearchCard';
 import { DummyPerfumes } from './dummy';
+import SubmitButton from '../../components/Buttons/SubmitButton';
 
 const SearchScreen: React.FC = () => {
   const navigation = useNavigation<RootNavProp>();
@@ -49,6 +50,17 @@ const SearchScreen: React.FC = () => {
           placeholder="검색어를 입력하세요"
           placeholderTextColor={colors.grey31}
         />
+        <SubmitButton
+          backgroundColor={colors.grey100}
+          textColor={colors.white100}
+          label="선택"
+          disabled={!hasSelected}
+          onPress={() => {
+            if (hasSelected) {
+              navigation.navigate('CreateReview');
+            }
+          }}
+        ></SubmitButton>
       </View>
       <View style={styles.bodyContainer}>
         <FlatList
@@ -70,24 +82,26 @@ const SearchScreen: React.FC = () => {
           showsHorizontalScrollIndicator={false}
         />
         {/* 하단 고정 버튼 */}
-        <View style={styles.footerContainer}>
-          <Pressable
-            style={[
-              styles.buttonContainer,
-              !hasSelected && { opacity: 0.12 }, // 비활성화 시 색상 변경
-            ]}
-            onPress={() => {
-              if (hasSelected) {
-                navigation.navigate('CreateReview');
-              }
-            }}
-            disabled={!hasSelected}
-          >
-            <Text variant="body" weight="semiBold" color={colors.white}>
-              선택하기
-            </Text>
-          </Pressable>
-        </View>
+        {/*
+          <View style={styles.footerContainer}>
+            <Pressable
+              style={[
+                styles.buttonContainer,
+                !hasSelected && { opacity: 0.12 }, // 비활성화 시 색상 변경
+              ]}
+              disabled={!hasSelected}
+              onPress={() => {
+                if (hasSelected) {
+                  navigation.navigate('CreateReview');
+                }
+              }}
+            >
+              <Text variant="body" weight="semiBold" color={colors.white}>
+                선택하기
+              </Text>
+            </Pressable>
+          </View>
+        */}
       </View>
     </SafeAreaView>
   );

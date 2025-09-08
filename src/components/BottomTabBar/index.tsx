@@ -50,7 +50,7 @@ const BottomTabBar: React.FC<BottomTabBarProps> = ({ state, navigation }) => {
               style={styles.createButton}
               onPress={() => {
                 setVisible(false);
-                navigation.navigate('CreateReview');
+                navigation.navigate('Search');
               }}
             >
               <Text variant="body" weight="semiBold" color={colors.grey100}>
