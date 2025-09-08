@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import {
   Image,
   ImageBackground,
+  Pressable,
   StyleSheet,
   TextInput,
   TextInputProps,
@@ -39,6 +40,8 @@ const PerfumeProfile: React.FC<PerfumeProfileProps> = ({
   setPreferenceOptions,
 }) => {
   const [isRatingVisible, setIsRatingVisible] = useState(true);
+  const [rating, setRating] = useState(0); // 0~5 점수 관리
+  const total = 5;
   const handleSelectPreference = (value: string) => {
     setPreferenceOptions(prevOptions =>
       prevOptions.map(
@@ -50,6 +53,7 @@ const PerfumeProfile: React.FC<PerfumeProfileProps> = ({
     );
     setIsRatingVisible(value === '호');
   };
+
   return (
     <View style={styles.perfumeProfileContainer}>
       {/*<ImageBackground
@@ -127,13 +131,23 @@ const PerfumeProfile: React.FC<PerfumeProfileProps> = ({
           {isRatingVisible && (
             <View style={styles.ratingContainer}>
               <View style={styles.ratingIconContainer}>
-                <FilledRatingIcon width={60} height={60}></FilledRatingIcon>
-                <FilledRatingIcon width={60} height={60}></FilledRatingIcon>
-                <EmptyRatingIcon width={60} height={60}></EmptyRatingIcon>
-                <EmptyRatingIcon width={60} height={60}></EmptyRatingIcon>
-                <EmptyRatingIcon width={60} height={60}></EmptyRatingIcon>
+                {Array.from({ length: total }).map((_, index) => {
+                  const score = index + 1;
+                  return (
+                    <Pressable key={score} onPress={() => setRating(score)}>
+                      {score <= rating ? (
+                        <FilledRatingIcon width={60} height={60} />
+                      ) : (
+                        <EmptyRatingIcon width={60} height={60} />
+                      )}
+                    </Pressable>
+                  );
+                })}
               </View>
-              <Text variant="caption1" weight="regular">
+              <Text variant="body" weight="semiBold">
+                현재 평점: {rating} / {total}
+              </Text>
+              <Text variant="caption1" weight="regular" color={colors.grey54}>
                 아래의 기준으로 향수의 평점을 매겨주세요!
               </Text>
             </View>
