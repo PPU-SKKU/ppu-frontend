@@ -4,7 +4,7 @@ import { Image, Pressable, View } from 'react-native';
 import { Text } from '../../../../components/Text';
 import styles from './styles';
 import colors from '../../../../theme/color';
-import DefaultPerfumeLimeGreen from '../../../../assets/svgs/default_perfume_limegreen.svg';
+import DefaultPerfumeGrey from '../../../../assets/svgs/default_perfume_grey.svg';
 import EntypoIcon from 'react-native-vector-icons/Entypo';
 
 interface PerfumeSearchCardProps {
@@ -33,7 +33,7 @@ const PerfumeSearchCard: React.FC<PerfumeSearchCardProps> = ({
       {perfumeImage ? (
         <Image source={{ uri: perfumeImage }} style={styles.perfumeImage} />
       ) : (
-        <DefaultPerfumeLimeGreen width={64} height={64} />
+        <DefaultPerfumeGrey width={64} height={64} />
       )}
       <View style={styles.perfumeInfoSection}>
         <Text variant="title2" weight="semiBold" color={colors.grey100}>
