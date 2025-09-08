@@ -30,11 +30,17 @@ const PerfumeSearchCard: React.FC<PerfumeSearchCardProps> = ({
       ]}
       onPress={onPress}
     >
-      {perfumeImage ? (
-        <Image source={{ uri: perfumeImage }} style={styles.perfumeImage} />
-      ) : (
-        <DefaultPerfumeGrey width={64} height={64} />
-      )}
+      <Pressable
+        onPress={() => {
+          console.log('향수 이미지 클릭');
+        }}
+      >
+        {perfumeImage ? (
+          <Image source={{ uri: perfumeImage }} style={styles.perfumeImage} />
+        ) : (
+          <DefaultPerfumeGrey width={64} height={64} />
+        )}
+      </Pressable>
       <View style={styles.perfumeInfoSection}>
         <Text variant="title2" weight="semiBold" color={colors.grey100}>
           {perfumeName}
