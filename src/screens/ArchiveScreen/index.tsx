@@ -18,6 +18,9 @@ const ArchiveScreen: React.FC = () => {
   const NavigateToCreateReview = () => {
     navigation.navigate('CreateReview');
   };
+  const NavigateToSearch = () => {
+    navigation.navigate('Search');
+  };
 
   return (
     <SafeAreaView style={styles.safeAreaViewContainer}>
@@ -43,7 +46,7 @@ const ArchiveScreen: React.FC = () => {
               textColor={colors.white}
               label="시향기 작성하기"
               disabled={false}
-              onPress={NavigateToCreateReview}
+              onPress={NavigateToSearch}
             ></CreateReviewButton>
           </View>
         ) : (
