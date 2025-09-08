@@ -14,10 +14,12 @@ import StateTag from '../StateTag';
 import DefaultPerfumeLimeGreen from '../../../../assets/svgs/default_perfume_limegreen.svg';
 import EntypoIcon from 'react-native-vector-icons/Entypo';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
+import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5';
 import colors from '../../../../theme/color';
 import Divider from '../../../../components/Divider';
 import Segment from '../\bSegment';
 import { Perfume } from '../../../../types/perfume';
+
 import EmptyRatingIcon from '../../../../assets/svgs/empty_rating_icon.svg';
 import FilledRatingIcon from '../../../../assets/svgs/filled_rating_icon.svg';
 
@@ -120,6 +122,21 @@ const PerfumeProfile: React.FC<PerfumeProfileProps> = ({
           <View style={styles.segmentedControlsContainer}>
             {preferenceOptions.map(option => (
               <Segment
+                icon={
+                  option.value === '호' ? (
+                    <FontAwesomeIcon
+                      name="heart"
+                      size={16}
+                      color={option.isSelected ? colors.grey100 : colors.grey54}
+                    ></FontAwesomeIcon>
+                  ) : (
+                    <FontAwesome5Icon
+                      name="heart-broken"
+                      size={16}
+                      color={option.isSelected ? colors.grey100 : colors.grey54}
+                    ></FontAwesome5Icon>
+                  )
+                }
                 key={option.value}
                 label={option.value}
                 isSelected={option.isSelected}
@@ -135,17 +152,17 @@ const PerfumeProfile: React.FC<PerfumeProfileProps> = ({
                   return (
                     <Pressable key={score} onPress={() => setRating(score)}>
                       {score <= rating ? (
-                        <FilledRatingIcon />
+                        <FilledRatingIcon width={56} height={56} />
                       ) : (
-                        <EmptyRatingIcon />
+                        <EmptyRatingIcon width={56} height={56} />
                       )}
                     </Pressable>
                   );
                 })}
               </View>
-              <Text variant="body" weight="semiBold">
+              {/*<Text variant="body" weight="semiBold">
                 현재 평점: {rating} / {total}
-              </Text>
+              </Text>*/}
               <Text variant="caption1" weight="regular" color={colors.grey54}>
                 아래의 기준으로 향수의 평점을 매겨주세요!
               </Text>
