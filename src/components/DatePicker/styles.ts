@@ -18,6 +18,10 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
   },
+  datePickerButtonContainer: {
+    flexDirection: 'row',
+    gap: 8,
+  },
 });
 
 export default styles;
