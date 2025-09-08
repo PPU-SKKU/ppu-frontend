@@ -13,7 +13,6 @@ import { Text } from '../../../../components/Text';
 import StateTag from '../StateTag';
 import DefaultPerfumeLimeGreen from '../../../../assets/svgs/default_perfume_limegreen.svg';
 import EntypoIcon from 'react-native-vector-icons/Entypo';
-import FontAwesome6Icon from 'react-native-vector-icons/FontAwesome6';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import colors from '../../../../theme/color';
 import Divider from '../../../../components/Divider';
@@ -136,9 +135,9 @@ const PerfumeProfile: React.FC<PerfumeProfileProps> = ({
                   return (
                     <Pressable key={score} onPress={() => setRating(score)}>
                       {score <= rating ? (
-                        <FilledRatingIcon width={60} height={60} />
+                        <FilledRatingIcon />
                       ) : (
-                        <EmptyRatingIcon width={60} height={60} />
+                        <EmptyRatingIcon />
                       )}
                     </Pressable>
                   );
