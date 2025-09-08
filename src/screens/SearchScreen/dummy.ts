@@ -49,3 +49,5 @@ export const DummyPerfumes = [
     image: null,
   },
 ];
+
+export const DummyEmptyPerfumes = [];

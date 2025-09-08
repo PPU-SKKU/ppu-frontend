@@ -26,6 +26,19 @@ const styles = StyleSheet.create({
   bodyContainer: {
     flex: 1,
   },
+  emptyContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: 20,
+  },
+  requestButtonContainer: {
+    padding: 16,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: colors.grey100,
+    borderRadius: 28,
+  },
   footerContainer: {
     position: 'absolute',
     bottom: 0,

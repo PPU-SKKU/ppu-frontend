@@ -13,8 +13,9 @@ import { useNavigation } from '@react-navigation/native';
 import { RootNavProp } from '../../types/navigationProps';
 import colors from '../../theme/color';
 import PerfumeSearchCard from './components/PerfumeSearchCard';
-import { DummyPerfumes } from './dummy';
+import { DummyEmptyPerfumes, DummyPerfumes } from './dummy';
 import SubmitButton from '../../components/Buttons/SubmitButton';
+import DefaultPerfumeGrey from '../../assets/svgs/default_perfume_grey.svg';
 
 const SearchScreen: React.FC = () => {
   const navigation = useNavigation<RootNavProp>();
@@ -47,7 +48,7 @@ const SearchScreen: React.FC = () => {
           value={query}
           onChangeText={setQuery}
           style={styles.searchInputContainer}
-          placeholder="검색어를 입력하세요"
+          placeholder="향수/브랜드명을 입력하세요"
           placeholderTextColor={colors.grey31}
         />
         <SubmitButton
@@ -77,8 +78,24 @@ const SearchScreen: React.FC = () => {
               }}
             ></PerfumeSearchCard>
           )}
+          ListEmptyComponent={
+            <View style={styles.emptyContainer}>
+              <DefaultPerfumeGrey></DefaultPerfumeGrey>
+              <Text variant="title1" weight="medium" color={colors.grey54}>
+                아쉽게도 등록되지 않은 향수에요
+              </Text>
+              <Pressable
+                style={[styles.requestButtonContainer]}
+                onPress={() => {}}
+              >
+                <Text variant="body" weight="semiBold" color={colors.white100}>
+                  향수 요청하기
+                </Text>
+              </Pressable>
+            </View>
+          }
           ItemSeparatorComponent={() => <View style={{ height: 12 }} />}
-          contentContainerStyle={{ padding: 20, gap: 8 }}
+          contentContainerStyle={{ padding: 20, gap: 8, flexGrow: 1 }}
           showsHorizontalScrollIndicator={false}
         />
         {/* 하단 고정 버튼 */}
