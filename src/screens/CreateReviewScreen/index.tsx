@@ -25,6 +25,7 @@ import { Text } from '../../components/Text';
 import Toggle from '../../components/Toggle';
 import BasicModal from '../../components/Modal';
 import CustomDatePicker from '../../components/DatePicker';
+import Segment from './components/\bSegment';
 
 const CreateReviewScreen: React.FC = () => {
   const [isSubmitButtonDisabled, setIsSubmitButtonDisabled] = useState(true);
@@ -33,8 +34,23 @@ const CreateReviewScreen: React.FC = () => {
   );
   const [isOwned, setIsOwned] = useState(true);
   const [isWished, setIsWished] = useState(true);
+  const [preferenceOptions, setPreferenceOptions] = useState([
+    { value: '호', isSelected: true },
+    { value: '불호', isSelected: false },
+  ]);
+  const handlePreferenceSelect = (selectedValue: string) => {
+    setPreferenceOptions(prevOptions =>
+      prevOptions.map(
+        option =>
+          option.value === selectedValue
+            ? { ...option, isSelected: true } // 선택한 것만 true
+            : { ...option, isSelected: false }, // 나머지는 false
+      ),
+    );
+  };
+  const [isRatingVisible, setIsRatingVisible] = useState(false);
   const [date, setDate] = useState(new Date()); // 선택된 날짜 상태
-  const [open, setOpen] = useState(false);
+  const [isDatePickerVisible, setIsDatePickerVisible] = useState(false);
   const [memo, setMemo] = useState('');
   const [genderOptions, setGenderOptions] = useState([
     { value: '남성', isSelected: false },
@@ -113,12 +129,27 @@ const CreateReviewScreen: React.FC = () => {
           isOwned={isOwned}
           isWished={isWished}
         ></PerfumeProfile>
+        <View style={styles.perfumePreferenceContainer}>
+          <Text variant="title1" weight="bold">
+            호불호를 선택해주세요
+          </Text>
+          <View style={styles.segmentedControlsContainer}>
+            {preferenceOptions.map(option => (
+              <Segment
+                key={option.value}
+                label={option.value}
+                isSelected={option.isSelected}
+                onPress={() => handlePreferenceSelect(option.value)}
+              />
+            ))}
+          </View>
+        </View>
         <CustomDatePicker
           label="시향 · 착향 날짜"
           value={date}
           onChange={setDate}
-          open={open}
-          onOpenChange={setOpen}
+          open={isDatePickerVisible}
+          onOpenChange={setIsDatePickerVisible}
         />
         <TextField
           label="나의 향기 기록"

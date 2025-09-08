@@ -89,16 +89,6 @@ const PerfumeProfile: React.FC<PerfumeProfileProps> = ({
             ></StateTag>
           </View>
         </View>
-        <Divider></Divider>
-        <View style={styles.perfumePreferenceContainer}>
-          <Text variant="title1" weight="bold">
-            호불호를 선택해주세요
-          </Text>
-          <View style={styles.segmentedControlsContainer}>
-            <Segment label={'호'} isSelected={true}></Segment>
-            <Segment label={'불호'} isSelected={false}></Segment>
-          </View>
-        </View>
       </View>
     </View>
   );
