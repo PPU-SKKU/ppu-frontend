@@ -1,5 +1,11 @@
-import React from 'react';
-import { Pressable, SafeAreaView, TextInput, View } from 'react-native';
+import React, { useState } from 'react';
+import {
+  FlatList,
+  Pressable,
+  SafeAreaView,
+  TextInput,
+  View,
+} from 'react-native';
 import styles from './styles';
 import BackButton from '../../components/Buttons/BackButton';
 import { Text } from '../../components/Text';
@@ -7,13 +13,28 @@ import { useNavigation } from '@react-navigation/native';
 import { RootNavProp } from '../../types/navigationProps';
 import colors from '../../theme/color';
 import PerfumeSearchCard from './components/PerfumeSearchCard';
+import { DummyPerfumes } from './dummy';
 
 const SearchScreen: React.FC = () => {
   const navigation = useNavigation<RootNavProp>();
   const onBackPress = () => {
     navigation.goBack();
   };
+  const [perfumes, setPerfumes] = useState(
+    DummyPerfumes.map(item => ({ ...item, isSelected: false })),
+  );
   const [query, setQuery] = React.useState('');
+  const toggleIsSelected = (id: number) => {
+    setPerfumes(prevPerfumes =>
+      prevPerfumes.map(
+        item =>
+          item.id === id
+            ? { ...item, isSelected: !item.isSelected } // 클릭한 아이템 토글
+            : { ...item, isSelected: false }, // 나머지는 모두 false
+      ),
+    );
+  };
+  const hasSelected = perfumes.some(item => item.isSelected);
   return (
     <SafeAreaView style={styles.screenContainer}>
       <View style={styles.headerContainer}>
@@ -30,40 +51,37 @@ const SearchScreen: React.FC = () => {
         />
       </View>
       <View style={styles.bodyContainer}>
-        <View style={styles.perfumeSearchCardContainer}>
-          <PerfumeSearchCard
-            perfumeImage=""
-            perfumeName="오 드 빠르펭"
-            perfumeBrand="샤넬"
-            onPress={() => {
-              console.log('향수 아이템 눌림');
-            }}
-          ></PerfumeSearchCard>
-          <PerfumeSearchCard
-            perfumeImage=""
-            perfumeName="오 드 빠르펭"
-            perfumeBrand="샤넬"
-            isSelected={true}
-            onPress={() => {
-              console.log('향수 아이템 눌림');
-            }}
-          ></PerfumeSearchCard>
-          <PerfumeSearchCard
-            perfumeImage=""
-            perfumeName="오 드 빠르펭"
-            perfumeBrand="샤넬"
-            onPress={() => {
-              console.log('향수 아이템 눌림');
-            }}
-          ></PerfumeSearchCard>
-        </View>
+        <FlatList
+          data={perfumes}
+          keyExtractor={item => item.id.toString()}
+          renderItem={({ item }) => (
+            <PerfumeSearchCard
+              perfumeImage={item.image}
+              perfumeName={item.koreanName}
+              perfumeBrand={item.brandKoreanName}
+              isSelected={item.isSelected}
+              onPress={() => {
+                toggleIsSelected(item.id);
+              }}
+            ></PerfumeSearchCard>
+          )}
+          ItemSeparatorComponent={() => <View style={{ height: 12 }} />}
+          contentContainerStyle={{ padding: 20, gap: 8 }}
+          showsHorizontalScrollIndicator={false}
+        />
         {/* 하단 고정 버튼 */}
         <View style={styles.footerContainer}>
           <Pressable
-            style={styles.buttonContainer}
+            style={[
+              styles.buttonContainer,
+              !hasSelected && { opacity: 0.12 }, // 비활성화 시 색상 변경
+            ]}
             onPress={() => {
-              navigation.navigate('CreateReview');
+              if (hasSelected) {
+                navigation.navigate('CreateReview');
+              }
             }}
+            disabled={!hasSelected}
           >
             <Text variant="body" weight="semiBold" color={colors.white}>
               선택하기

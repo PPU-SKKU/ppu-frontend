@@ -26,10 +26,6 @@ const styles = StyleSheet.create({
   bodyContainer: {
     flex: 1,
   },
-  perfumeSearchCardContainer: {
-    padding: 20,
-    gap: 12,
-  },
   footerContainer: {
     position: 'absolute',
     bottom: 0,

@@ -12,7 +12,6 @@ interface PerfumeSearchCardProps {
   perfumeName: string;
   perfumeBrand: string;
   isSelected?: boolean;
-  backgroundColor?: string;
   onPress?: () => void;
 }
 
@@ -21,12 +20,14 @@ const PerfumeSearchCard: React.FC<PerfumeSearchCardProps> = ({
   perfumeName,
   perfumeBrand,
   isSelected = false,
-  backgroundColor,
   onPress,
 }) => {
   return (
     <Pressable
-      style={[styles.perfumeContainer, { backgroundColor: backgroundColor }]}
+      style={[
+        styles.perfumeContainer,
+        isSelected && { backgroundColor: colors.grey4 },
+      ]}
       onPress={onPress}
     >
       {perfumeImage ? (
