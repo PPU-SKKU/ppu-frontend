@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Image,
   ImageBackground,
@@ -18,18 +18,38 @@ import colors from '../../../../theme/color';
 import Divider from '../../../../components/Divider';
 import Segment from '../\bSegment';
 import { Perfume } from '../../../../types/perfume';
+import EmptyRatingIcon from '../../../../assets/svgs/empty_rating_icon.svg';
+import FilledRatingIcon from '../../../../assets/svgs/filled_rating_icon.svg';
 
 interface PerfumeProfileProps {
   perfume: Perfume;
   isOwned: boolean;
   isWished: boolean;
+  preferenceOptions: { value: string; isSelected: boolean }[];
+  setPreferenceOptions: React.Dispatch<
+    React.SetStateAction<{ value: string; isSelected: boolean }[]>
+  >;
 }
 
 const PerfumeProfile: React.FC<PerfumeProfileProps> = ({
   perfume,
   isOwned,
   isWished,
+  preferenceOptions,
+  setPreferenceOptions,
 }) => {
+  const [isRatingVisible, setIsRatingVisible] = useState(true);
+  const handleSelectPreference = (value: string) => {
+    setPreferenceOptions(prevOptions =>
+      prevOptions.map(
+        option =>
+          option.value === value
+            ? { ...option, isSelected: true } // 클릭된 것만 true
+            : { ...option, isSelected: false }, // 나머지는 false
+      ),
+    );
+    setIsRatingVisible(value === '호');
+  };
   return (
     <View style={styles.perfumeProfileContainer}>
       {/*<ImageBackground
@@ -88,6 +108,36 @@ const PerfumeProfile: React.FC<PerfumeProfileProps> = ({
               label={'WISH'}
             ></StateTag>
           </View>
+        </View>
+        <Divider></Divider>
+        <View style={styles.perfumePreferenceContainer}>
+          <Text variant="title1" weight="bold">
+            호불호를 선택해주세요
+          </Text>
+          <View style={styles.segmentedControlsContainer}>
+            {preferenceOptions.map(option => (
+              <Segment
+                key={option.value}
+                label={option.value}
+                isSelected={option.isSelected}
+                onPress={() => handleSelectPreference(option.value)}
+              />
+            ))}
+          </View>
+          {isRatingVisible && (
+            <View style={styles.ratingContainer}>
+              <View style={styles.ratingIconContainer}>
+                <FilledRatingIcon width={60} height={60}></FilledRatingIcon>
+                <FilledRatingIcon width={60} height={60}></FilledRatingIcon>
+                <EmptyRatingIcon width={60} height={60}></EmptyRatingIcon>
+                <EmptyRatingIcon width={60} height={60}></EmptyRatingIcon>
+                <EmptyRatingIcon width={60} height={60}></EmptyRatingIcon>
+              </View>
+              <Text variant="caption1" weight="regular">
+                아래의 기준으로 향수의 평점을 매겨주세요!
+              </Text>
+            </View>
+          )}
         </View>
       </View>
     </View>
