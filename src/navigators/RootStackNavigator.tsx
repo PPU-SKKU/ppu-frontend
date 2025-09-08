@@ -4,6 +4,7 @@ import MainTabNavigator from './MainTabNavigator';
 import CreateReviewScreen from '../screens/CreateReviewScreen';
 import { RootStackParamList } from '../types/navigationTypes';
 import CreateOppuScreen from '../screens/CreateOppuScreen';
+import SearchScreen from '../screens/SearchScreen';
 
 const RootStack = createNativeStackNavigator<RootStackParamList>();
 
@@ -13,6 +14,7 @@ const RootStackNavigator = () => {
       <RootStack.Screen name="Main" component={MainTabNavigator} />
       <RootStack.Screen name="CreateOppu" component={CreateOppuScreen} />
       <RootStack.Screen name="CreateReview" component={CreateReviewScreen} />
+      <RootStack.Screen name="Search" component={SearchScreen} />
     </RootStack.Navigator>
   );
 };

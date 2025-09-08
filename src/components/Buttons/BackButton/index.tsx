@@ -6,9 +6,13 @@ import colors from '../../../theme/color';
 
 interface BackButtonProps {
   onPress?: () => void;
+  backgroundColor?: string;
 }
 
-const BackButton: React.FC<BackButtonProps> = ({ onPress }) => {
+const BackButton: React.FC<BackButtonProps> = ({
+  onPress,
+  backgroundColor = '#FFFFFF',
+}) => {
   return (
     <Pressable style={styles.container} onPress={onPress}>
       <FeatherIcon name="chevron-left" size={24} color={colors.grey100} />

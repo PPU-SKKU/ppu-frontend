@@ -26,6 +26,21 @@ const styles = StyleSheet.create({
     gap: 8,
     borderRadius: 16,
   },
+  perfumePreferenceContainer: {
+    alignSelf: 'stretch',
+    flexDirection: 'column',
+    alignItems: 'center',
+    gap: 16,
+  },
+  segmentedControlsContainer: {
+    alignSelf: 'stretch',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 4,
+    borderRadius: 22,
+    backgroundColor: colors.grey8,
+  },
   optionalContainer: {
     alignSelf: 'stretch',
     flexDirection: 'column',

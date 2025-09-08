@@ -3,9 +3,11 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
   segmentContainer: {
     flex: 1,
-    paddingVertical: 10,
+    flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
+    paddingVertical: 10,
+    gap: 4,
     borderRadius: 20,
   },
 });

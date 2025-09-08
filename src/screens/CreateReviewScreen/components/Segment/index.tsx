@@ -1,16 +1,22 @@
 import React from 'react';
-import { Pressable } from 'react-native';
+import { Pressable, View } from 'react-native';
 import styles from './styles';
 import colors from '../../../../theme/color';
 import { Text } from '../../../../components/Text';
 
 interface SegmentProps {
+  icon?: React.ReactNode; //
   label: string;
   isSelected: boolean;
   onPress?: () => void;
 }
 
-const Segment: React.FC<SegmentProps> = ({ label, isSelected, onPress }) => {
+const Segment: React.FC<SegmentProps> = ({
+  icon,
+  label,
+  isSelected,
+  onPress,
+}) => {
   return (
     <Pressable
       style={[
@@ -19,6 +25,7 @@ const Segment: React.FC<SegmentProps> = ({ label, isSelected, onPress }) => {
       ]}
       onPress={onPress}
     >
+      {icon && <View>{icon}</View>}
       {isSelected ? (
         <Text variant="caption1" weight="bold" color={colors.grey100}>
           {label}

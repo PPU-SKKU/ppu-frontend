@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Image,
   ImageBackground,
+  Pressable,
   StyleSheet,
   TextInput,
   TextInputProps,
@@ -12,24 +13,48 @@ import { Text } from '../../../../components/Text';
 import StateTag from '../StateTag';
 import DefaultPerfumeLimeGreen from '../../../../assets/svgs/default_perfume_limegreen.svg';
 import EntypoIcon from 'react-native-vector-icons/Entypo';
-import FontAwesome6Icon from 'react-native-vector-icons/FontAwesome6';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
+import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5';
 import colors from '../../../../theme/color';
 import Divider from '../../../../components/Divider';
 import Segment from '../\bSegment';
 import { Perfume } from '../../../../types/perfume';
 
+import EmptyRatingIcon from '../../../../assets/svgs/empty_rating_icon.svg';
+import FilledRatingIcon from '../../../../assets/svgs/filled_rating_icon.svg';
+
 interface PerfumeProfileProps {
   perfume: Perfume;
   isOwned: boolean;
   isWished: boolean;
+  preferenceOptions: { value: string; isSelected: boolean }[];
+  setPreferenceOptions: React.Dispatch<
+    React.SetStateAction<{ value: string; isSelected: boolean }[]>
+  >;
 }
 
 const PerfumeProfile: React.FC<PerfumeProfileProps> = ({
   perfume,
   isOwned,
   isWished,
+  preferenceOptions,
+  setPreferenceOptions,
 }) => {
+  const [isRatingVisible, setIsRatingVisible] = useState(true);
+  const [rating, setRating] = useState(0); // 0~5 점수 관리
+  const total = 5;
+  const handleSelectPreference = (value: string) => {
+    setPreferenceOptions(prevOptions =>
+      prevOptions.map(
+        option =>
+          option.value === value
+            ? { ...option, isSelected: true } // 클릭된 것만 true
+            : { ...option, isSelected: false }, // 나머지는 false
+      ),
+    );
+    setIsRatingVisible(value === '호');
+  };
+
   return (
     <View style={styles.perfumeProfileContainer}>
       {/*<ImageBackground
@@ -95,9 +120,54 @@ const PerfumeProfile: React.FC<PerfumeProfileProps> = ({
             호불호를 선택해주세요
           </Text>
           <View style={styles.segmentedControlsContainer}>
-            <Segment label={'호'} isSelected={true}></Segment>
-            <Segment label={'불호'} isSelected={false}></Segment>
+            {preferenceOptions.map(option => (
+              <Segment
+                icon={
+                  option.value === '호' ? (
+                    <FontAwesomeIcon
+                      name="heart"
+                      size={16}
+                      color={option.isSelected ? colors.grey100 : colors.grey54}
+                    ></FontAwesomeIcon>
+                  ) : (
+                    <FontAwesome5Icon
+                      name="heart-broken"
+                      size={16}
+                      color={option.isSelected ? colors.grey100 : colors.grey54}
+                    ></FontAwesome5Icon>
+                  )
+                }
+                key={option.value}
+                label={option.value}
+                isSelected={option.isSelected}
+                onPress={() => handleSelectPreference(option.value)}
+              />
+            ))}
           </View>
+          {isRatingVisible && (
+            <View style={styles.ratingContainer}>
+              <View style={styles.ratingIconContainer}>
+                {Array.from({ length: total }).map((_, index) => {
+                  const score = index + 1;
+                  return (
+                    <Pressable key={score} onPress={() => setRating(score)}>
+                      {score <= rating ? (
+                        <FilledRatingIcon width={56} height={56} />
+                      ) : (
+                        <EmptyRatingIcon width={56} height={56} />
+                      )}
+                    </Pressable>
+                  );
+                })}
+              </View>
+              {/*<Text variant="body" weight="semiBold">
+                현재 평점: {rating} / {total}
+              </Text>*/}
+              <Text variant="caption1" weight="regular" color={colors.grey54}>
+                아래의 기준으로 향수의 평점을 매겨주세요!
+              </Text>
+            </View>
+          )}
         </View>
       </View>
     </View>

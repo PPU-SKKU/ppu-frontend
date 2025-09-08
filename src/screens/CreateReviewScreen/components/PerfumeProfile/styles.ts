@@ -60,6 +60,16 @@ const styles = StyleSheet.create({
     borderRadius: 22,
     backgroundColor: colors.grey8,
   },
+  ratingContainer: {
+    alignSelf: 'stretch',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: 16,
+  },
+  ratingIconContainer: {
+    flexDirection: 'row',
+  },
 });
 
 export default styles;

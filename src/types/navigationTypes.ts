@@ -2,6 +2,7 @@ export type RootStackParamList = {
   Main: undefined;
   CreateOppu: undefined;
   CreateReview: undefined;
+  Search: undefined;
 };
 
 /* 추후 로그인 도입 시

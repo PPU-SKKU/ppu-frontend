@@ -10,7 +10,7 @@ import styles from './styles';
 import { Text } from '../../../../components/Text';
 import colors from '../../../../theme/color';
 import DefaultPerfumeLimeGreen from '../../../../assets/svgs/default_perfume_limegreen.svg';
-import HeartLikeIcon from '../../../../assets/svgs/heart_like.svg';
+import HeartLikeRedIcon from '../../../../assets/svgs/heart_like_red.svg';
 import HeartUnlikeIcon from '../../../../assets/svgs/heart_unlike.svg';
 import MoreOptionsButton from '../../../../components/Buttons/MoreOptionsButton';
 
@@ -109,7 +109,7 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
         </View>
         {isLiked ? (
           <View style={styles.ratingLikeBadge}>
-            <HeartLikeIcon width={16} height={16} />
+            <HeartLikeRedIcon width={16} height={16} />
             <Text variant="bodyCompact" weight="bold" color={colors.pink}>
               {score.toFixed(1)}
             </Text>
