@@ -37,7 +37,6 @@ const CreateReviewScreen: React.FC = () => {
     { value: '호', isSelected: true },
     { value: '불호', isSelected: false },
   ]);
-  const [isRatingVisible, setIsRatingVisible] = useState(false);
   const [date, setDate] = useState(new Date()); // 선택된 날짜 상태
   const [isDatePickerVisible, setIsDatePickerVisible] = useState(false);
   const [memo, setMemo] = useState('');
